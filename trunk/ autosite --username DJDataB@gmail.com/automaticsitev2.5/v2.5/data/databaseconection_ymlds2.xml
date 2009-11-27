@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+/*
+*$Id: mysql_ymlds2.xml  Lieven@djdb.be
+*@DS2+
+*@yml+
+*@PHPds+
+*
+*
+*
+*==>>RUBY
+*Datasource config for MySQL
+* Install the MySQL driver:
+*   gem install mysql
+* On MacOS X:
+*   gem install mysql - - - -include=/usr/local/lib
+* On Windows:
+*   gem install mysql
+*       Choose the win32 build.
+*       Install MySQL and put its /bin directory on your path.
+*
+*/
+-->
+<datasources>  
+	<development>
+		    <adapter>mysql</adapter>
+		    <hosturl>localhost</hosturl>
+		    <port>3306</port>
+		    <database>testdb1</database>
+		    <!-- only for java -->
+		    <driver-class>com.mysql.jdbc.Driver</driver-class>
+		    <username>root</username>
+		    <password></password>
+		    <exceptionSorterClassName>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter</exceptionSorterClassName>
+		    <metadata>
+		       <type-mapping>mySQL</type-mapping>
+		    </metadata>
+	</development>
+	<test>
+			<adapter>mysql</adapter>
+		    <hosturl>localhost</hosturl>
+		    <port>3306</port>
+		    <database>testdb2</database>
+		    <!-- only for java -->
+		    <driver-class>com.mysql.jdbc.Driver</driver-class>
+		    <username>xampp</username>
+		    <password>wampp</password>
+		    <exceptionSorterClassName>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter</exceptionSorterClassName>
+		    <metadata>
+		       <type-mapping>mySQL</type-mapping>
+		    </metadata>
+ 	</test>
+	<production>
+			<adapter>mysql</adapter>
+		    <hosturl>localhost</hosturl>
+		    <port>3306</port>
+		    <database>testdb3</database>
+		    <!-- only for java -->
+		    <driver-class>com.mysql.jdbc.Driver</driver-class>
+		    <username>test</username>
+		    <password>test</password>
+		    <exceptionSorterClassName>org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter</exceptionSorterClassName>
+		    <metadata>
+		       <type-mapping>mySQL</type-mapping>
+		    </metadata>
+	</production>
+</datasources>
+
