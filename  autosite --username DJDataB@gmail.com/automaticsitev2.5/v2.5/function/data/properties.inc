@@ -2,6 +2,8 @@
 	/**
 	* @author Lieven Roegiers
 	* @copyright 2009
+ 	* @CMS autosite
+ 	* opensource http://code.google.com/p/autosite/ 
 	*/
 	function isexist_propertiefile($filelocation,$locale,$name){
 		return is_file($filelocation.$name."_".$locale.".properties");
