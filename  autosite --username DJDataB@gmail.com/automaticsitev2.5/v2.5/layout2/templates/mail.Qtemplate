@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<meta name='Autositemail' content='Mail0.0'>
+	</head>
+	<body bgcolor=$backbcolor FONT-SIZE: 12pt; MARGIN: 0px 10px 10px; FONT-FAMILY: Arial text=#00005b>
+		<h3>%mail.title%</h3>
+		 %mail.msg% : %msg->value%
+	    <br>%mail.nameuser%  : %name->value%    
+		<br>%mail.content%	: %content->value%	
+	</body>
+</html>

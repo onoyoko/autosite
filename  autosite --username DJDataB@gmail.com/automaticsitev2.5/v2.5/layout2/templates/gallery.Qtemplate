@@ -1,0 +1,4 @@
+<div class="gallery img">
+	<h3>%name%:%name->value%</h3>
+	%img%: %img->value% <br />
+</div>

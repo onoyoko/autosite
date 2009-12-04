@@ -1,0 +1,15 @@
+<table >
+		<tr><td style="width:300px" >
+			<h3>%name%:%name->value%</h3>
+			<hr class='div1'/>
+			
+			%date%:%date->value%  <br />
+			%mail%: %mail->value% <br />
+			%status%:%status->value% <br />
+	    	%website%:%website->value% <br />
+			</td >
+			<td >%phone%:%phone->value% <br />
+				%inf%:<br />%inf->value%
+			</td>
+		</tr>
+</table>
