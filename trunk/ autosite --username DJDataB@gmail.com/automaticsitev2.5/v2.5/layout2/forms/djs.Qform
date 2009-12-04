@@ -1,0 +1,32 @@
+<table width="100%">
+    <tbody>
+        <tr>
+			<td width="10%">
+				<label for="name">%name%</label> 	   	
+				<input type="text" name="name" maxlength="35" class="ibb" /><br />
+				<label for="mail">%mail%</label>	
+				<input type="text" name="mail" maxlength="35" class="ibb" /><br />		
+				<label for="phone">%phone%</label> 	   	
+				<input type="text" name="phone" maxlength="35" class="ibb" /><br />
+				<label for="website">%website%</label>	   	
+				<input type="text" name="website" maxlength="35" class="ibb" /><br />
+			</td><td width="10">
+				<center>
+					<label for="inf">%website%</label><br /> 	
+					<span class="ibc">
+						<textarea rows="8" cols="35" name="inf" id="inf" class="ibc"></textarea> 	
+					</span>
+				</center>
+			</td><td width="10%">
+					<label for="status">%status%</label>
+					<select name="status" class="ibc">
+						<option value="1">dj Loonverband</option>
+						<option value="2">hobby dj</option>
+						<option value="3">zelfstandig dj</option>
+						<option value="4">dj zoekend</option>
+					</select><br />
+				<input type="submit" value="%submit%" name="submit" class="ibd" />     
+			</td>
+        </tr>
+    </tbody>
+</table>
