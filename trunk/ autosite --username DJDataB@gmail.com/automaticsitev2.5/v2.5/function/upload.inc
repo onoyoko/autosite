@@ -8,7 +8,7 @@ include($autosite['functions']."GD/resizer.inc");
  * @copyright 2009 
  * @CMS autosite
  * Todo make links for multilink uploading
- * 
+ * opensource http://code.google.com/p/autosite/ 
 */
 class upload{
 	private $UPL_trueext;
@@ -25,16 +25,16 @@ class upload{
 								$tmpname = $value['tmp_name'][$kkey];
 								//todo is there a file uploaded
 								if(self::isfile($namevalue,$value['error'][$kkey])){
-									self::saveuploadedfile($tmpname,$namevalue,$topath);
+									self::saveuploadedfile($tmpname,$namevalue,$topath,$key);
 								}
 							}
 						}else{//normal single upload
 							$tmpname =$value['tmp_name'];
-							self::saveuploadedfile($value['tmp_name'],$value['name'],$topath);	
+							self::saveuploadedfile($value['tmp_name'],$value['name'],$topath,$key);	
 						}
 					}
        			}
-				print_r($_FILES);
+				//print_r($_FILES);
 			}
 		}
 	}
@@ -58,9 +58,10 @@ class upload{
 	}
 	private function saveuploadedfile($tmpfile,$filename,$topath,$from="upload_"){
 			if(!is_file($topath.$from.$filename)){
+				$len = sizeof($this->links[$from]);
+				$this->links[$from][$len]= $topath.$from.$filename;
 				return move_uploaded_file($tmpfile,$topath.$from.$filename);
-				array_unshift($links,$topath.$from.$filename);
-			}else  {
+			}else{
 				false;
 			}
 	}

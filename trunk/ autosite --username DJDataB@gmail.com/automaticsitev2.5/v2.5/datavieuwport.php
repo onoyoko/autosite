@@ -27,7 +27,7 @@
 		//	print_r($formsdata[$formname]);
 		print("</pre>");
 			$uploader = new upload($_FILES,$formsdata[$formname],$autosite['trueext'],$autosite['uploads'].$formname."/");
-			print_r( $uploader->getlinks());
+			print_r($uploader->getlinks());
 			//$uploadlinks = $uploader->getlinks();
 			//array_merge($datatosave,$uploadlinks);		
 		try{
@@ -54,11 +54,13 @@
 		include_once ($autosite['layout']."toolbar.inc");
 		include_once ($autosite['layout']."aditudes.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
-		switch ($vieuwas){ 
+		switch ($vieuwas){
 				case "formanddata":
 					include_once("./preparts/data_formanddata.inc");
 					break;
 				case "gallery":
+					break;
+				case "table":
 					break;
 				default :
 					include_once("./preparts/data_formanddata.inc");
