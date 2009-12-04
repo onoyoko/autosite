@@ -1,0 +1,4 @@
+	<fieldset style="padding:20px;">
+	<legend>%gallery.title%</legend>
+		<input type="submit" class="ibd" value="%add%" name="btn" />
+	</fieldset>
