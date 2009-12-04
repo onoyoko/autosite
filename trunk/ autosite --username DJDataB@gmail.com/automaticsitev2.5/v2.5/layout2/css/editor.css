@@ -1,0 +1,60 @@
+#editor{width:100%; height:100%;}
+#editorfoot{z-index:80;}
+#editor .foot{z-index:80;padding:20px 5px 5px 15px;}
+#editormenu{position:absolute; left:0px; z-index:80; background:#565656;}
+#editor input{}
+#statusOfWebMaker {float:right;}
+#editERROR{}
+/*
+*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<menu>>>>>>>>>>>>>>>>>>>>
+*/
+.editormnu{}
+.editorbtn{min-width:30px;padding:20px 5px 5px 15px; line-height:40px; margin:0;  display: inline;
+          font-size:8px}
+.editorbtn div:hover{}
+.ERROR{background:#FFCC00; border: 2px solid #FF6600;z-index:99;}
+/*
+*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<pannels>>>>>>>>>>>>>>>>>>>>
+*!important! to good visible editor panel 
+*/
+#Editorpanel{	background-color:#FFFFFF; border:3px solid #FF6600; width:100%; height:100%; min-height: 45%;
+			 	overflow:visible; word-wrap:break-word ;z-index:80;}
+.afterpanel{  position:absolute;top:0;left:0;width:100%;height:100%;
+              background-color:black;z-index:90;
+}
+.pannel{display:block;	position:absolute;width:500px;height:300px;
+			top:50%;left:50%;background-color:#FFFF99;margin-left:-250px;margin-top:-150px;
+			z-index:99;border: 2px solid #FF6600;
+}
+/*
+*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Buttons>>>>>>>>>>>>>>>>>>>>
+*/
+.hidden{visibility:hidden;} 
+.cut{background:  url(../img/cut.gif) 0 0 no-repeat;height:1px;}
+.open{background:  url(../img/load.gif) 0 0 no-repeat;}
+.save{background:  url(../img/save.gif) 0 0 no-repeat;}
+.cut{background:  url(../img/cut.gif) 0 0 no-repeat;}
+.copy{background:  url(../img/copy.gif) 0 0 no-repeat;}
+.paste{background:  url(../img/paste.gif) 0 0 no-repeat;}
+.bold{background:  url(../img/bold.gif) 0 0 no-repeat;}
+.underline{background:  url(../img/underline.gif) 0 0 no-repeat;}
+.strike{background:  url(../img/strike.gif) 0 0 no-repeat;}
+.removeFormat{ 	background:  url(../img/removeFormat.gif) 0 0 no-repeat;}
+.left{background:  url(../img/left.gif) 0 0 no-repeat;}
+.center{background:  url(../img/center.gif) 0 0 no-repeat;}
+.right{background:  url(../img/right.gif) 0 0 no-repeat;}
+.ileft{background:  url(../img/ileft.gif) 0 0 no-repeat;}
+.iright{background:  url(../img/iright.gif) 0 0 no-repeat;}
+.link{background:  url(../img/link.gif) 0 0 no-repeat;}
+.unlink{background:  url(../img/unlink.gif) 0 0 no-repeat;}	
+.rule{background:  url(../img/rule.gif) 0 0 no-repeat;}
+.fore{background:  url(../img/fore.gif) 0 0 no-repeat;}
+.back{background:  url(../img/back.gif) 0 0 no-repeat;}
+.bullets{background:  url(../img/bullets.gif) 0 0 no-repeat;}
+.ordlist{background:  url(../img/ordlist.gif) 0 0 no-repeat;}
+.form{background:  url(../img/form.gif) 0 0 no-repeat;}
+.symbol{background:  url(../img/symbol.gif) 0 0 no-repeat;}
+.image{background:  url(../img/image.gif) 0 0 no-repeat;}
+.flash{background:  url(../img/flash.gif) 0 0 no-repeat;}
+.addHTML{background:  url(../img/addHTML.gif) 0 0 no-repeat;}
+.table{background:  url(../img/table.gif) 0 0 no-repeat;}
