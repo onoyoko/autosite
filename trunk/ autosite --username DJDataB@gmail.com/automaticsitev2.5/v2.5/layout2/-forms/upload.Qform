@@ -1,0 +1,18 @@
+<script>
+  	function view_img(fromid ,toimgid ='img_vv'){
+  		imgfilename = document.getElementById("file").value;
+  		if(isimg())){
+  			    document.getElementById(img_name).src = imgfilename;
+    			document.getElementById(img_name).width = 150;	
+  		}
+  	}
+  	function isimg(){
+  		return true;
+  	}
+</script>
+<h3>%upload.title%</h3>
+	<input id="file" type="file" name="file" onchange="javascript:view_img('img_vv');" /> 
+	<br />
+	<img src='' id='img_vv' width='0' />
+    <br />
+	<input type="Submit" name="upForm" value="%submit%" />
