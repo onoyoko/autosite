@@ -2,7 +2,8 @@
 	/**
 	* @author Lieven Roegiers
 	* @revisite 30 day
-	* @copyright 2009 
+	* @copyright 2009
+	* @CMS autosite
 	*/
 	
 	include($autosite['functions']."Qhtml/Qtemplate.inc");

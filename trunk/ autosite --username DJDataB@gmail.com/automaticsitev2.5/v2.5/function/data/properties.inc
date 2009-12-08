@@ -5,6 +5,20 @@
  	* @CMS autosite
  	* opensource http://code.google.com/p/autosite/ 
 	*/
+	/**
+	* @param Lieven Roegiers
+	* @return new properties()
+	*/
+	function getpropertiefile($path,$lang="",$name){
+		//print $autosite['translations']. "forms_".$autosite['lang'].".properties";
+		if(isexist_propertiefile($path,$lang,"forms")){
+				print"<!-- @LANGlocale:".$autosite['lang']." IS USED -->";
+				return new properties($path,"_".$lang,"forms");
+		}else{
+				print"<!-- @LANGlocale:".$autosite['lang']." IS NOT EXIST -->";
+				return new properties("./layout2/translations/","","forms");
+		}
+	}
 	function isexist_propertiefile($filelocation,$locale,$name){
 		return is_file($filelocation.$name."_".$locale.".properties");
 	}	
@@ -12,6 +26,7 @@
 		private $filelocation;	
 	    private	$file;
 	    private	$toget=array();//!important!speed you if you not check of it is a array
+	    private $delemiter = " ";
 		function __construct($filelocation,$locale,$name,$lifetime = 0){
 			$this->filelocation= $filelocation.$name.$locale.".properties";
 			//$this->test();
@@ -33,10 +48,10 @@
 				if ($this->open()){
 					while (!feof($this->file)){    			
 			    			$fline = fgets($this->file, 4096);
-			    			$pos = strpos($fline," ");
+			    			$pos = strpos($fline,$this->delemiter);
 			    			$key = substr($fline,0,$pos);
 			    			if($pos>1 && array_key_exists($key,$tofind_keys) ){
-								$value = substr($fline,$pos);
+								$value = substr($fline,$pos+1);
 								$asoarr[$key]=$value;
 							}
 					}
@@ -55,9 +70,9 @@
 				if ($this->open()){
 					while (!feof($this->file)){    			
 		    			$fline = fgets($handle, 4096);
-		    			$pos = strpos($fline," ");
+		    			$pos = strpos($fline,$this->delemiter);
 						if($pos>1 && substr($fline,0,$pos)===$str_tofind){
-							$bufferarr[$str_tofind]= substr($fline,$pos,-0);//last pieces		
+							$bufferarr[$str_tofind]= substr($fline,$pos+1,-0);//last pieces		
 						}else{
 							print substr($fline,0,$pos);
 						}
