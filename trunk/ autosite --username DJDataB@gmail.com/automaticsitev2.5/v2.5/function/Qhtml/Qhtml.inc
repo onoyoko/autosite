@@ -13,6 +13,7 @@ if (!function_exists('Qtagmaker')){//include_once its when it is include in the 
 			$this->template["email"]="<a href='mailto:%value%'>%value%</a>";
 			$this->template["link"]="<a href='http://%value%' target='_blank'>%value%</a>";
 			$this->template["img"]="<img src='%value%' />";
+			$this->template["logo"]="<img src='%value%' />";
 			$this->template["tel"]="%value% <a href='skype:%value%?call'>call</a> <a href='skype:%value%?add'>add</a>";
 		}
 		public function addtagitem($key,$value){
@@ -41,6 +42,9 @@ if (!function_exists('Qtagmaker')){//include_once its when it is include in the 
 					case "telefone":
 						$returnval .=$this->generate("tel",$value);
 						break;
+					case "logo":
+						$returnval .=$this->generate("logo",$value);
+						break;	
 					default :
 						$returnval .= $value;
 					endswitch;    			
