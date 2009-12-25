@@ -23,28 +23,37 @@ class valid{
 		$formfields = $formdata['items'];
 		$tovalidate = $formdata['tovalid'];
 		$validfine=is_array($tovalidate);
-		print  "<br /> validatefine:".$validfine."<br />";
+		//print  "<br /> validatefine:".$validfine."<br />";
 		if(is_array($formfields)){
 			foreach($formfields as $key=>$value){
-				if(!array_key_exists($key,$GETorPOST)){
+				$value = makeitvalidate($key);
+				if(is_array($GETorPOST[$key])){
+					$GETorPOST[$key] = "".implode(",",$GETorPOST[$key])."";
+				}
+				$value =$GETorPOST[$key];
+				if($validfine&& array_key_exists($key,$tovalidate)&&!array_key_exists($key,$GETorPOST)){
+					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< formfield is not exist but not to valid >>>>>>>>>>>>>>>>>>>>>>
+					//!!!!!!!!!!!!!!OK!!!!!!!!!!
+					$returnval[$key]=$value;//add val to array
+				}elseif(!array_key_exists($key,$GETorPOST)){
 					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< formfield is not exist >>>>>>>>>>>>>>>>>>>>>>
 					$this->seterror("notexist",$key);
 					print "notexist".$key;
 					return; //form NOT ok
 				}else{
-					$tmp =(isset($GETorPOST[$key]))? addslashes($GETorPOST[$key]) : "" ;
+					$tmp =(isset($value))? addslashes($value) : "" ;
 					if ($validfine && trim($tmp) == ""){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<not validation fine but empty >>>>>>>>>>>>>>>>>>>>>>
 						$this->seterror("empty",$key);
 					}elseif($validfine && !array_key_exists($key,$tovalidate)){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<validation fine but field must not tovalidate >>>>>>>
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
-						if($testinjection &&  is_sqlinject($GETorPOST[$key])){
+						if($testinjection &&  is_sqlinject($value)){
 							$this->seterror("injection",$key);
 							print "injection".$key;
 							return;
 						}
-						$returnval[$key]=$GETorPOST[$key];//add val to array
+						$returnval[$key]=$value;//add val to array
 					}elseif($validfine && $this->validatefine($key,$tmp)){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<validation fine and field is also validfine >>>>>>>
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
@@ -53,7 +62,7 @@ class valid{
 							print "injection".$key;
 							return;
 						}
-						$returnval[$key]=$GETorPOST[$key];//add val to array
+						$returnval[$key]=$value;//add val to array
 					}else{
 						$this->seterror("??!ERROR!??",$key);
 					}	
@@ -70,7 +79,6 @@ class valid{
 	   	switch($key):
 		 	case "email":
 			case "mail":
-				print("ismail");
 				return is_email($value); 
 				break;
 			case "tel":
@@ -86,6 +94,13 @@ class valid{
 				break;
 		endswitch;
    }
+   private function makeitvalidate($key){	
+	   	switch($key):
+			case "now.date":
+				return date("l j F Y"); 
+				break;
+		endswitch;
+   } 
    private function get_arrfirstitem($post,$keys){//indien te valideren geeft hij de value
 		foreach ($keys as $key) {
 			if(array_key_exists($key,$this->formitemlist)){
@@ -120,8 +135,8 @@ class valid{
    		print "</div>";
    		print "<br /><input type='button' id='button' onClick='javascript:history.go(-1)' value=' Return '>\n";
    }
-   private function __ERRtostring($item, $key){
-   		print $key."".$item;
+   private function __ERRtostring($item, $key,$ad ="<br />"){
+   		print $key."".$item.$ad;
    }
    private function test($formfield,$returnval){
    		print("dovalidation formfields");

@@ -30,7 +30,7 @@
            	        }
                 }
 			}
-			//$this->test();
+			$this->test();
 		}
 		private function is_incext(){
 			return count($this->inc_ext,1)<1;
@@ -43,7 +43,8 @@
 			$this->exc_ext=$arrlist;
 		}
 		/**
-    	* @param $array [inc]=array(".inc",".htm",".old")[exc]=array(".htaccess")
+    	* @param $array[inc]=array('.inc','.htm','.old'); 
+    	* @param $array[exc]=array(".htaccess");
      	*/
      	public function setfilter($arr){
      		if (isset($arr['inc'])){
