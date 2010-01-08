@@ -5,7 +5,6 @@
 	* @copyright 2009
 	* @CMS autosite
 	*/
-	
 	include($autosite['functions']."Qhtml/Qtemplate.inc");
 	include($autosite['functions']."Qhtml/Qhtml.inc");
 	class Qvieuw{
@@ -40,6 +39,9 @@
 				$this->printdata($datamap);
 			}
 			fclose($gbfile);
+		}
+		function settoolbar($toolbar,$link){
+			$this->template;
 		}
 		private function printdata($asoarr){
 			$temp = clone $this->template;
