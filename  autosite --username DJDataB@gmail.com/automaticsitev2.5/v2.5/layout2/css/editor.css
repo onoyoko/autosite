@@ -30,31 +30,31 @@
 *<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Buttons>>>>>>>>>>>>>>>>>>>>
 */
 .hidden{visibility:hidden;} 
-.cut{background:  url(../img/cut.gif) 0 0 no-repeat;height:1px;}
-.open{background:  url(../img/load.gif) 0 0 no-repeat;}
-.save{background:  url(../img/save.gif) 0 0 no-repeat;}
-.cut{background:  url(../img/cut.gif) 0 0 no-repeat;}
-.copy{background:  url(../img/copy.gif) 0 0 no-repeat;}
-.paste{background:  url(../img/paste.gif) 0 0 no-repeat;}
-.bold{background:  url(../img/bold.gif) 0 0 no-repeat;}
-.underline{background:  url(../img/underline.gif) 0 0 no-repeat;}
-.strike{background:  url(../img/strike.gif) 0 0 no-repeat;}
-.removeFormat{ 	background:  url(../img/removeFormat.gif) 0 0 no-repeat;}
-.left{background:  url(../img/left.gif) 0 0 no-repeat;}
-.center{background:  url(../img/center.gif) 0 0 no-repeat;}
-.right{background:  url(../img/right.gif) 0 0 no-repeat;}
-.ileft{background:  url(../img/ileft.gif) 0 0 no-repeat;}
-.iright{background:  url(../img/iright.gif) 0 0 no-repeat;}
-.link{background:  url(../img/link.gif) 0 0 no-repeat;}
-.unlink{background:  url(../img/unlink.gif) 0 0 no-repeat;}	
-.rule{background:  url(../img/rule.gif) 0 0 no-repeat;}
-.fore{background:  url(../img/fore.gif) 0 0 no-repeat;}
-.back{background:  url(../img/back.gif) 0 0 no-repeat;}
-.bullets{background:  url(../img/bullets.gif) 0 0 no-repeat;}
-.ordlist{background:  url(../img/ordlist.gif) 0 0 no-repeat;}
-.form{background:  url(../img/form.gif) 0 0 no-repeat;}
-.symbol{background:  url(../img/symbol.gif) 0 0 no-repeat;}
-.image{background:  url(../img/image.gif) 0 0 no-repeat;}
-.flash{background:  url(../img/flash.gif) 0 0 no-repeat;}
-.addHTML{background:  url(../img/addHTML.gif) 0 0 no-repeat;}
-.table{background:  url(../img/table.gif) 0 0 no-repeat;}
+.cut{background:  url(../img/editor/cut.gif) 0 0 no-repeat;height:1px;}
+.open{background:  url(../img/editor/load.gif) 0 0 no-repeat;}
+.save{background:  url(../img/editor/save.gif) 0 0 no-repeat;}
+.cut{background:  url(../img/editor/cut.gif) 0 0 no-repeat;}
+.copy{background:  url(../img/editor/copy.gif) 0 0 no-repeat;}
+.paste{background:  url(../img/editor/paste.gif) 0 0 no-repeat;}
+.bold{background:  url(../img/editor/bold.gif) 0 0 no-repeat;}
+.underline{background:  url(../img/editor/underline.gif) 0 0 no-repeat;}
+.strike{background:  url(../img/editor/strike.gif) 0 0 no-repeat;}
+.removeFormat{ 	background:  url(../img/editor/removeFormat.gif) 0 0 no-repeat;}
+.left{background:  url(../img/editor/left.gif) 0 0 no-repeat;}
+.center{background:  url(../img/editor/center.gif) 0 0 no-repeat;}
+.right{background:  url(../img/editor/right.gif) 0 0 no-repeat;}
+.ileft{background:  url(../img/editor/ileft.gif) 0 0 no-repeat;}
+.iright{background:  url(../img/editor/iright.gif) 0 0 no-repeat;}
+.link{background:  url(../img/editor/link.gif) 0 0 no-repeat;}
+.unlink{background:  url(../img/editor/unlink.gif) 0 0 no-repeat;}	
+.rule{background:  url(../img/editor/rule.gif) 0 0 no-repeat;}
+.fore{background:  url(../img/editor/fore.gif) 0 0 no-repeat;}
+.back{background:  url(../img/editor/back.gif) 0 0 no-repeat;}
+.bullets{background:  url(../img/editor/bullets.gif) 0 0 no-repeat;}
+.ordlist{background:  url(../img/editor/ordlist.gif) 0 0 no-repeat;}
+.form{background:  url(../img/editor/form.gif) 0 0 no-repeat;}
+.symbol{background:  url(../img/editor/symbol.gif) 0 0 no-repeat;}
+.image{background:  url(../img/editor/image.gif) 0 0 no-repeat;}
+.flash{background:  url(../img/editor/flash.gif) 0 0 no-repeat;}
+.addHTML{background:  url(../img/editor/addHTML.gif) 0 0 no-repeat;}
+.table{background:  url(../img/editor/table.gif) 0 0 no-repeat;}
