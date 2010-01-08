@@ -66,11 +66,12 @@ class upload{
 			}
 	}
 	private function test(){
-       $this->UPL_type = $_FILES['imgfile']['type'];
-       $this->UPL_name = $_FILES['imgfile']['name'];
-       $this->UPL_size = $_FILES['imgfile']['size'];
-       $this->UPL_err =  $_FILES['imgfile']['err'];
-       $this->UPL_tmp =  $_FILES['imgfile']['tmp_name'];
+       print $_FILES['imgfile']['type'];
+       print $_FILES['imgfile']['name'];
+       print $_FILES['imgfile']['size'];
+       print $_FILES['imgfile']['err'];
+       print $_FILES['imgfile']['tmp_name'];
+       //print_r($_FILES);
 	}
 	public function generatethump($height = 150,$with=0){
 		if($ispic){
