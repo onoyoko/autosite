@@ -5,13 +5,14 @@
 	* @copyright 2009
 	* @CMS autosite
 	*/
-	
 	class Qtemplate{
 		private $template;
 		private $html;
 		private $taglist=array();
 		private $htmltag;
 		private $tagnotfound = array();
+		private $toolsbar="";
+		private $toolshandeler;
 		/**
  		* @param var $html str html
  		*/
@@ -35,16 +36,25 @@
 		public function translate($asoarr){
 		  if(is_array($asoarr)){
 		  	 foreach ($asoarr as $key => $value){
-		  	 	if ($value !=" "){
-		  	 		$this->toreplace($key,$value);
-		  	 		//print $key.":".$value;
-		  	 	}//else{
-		  	 	//	$new = "!".$key."!";
-		  	 	//	$this->toreplace($key,$new);
-		  	 		//print $key.":".$value;
-		  	 	//}
+		  	   if ($key != "toolbar"){
+			  	   	if ($value !=" "){
+			  	 		$this->toreplace($key,$value);
+			  	 		//print $key.":".$value;
+			  	 	}//else{
+				  	 //	$new = "!".$key."!";
+				  	 //	$this->toreplace($key,$new);
+				  	 // print $key.":".$value;
+				  	 //}
+		  	   }else{
+		  	   		$this->toreplace($key,$this->toolsbar);
+		  	   } 	
+
 		  	 }
 		  }
+		}
+		function settoolbar($toolbar,$link){
+				$this->toolsbar=$toolbar;
+				$this->toolshandeler=$link;
 		}
 		public function setvalues($asoarr){
 		  if(is_array($asoarr)){
