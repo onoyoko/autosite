@@ -1,9 +1,13 @@
 <?php
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Vieuw data>>>>>>>>>>>>>>>>
-	print("<div class='gallery'>");
+	print("<div class='gallery'>");	
 	if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formname.".Qtemplate")){
 		$string = (string)file_get_contents($autosite['templates'].$formname.".Qtemplate");
-		$vieuw = new Qvieuw($string,$translatedata);
+		if (!isset($properties)){
+			$properties = getpropertiefile($autosite['translations'],$autosite['lang'],"forms");
+			$translatedata =$properties->getproperties($formsdata[$formname]['totranslate']);
+		}	
+	    $vieuw = new Qvieuw($string,$translatedata);
 		if(is_array($overroletemplate[$formname])){
 			$vieuw->addtagitems($overroletemplate[$formname]);
 		}
