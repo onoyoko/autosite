@@ -8,6 +8,12 @@
 	include($autosite['functions']."data/valid.inc");
 	include($autosite['functions']."data/csv_plus.inc");//databaseconection
 	include($autosite['functions']."data/db_source.inc");
+	include($autosite['functions'].'upload.inc');
+	function addfilesatlink(&$asoarrdata){
+		$uploader = new upload($_FILES,$formsdata[$formname],$autosite['trueext'],$autosite['uploads'].$formname."/");
+		$uploadlinks = $uploader->getlinks();
+		$datatosave=array_merge(&$asoarrdata,$uploadlinks);
+	}
 	class data{
 		private $faze;
 		private $DS_ref;
