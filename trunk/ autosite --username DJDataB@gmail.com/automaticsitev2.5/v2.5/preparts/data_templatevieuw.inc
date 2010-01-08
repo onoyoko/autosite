@@ -2,6 +2,9 @@
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Vieuw data>>>>>>>>>>>>>>>>
 	if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formname.".Qtemplate")){
 		$string = (string)file_get_contents($autosite['templates'].$formname.".Qtemplate");
+		if(!isset($translatedata)){
+			$translatedata =$properties->getproperties($formsdata[$formname]['totranslate']);
+		}
 		$vieuw = new Qvieuw($string,$translatedata);
 		if(is_array($overroletemplate[$formname])){
 			$vieuw->addtagitems($overroletemplate[$formname]);
