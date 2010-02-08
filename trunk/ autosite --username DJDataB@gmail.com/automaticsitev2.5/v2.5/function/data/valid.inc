@@ -87,7 +87,7 @@ class valid{
 				break;
 			case "name":
 			case "naam":
-				return is_name($value);// is_numeric($value); 
+				return is_name($value);
 				break;
 			default: 
 				return true;
@@ -202,6 +202,9 @@ function is_sqlinject($var){//DROP TABLE
 }
 function is_phpinject($var){	
  	return pos($var,"print_r")||pos($var,"DROP");
+}
+function is_spaminject($var){	
+ 	return pos($var,"sex")||pos($var,"SEX");
 }
 /*
 Wat zou er gebeuren als je het document als volgt aanroept?
