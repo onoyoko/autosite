@@ -9,6 +9,9 @@
 if (!function_exists('Qtagmaker')){//include_once its when it is include in the php lib
 	class Qtagmaker{
 		private $templates= array();
+		/**
+		 * functions 
+		*/
 		public function __construct(){
 			$this->template["email"]="<a href='mailto:%value%'>%value%</a>";
 			$this->template["link"]="<a href='http://%value%' target='_blank'>%value%</a>";
@@ -22,34 +25,38 @@ if (!function_exists('Qtagmaker')){//include_once its when it is include in the 
 		public function tagmaker($tag,$value){
 	    	$returnval = "";
 	    	$crlft="%3A%0A-%20%20%20";//carry return line feet
-			if($value!=""){
-				switch ($tag): 
-					case "mail":
-					case "email":
-						$returnval .=$this->generate("email",$value);
-						break;
-					case "website":
-					case "site":
-				        $returnval .=$this->generate("link",$value);
-						break;
-					case "img":
-					case "foto":
-					case "image":
-						$returnval .=$this->generate("img",$value);
-						break;
-				    case "tel":
-					case "phone":
-					case "telefone":
-						$returnval .=$this->generate("tel",$value);
-						break;
-					case "logo":
-						$returnval .=$this->generate("logo",$value);
-						break;	
-					default :
-						$returnval .= $value;
-					endswitch;    			
-		   }
-		   return $returnval ;
+	    	if($value!=""){
+				if(array_key_exists($tag,$this->template)){
+					return $this->generate($tag,$value);
+				}else {					
+					switch ($tag): 
+						case "mail":
+							return $this->generate("email",$value);
+							break;
+						case "website":
+						case "site":
+					        return $this->generate("link",$value);
+							break;
+						case "img":
+						case "foto":
+						case "image":
+						case "pic":
+							return $this->generate("img",$value);
+							break;
+					    case "tel":
+						case "phone":
+						case "telefone":
+						case "gsm":
+							return $this->generate("tel",$value);
+							break;
+						case "logo":
+							return $this->generate("logo",$value);
+							break;	
+						default :
+							return $value;
+						endswitch;    			
+			   }  
+			}
 	    }
 	    private function generate($tagname,$value){
 	    	return str_replace("%value%", $value, $this->template[$tagname]);
