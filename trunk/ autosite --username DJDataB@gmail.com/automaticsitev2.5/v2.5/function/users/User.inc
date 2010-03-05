@@ -51,7 +51,7 @@ class User extends User_data{
   	}
   	//<<<<<<<<<<<<<<<<<<<<<<<Getters>>>>>>>>>>>>>>>>>>>>>>>>>
 	function islogin(){
-		return (isset($this->name)&& isset($this->releasetime) && $this->releasetime > time()&&$this->isenabled());
+		return (isset($this->name)&& isset($this->releasetime) && $this->releasetime > time()&&$this->isenabled());//$this->isRemoteip());
 	}
 	function is_User($username){
 		return $this->isuser;
