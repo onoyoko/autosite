@@ -22,8 +22,23 @@
 				$this->template->addtagitem($key,$value);
 		  	}
 		}
-		function getfrom_DB(){
-			
+		function getfrom_DB($tabelname,$taglist){
+			mysql_connect('localhost',$username,$password);
+			@mysql_select_db($database) or die( "Unable to select database");
+			$tableselection=(isset($taglist)&&is_array($taglist))?implode(",",array_keys($taglist)):"*";
+			$queryschema="SELECT $tableselection FROM schema WHERE date > NOW() ORDER BY date ASC LIMIT 5";
+			$resultschema = mysql_query($queryschema);
+			$numschema = mysql_num_rows($resulschema);
+			mysql_close();
+ 			$inieuws=0;
+			while ($ischema < $numschema) {
+				$titelschema=mysql_result($resultschema,$ischema,"titre");
+				$textschema=mysql_result($resultschema,$inschema,"details");
+				$idschema=mysql_result($resultschema,$ischema,"id");
+				$dagschema=mysql_result($resultschema,$ischema,"dag");
+				 	$this->printdata($datamap); 
+					$ischema++;
+				}
 		}
 		function getfrom_XML(){
 			
@@ -31,6 +46,7 @@
 		function getfrom_csv($filename,$taglist){
 			$row = 1;
 			$gbfile = fopen($filename,'r');
+			//TODO if no template print table
 			while (!feof($gbfile)){
 				$fileline=fgets($gbfile,1024);
 				$output= split(',',$fileline);
