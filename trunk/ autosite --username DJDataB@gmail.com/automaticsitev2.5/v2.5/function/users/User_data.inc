@@ -1,9 +1,11 @@
 <?php
 class User_data{
+	private $userdata;
 	 /**
 	 * @author Lieven Roegiers
 	 * @copyright 2007
 	 * @CMS autosite
+	 *-->UNDER construction
 	 */
 	private $encripty;
 	private $kkey;
@@ -13,7 +15,7 @@ class User_data{
 	function getkkey(){
   		return $this->kkey;
   	}  	
-	private function generatekey($lengte ){
+	private function generatekey($lengte){
 			/**
 			* @author By eprogrammeur
 			*/
@@ -28,5 +30,61 @@ class User_data{
 		  }
 		  return $string;
 	}
+	function getuserdata($name){
+		/*if(isset($userdata)){
+			return $userdata[$name];
+		}*/
+    }
+    function setuserdata($name){
+    	//$this->userdata[$name];
+    }
+    /**
+     * @param $username name of user
+     * Not session but hard database or 
+     **/
+    function saveuserdata($username){
+    	//TODO generate stuf
+    }
+   /**
+    * @param $username name of user
+    * Not session but hard database or 
+    **/
+    function openuserdata($username){
+    	//TODO generate stuf
+    	//$userdata[userpath] =$path.substr($username, 0, 1)."/".$username."/";
+    	//$userdata[isuser]=(is_dir($this->userpath)&& $username!="")? true:false;
+    	//if ($this->isuser)include $this->userpath."data.php";
+    }
+    private function __printuserdata(){//DEBUG !!!not secure!!!
+    	//print_r($userdata);
+    }
+    function getguestbook(){
+    	//TODO generate stuf
+    }
+    private function isguestbook(){
+    	//TODO generate stuf
+    }
+    public function getuserimg(){//!!!security!!! return only the data of the img include("imagename.gif");
+    	//return ;//TODO generate stuf
+    }
+    private function isuserimg(){
+    	//TODO generate stuf
+    }
+    function setnewuser(){
+    	if($this->cansetuser()){
+    		//TODO generate stuf
+    	}
+    }
+    private function cansetnewuser(){
+    	return false;//TODO generate stuf
+    }
+    private function getpublicvieuw(){
+    	if($this->cansetuser()){
+    		//TODO generate stuf
+    	}
+    }
+    private function ispublicvieuw(){
+		return false;//TODO generate stuf
+    }
 }
 ?>
