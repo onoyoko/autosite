@@ -39,7 +39,7 @@ $autosite['servicenr']="BE_478394081";
 $autosite['servicemail']="info@djdb.be";//your service mail
 $autosite['publicmail']="info@djdb.be";//reclame and else
 $autosite['servicename']="Lieven Roegiers";
-$autosite['installoc']= ($offlinedebug == true)?"/automaticsitev2.1/content/":"/content/";//location from installation
+$autosite['installoc']= ($offlinedebug == true)?"/automaticsitev2.5/v2.5/":"/v2.5/";//location from installation
 $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
 $autosite['gallery']= $loc."layout2/";//all gallerys from your site and global site content
