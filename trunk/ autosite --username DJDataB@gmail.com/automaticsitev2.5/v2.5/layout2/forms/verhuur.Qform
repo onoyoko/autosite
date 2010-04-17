@@ -4,8 +4,7 @@
 		<input type="text" class="ibb" value="" size="20" name="name" style="" />
 		<label for="mail"> %website% </label>	
 		<input type="text" class="ibb" value="" size="20" name="website" style="" /><br/>
-		<label for="imglink"> %imglink% </label>
-		<input type="file" class="ibb" value="" size="20" name="imglink[]" style="" /><br/>
-		<input type="file" class="ibb" value="" size="20" name="imglink[]" style="" /><br/>
+		<label for="imglink"> %logo% </label>
+		<input type="file" class="ibb" value="" size="20" name="logo" style="" /><br/>
 		<input type="submit" class="ibd" value="%submit%" name="btn" />
 	</fieldset>
