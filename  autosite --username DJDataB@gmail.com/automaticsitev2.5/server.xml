@@ -86,7 +86,7 @@
 			 </IfModule>
 		  -->
 </target>
-<target name="server.php.install2" depends="server.Apache2.install" description="deploy remote">
+<target name="server.php.install2" depends="server.php.install" description="deploy remote">
 		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
 			command="a2enmod ssl;a2enmod rewrite;a2enmod suexec;a2enmod include;">
 		</sshexec>
