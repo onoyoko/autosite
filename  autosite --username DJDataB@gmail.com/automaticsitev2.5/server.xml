@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<project name="SERVERINSTALL" xmlns:jw="org.unintelligible.antjnlpwar">
+        <!-- pre	create user&login 
+					install ssh "apt-get install openssh-server"
+					"ifconfig" om het ip te kennen
+					ip aanpassen"pico /etc/network/interfaces"
+					volgende regels aanpassen
+							iface eth0 inet static
+									address 192.168.0.???
+									netmask 255.255.255.0
+									network 192.168.0.0
+									broadcast 192.168.0.255
+									gateway 192.168.0.1
+					"/etc/init.d/networking restart"
+		-->
+		<!-- %%%%%%%%%%%%%%%>>>>>>>>>>>>>>>       VARIABLES S      <<<<<<<<<<<<<<<<< -->
+		<!-- 	**:     alles voor de dir	-->
+		<!-- 	/web/:  in path				-->
+		<!-- 	/**/:   in subpaden			-->
+		<!-- 	*.class:alle classes		-->
+		<property name="smtp" value="relay.skynet.be" />
+		<property environment="env" />
+	<!-- server login -->
+  		<property name="server.host" value="www.domein.be" />
+   		<property name="server.login" value="loginnaam" />
+   		<property name="server.password" value="pasword" />
+		<property name="server.port" value="443" />
+		<property name="server.port" value="443" />
+	<!-- server login -->
+   		<property name="server.mysql.login" value="loginnaam" />
+   		<property name="server.mysql.password" value="pasword" />
+	<!--jar instalation/update loction -->
+  		<property name="ftp.host" value="www.domein.be" />
+   		<property name="ftp.login" value="loginnaam" />
+   		<property name="ftp.paswoord" value="pasword" />
+		<!--
+			mogelijke opties voor sshexec outputproperty="backup" timeout="0"
+			failonerror="false" output="output.txt"/>
+		-->
+<target name="init" depends=""	description="deploy remote">
+ 
+</target>
+<target name="server.login" description="login">
+		<!--trust=true:wil zeggen dat het certificaat moet aanvaarden -->
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="sudo su;${ftp.paswoord};">
+		</sshexec>
+</target>
+<target name="server.upgrade" depends="server.login" description="update-upgrade">
+		<!--trust=true:wil zeggen dat het certificaat moet aanvaarden -->
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="apt-get update;apt-get upgrade;">
+		</sshexec>
+</target>
+<target name="server.host.add" description="add host">
+		<!--trust=true:wil zeggen dat het certificaat moet aanvaarden -->
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="pico /etc/hosts;">
+		<!-- 192.168.0.100 server1.example.com server1 -->
+		</sshexec>
+</target>
+<target name="server.Mysql.install"  description="deploy remote">
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="apt-get install mysql-server mysql-client libmysqlclient15-dev;${server.mysql.password};${server.mysql.password};">
+		</sshexec>
+		<!-- password -->
+		<!-- password -->
+		<!-- pico /etc/mysql/my.cnf -->
+		<!-- # voor bind-address zodat je toegang via alle netwerkkaarten kunt gebruiken -->
+		<!-- /etc/init.d/mysql restart -->
+</target>
+<target name="server.Apache2.install" depends="server.login" description="deploy remote">
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="apt-get install apache2 apache2-doc apache2-mpm-prefork apache2-utils libexpat1 ssl-cert;">
+		</sshexec>
+</target>
+<target name="server.php.install" depends="server.Apache2.install" description="deploy remote">
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="apt-get install libapache2-mod-php5 libapache2-mod-ruby php5 php5-common php5-curl php5-dev php5-gd php5-idn php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-mhash php5-ming php5-mysql php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl;">
+		</sshexec>
+		 <!-- pico /etc/apache2/mods-available/dir.conf -->
+		 <!-- 
+			 <IfModule mod_dir.c>
+				#DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+				DirectoryIndex index.html index.htm index.shtml index.cgi index.php index.php3 index.pl index.xhtml
+			 </IfModule>
+		  -->
+</target>
+<target name="server.php.install2" depends="server.Apache2.install" description="deploy remote">
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="a2enmod ssl;a2enmod rewrite;a2enmod suexec;a2enmod include;">
+		</sshexec>
+</target>
+<target name="server.ftp.install" depends="server.login" description="install ftp">
+		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
+			command="apt-get install proftpd ucf;">
+		</sshexec>
+		<!-- pico /etc/apache2/mods-available/dir.conf -->
+		 <!-- 
+			 <IfModule mod_dir.c>
+				#DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
+				DirectoryIndex index.html index.htm index.shtml index.cgi index.php index.php3 index.pl index.xhtml
+			 </IfModule>
+		  -->
+</target>
+
+</project>
+<!-- >>>>>>>>>>>>>>>verwijderen van de ear op de locale server-->
