@@ -18,23 +18,23 @@ html {  margin: 0;
 .test{}
 .ERROR{background:#FFCC00; border: 2px solid #FF6600;z-index:99;}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-.nav{text-align:left; font-size:18px; font-weight:bold; line-height:32px; text-transform:uppercase; color:#444;
+.nav{text-align:left; font-size:16px; font-weight:bold; line-height:31px; text-transform:uppercase; color:#444;
 	 display:block; position:absolute; z-index:5; top:120px;
 	 left:350px; margin-right:10%;}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .hidden{visibility:hidden;} 
-.click{display:block; background:url(../img/Mbg_more.gif) 0 0 no-repeat }
-.out{display:block;   background:url(../img/Mbg_more.gif) 0 0 no-repeat }
-.hover{display:block;  background:url(../img/Mbg_bleugreen.gif) 0 0 no-repeat }
+.click{display:block; background:url(../img/general/Mbg_more.gif) 0 0 no-repeat }
+.out{display:block;   background:url(../img/general/Mbg_more.gif) 0 0 no-repeat }
+.hover{display:block;  background:url(../img/general/Mbg_bleugreen.gif) 0 0 no-repeat }
 .mnuitem{text-align:center; font-weight:bold;text-transform:uppercase;
-		  display:block; height:35px; padding:15px 5px 5px 35px; line-height:35px; 
+		  display:block; height:15px; padding:2px 5px 5px 30px; line-height:30px; /*padding boven achter onder voor */
         margin:0;  display: inline;
           clear:both;}
 /*do not test others position ie do not uderstand it margin-left %10 or others*/
  .mnutop{	text-align:center; display:block; height:32px; top:70px;
  			position:absolute; left:350px; margin-right:10%;
-			 font-size:16px;}
- .mnu{	font-size:16px; text-align:center; display:block; top:25px;
+			 font-size:14px;}
+ .mnu{	font-size:14px; text-align:center; display:block; top:10px;
  			position:absolute; margin-left:10%;
         border:0px solid transparent; z-index:7; background:#565656 ;
 		left:350px; margin-right:10%;margin-top:100px;}
