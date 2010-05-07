@@ -118,6 +118,18 @@ $option_location['upload']= array("upload.php",999,'');//upload of a page
 $option2location['Login']= array("login.php",333,'');//upload of a page
 $option2location['ERROR']= array("error.php",111,'');//upload of a page
 $option2location['uconstruct']= array("error.php",111,'');//upload of a page
+
+$linkbanners=$autosite['layout']."img/aditionals/";
+$linkextern['left'][0]= array("http://www.freewebstuff.be","freewebstuff",'freewebstuff.gif');
+$linkextern['left'][1]= array("http://www.skype.com","skype",'');
+$linkextern['left'][2]= array("http://www.search-belgium.com/","search-belgium",'BelgaSearch_animbadge.gif');
+
+$linkextern['left'][5]= array("http://www.ogone.com/","ogone",'');
+$linkextern['left'][6]= array("http://www.google.be/","google",'nav_logo7.png');
+$linkextern['left'][7]= array("http://php.net/","php",'php.gif');
+$linkextern['left'][9]= array("http://qa.php.net/","PHPCORE",'php_qa.jpg');
+$linkextern['right'][10]= array("error.php",111,'');//upload of a page
+
 // control the system
 if ($offlinedebug){
 	$errors =+ (is_dir($autosite['layout'])) ? "" : "path layout: not found</br>";
