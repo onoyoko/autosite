@@ -11,7 +11,6 @@ function menu_start(){
 	for(var i=0;(i<Items.length&&typeof(Items[i])!="undefined");i++){	
 		if (Items[i][0].charAt(cl)=="^"){
 			//Items[i][2]=Items[i][2].substring(1,Items[i][2].length);
-			
 			m_sub+= M_item("subid"+ i + "",Items[i],pos,m_navtop+"=&gt;"+Items[i][3]);
 		}else{
 			m_sub+="</div>\r\n";
@@ -53,7 +52,7 @@ if (id.substring(0,3)=="top"&&!(id==m_topselect)){
 		document.getElementById(m_topselect+"link").className = 'mnu hidden';
 		document.getElementById(m_topselect).className = 'mnuitem out';
 		var m_top2=document.getElementById("menu").clientHeight + m_subtop ;
-	    document.getElementById(id+"link").style.top = m_top2  + 5 + 'px';
+	    //document.getElementById(id+"link").style.top = m_top2  + 5 + 'px';
 	    document.getElementById(id+"link").className = 'mnu';
 		m_topselect=id;
 		document.getElementById(m_select).className = 'mnuitem out';
