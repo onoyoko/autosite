@@ -56,8 +56,6 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 			<input type="submit" value="Save" /><br />
 			<a class="editorbtn"	href="javascript:tosource();//gotoOtherView('source');" 	id="tosource">SOURCE     &lt;= </a>
 			<a class="editorbtn"	href="javascript:totexteditor();//gotoOtherView('WYSIWYG');" 	id="tosource">WYSIWYG   =&gt;</a> 
-			
-			
 		</div>
         <!-- ********************** EDITORPANEL *********************-->		
 	    <div id="Editorpanel" contenteditable="true" onmouseout="selection=window.getSelection();">33333
