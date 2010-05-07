@@ -9,7 +9,7 @@ include_once($autosite['layout']."head.inc");
  * @copyright 2007
  * @phpvieuwport
  * @CMS autosite
-  */
+ */
 $id = (isset ($_GET['id']))?addslashes($_GET['id']):'home';
 $id = (isset ($_POST['id']))?addslashes($_POST['id']):$id;
 $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
@@ -22,6 +22,7 @@ $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 		$selectincfile =$autosite['optiepath'].$autositelang[$autosite['lang']].$id.".inc";//prefunctiefile
 		$selectdatfile =$autositelang[$autosite['lang']].$id.".dat";//datafile
 		print'<div id="container">';
+		if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :Do not trust . Blocked BY DEVELOPER"); }
 		if (isset($id)) {
 		    if (is_file($selectincfile) && is_file($selectdatfile)) {
 		        //<<<<<<<<<<<<<<<<<<<<<<<page with a function>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -39,7 +40,6 @@ $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 		}
 		print'</div>';
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Toolbar by login>>>>>>>>>>>>>>>>>>>
-    
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	include_once($autosite['layout']."foot.inc");
 ?>
