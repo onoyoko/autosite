@@ -18,7 +18,7 @@ function userlog($info,$path="./",$file="log.log"){
 /*for object saving in a session*/
 session_start();
 $user=(isset($_SESSION['user']))?unserialize($_SESSION['user']):null;
-$selection=(isset( $_GET['id'] ) ) ? addslashes($_GET['id'] ) : '' ;									
+$get=(isset( $_GET['id'] ) ) ? addslashes($_GET['id'] ) : '' ;									
 $handeling = (isset($_GET['handeling'])) ? addslashes($_GET['handeling']) : "beheer";
 $autosite['lang']	= ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
@@ -26,6 +26,13 @@ $attributen="?";
 $attributen.=(isset($selection)) ? "id=".$selection : "";
 $attributen.=(isset($load)) ? "&upload=".$load : "&upload=0";
 //<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
+
+if (strlen($get)>1){
+	$id = "Users".$get;
+}else{
+	$id = "Users => list  ".$get;
+}
+
 if(isset($user)&& $user->islogin()){
  	include_once($autosite['layout']."head.inc");
  	userlog($handeling."=>".$Gfile,$user->getpath());
@@ -37,11 +44,19 @@ if(isset($user)&& $user->islogin()){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 		include_once ($autosite['layout']."toolbar.inc");
 	print'<div id="container">';
-	if ($selection){
-		include_once ($autosite['users'].".dat");
-	}else {
-	    include_once ($autosite['home'].".dat");
-	}
+		$faze =1;
+		if ($faze ==1){
+			  $tekens = 'ABCDEFGHIJKLMNOPQRSTUWXYZ';
+			  for( $i = 0; $i < strlen($tekens); $i++ ){
+			  	$char = $tekens{$i};
+			  	print '[<a href="'.$_SERVER["PHP_SELF"].'?id='.$tekens{$i}.'" target="_self">'.$tekens{$i}.'</a>]';
+			  }
+		}
+		if ($id > 2){
+			include_once ($autosite['users'].".dat");
+		}else {
+		    include_once ($autosite['home'].".dat");
+		}
 	print'</div>';
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Toolbar by login>>>>>>>>>>>>>>>>>>>
 	include_once ($autosite['layout']."toolbar.inc");

@@ -39,6 +39,7 @@ if(isset($user)&& $user->islogin()){
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Toolbar by login>>>>>>>>>>>>>>>>>>>
     include_once ($autosite['layout']."toolbar.inc");
 	print'<div id="container">';
+	if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :Do not trust . Blocked BY DEVELOPER");}
 	if (!array_key_exists($handeling,$option_location)||!($selection=$autosite['functions'].$option_location[$handeling][2])){
 		//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  NOT FOUND >>>>>>>>>>>>>>>>>>>>>>>>>
 		include_once($autosite['error']."pagenotfound.inc");
