@@ -38,7 +38,6 @@ html {  margin: 0;
  			position:absolute; margin-left:10%;
         border:0px solid transparent; z-index:7; background:#565656 ;
 		left:350px; margin-right:10%;margin-top:100px;}
-
 .abbr{border-bottom: dotted 0.05em; cursor: help;z-index:4}
 .content{}
 .right{ float:left; top:200px;Right:10px; }
