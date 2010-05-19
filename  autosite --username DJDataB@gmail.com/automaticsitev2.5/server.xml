@@ -95,13 +95,6 @@
 		<sshexec password="${server.paswoord}" host="${server.host}" username="${server.login}" port="${server.port}" trust="true"
 			command="apt-get install proftpd ucf;">
 		</sshexec>
-		<!-- pico /etc/apache2/mods-available/dir.conf -->
-		 <!-- 
-			 <IfModule mod_dir.c>
-				#DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.htm
-				DirectoryIndex index.html index.htm index.shtml index.cgi index.php index.php3 index.pl index.xhtml
-			 </IfModule>
-		  -->
 </target>
 
 </project>
