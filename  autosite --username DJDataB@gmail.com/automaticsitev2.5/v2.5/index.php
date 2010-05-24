@@ -10,7 +10,6 @@ if(!$underconstruct){
 	 	<frame src="vieuwport.php?file=home&lang=<?php print $autosite['lang'] ?>" name="Werkplaats" scrolling='yes'>
 	</frameset>
 	<?php
-	include_once($autosite['layout']."head.inc");
 	print"<body>";
 	print"<noframes>";
 	include($autosite['error']."ernoframes.inc");
