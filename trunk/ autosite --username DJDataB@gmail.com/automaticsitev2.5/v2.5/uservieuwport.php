@@ -48,7 +48,7 @@ if(isset($user)&& $user->islogin()){
 		include_once("./preparts/Amenu.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 		include_once ($autosite['layout']."toolbar.inc");
-	print'<div id="container"><br /><br />';
+	print'<div id="container" class="clearfix"><br /><br />';
 		$faze =1;
 		if ($faze ==1){
 			  $tekens = 'ABCDEFGHIJKLMNOPQRSTUWXYZ';
@@ -59,7 +59,6 @@ if(isset($user)&& $user->islogin()){
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
 		print'<br /><br />';
-		
 		if (strlen($get)>1){
 			print "Get User".$get;
 			$user= new User($autosite['users']);

@@ -21,7 +21,7 @@ $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
 		$selectincfile =$autosite['optiepath'].$autositelang[$autosite['lang']].$id.".inc";//prefunctiefile
 		$selectdatfile =$autositelang[$autosite['lang']].$id.".dat";//datafile
-		print'<div id="container">';
+		print'<div id="container" class="clearfix">';
 		if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :Do not trust . Blocked BY DEVELOPER"); }
 		if (isset($id)) {
 		    if (is_file($selectincfile) && is_file($selectdatfile)) {

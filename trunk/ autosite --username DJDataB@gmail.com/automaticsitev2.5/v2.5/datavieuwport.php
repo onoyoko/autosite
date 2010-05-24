@@ -25,8 +25,8 @@
 	$formlevel = isset($formsdata[$formname]['loginniveau'])?$formsdata[$formname]['loginniveau']:1;
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    SAVE DATA       >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
-	print'<div id="container">';
-	if ($formlevel<100 ||(isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
+	
+	if ($formlevel<100 ||(isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){	
 		if (isset($_POST['action']) && $_POST['action'] == 'submitted'){
 				try{
 					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<fileupload>>>>>>>>>>>>>>>>
@@ -45,9 +45,8 @@
 					//print($autosite['private']);
 				}
 		}
-		print'</div>';
 	}else{
-			print"<div id='xx' class='ERROR'>ERROR EN: NO PERMITION TO THIS FUNCTION</div>";
+			$_errors.="ERROR EN: NO PERMITION TO THIS FUNCTION";
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    VIEUW DATA      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
@@ -60,13 +59,15 @@
 			include_once ($autosite['layout']."toolbar.inc");
 			include_once ($autosite['layout']."aditudes.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
-	print'<div id="container">';
+	print'<div id="container" class="clearfix">';
+	
 		include_once($autosite['functions']."Qhtml/Qvieuw.inc");
 		include_once($autosite['functions']."data/properties.inc");
 				switch ($vieuwas){
 						case "formanddata":
 							include_once("./preparts/data_form.inc");
 							include_once("./preparts/data_templatevieuw.inc");
+							
 							break;
 						case "gallery":
 							include_once("./preparts/data_gallery.inc");
