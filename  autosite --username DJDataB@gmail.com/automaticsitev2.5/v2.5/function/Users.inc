@@ -6,7 +6,7 @@
  * !important!ERROR
  * @underconstruction
  */
-class users{
+class users{//
 	private $userspath;
 	public function __construct($userspath){
 		$this->userspath = $userspath;
