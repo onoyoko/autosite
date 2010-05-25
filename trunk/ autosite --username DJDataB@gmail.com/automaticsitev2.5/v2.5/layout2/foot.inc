@@ -1,6 +1,10 @@
 <!--whitepace for scrolling correction -->
 <div id="spacing">
 </div>
+<?php if($_errors){
+	print"<div id='xx' class='ERROR'>$_errors</div>";
+};
+?>
 <div id="foot">
 	<!--@layout @foot -->
 	Copyright &copy; <?php echo date("Y"); ?> @content &bull;
