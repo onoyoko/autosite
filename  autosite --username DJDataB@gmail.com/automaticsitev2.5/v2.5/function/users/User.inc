@@ -57,7 +57,10 @@ class User extends User_data{
 		return $this->isuser;
 	}
 	function getlevel(){
-		return ($this->islogin())?$this->level:112;// !login = lowerst level 
+		return($this->islogin())?$this->level:112;// !login = lowerst level 
+	}
+	function ispermitlevel($level){
+		return ($level<$this->level);
 	}
 	public function getpath(){
 		return ($this->islogin())?$this->userpath:"ERROR not login";
