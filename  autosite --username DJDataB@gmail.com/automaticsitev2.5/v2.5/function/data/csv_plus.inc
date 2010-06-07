@@ -1,7 +1,9 @@
 <?PHP
  /**
  * @author Lieven Roegiers
- * @copyright 2009
+ * @copyright 2009 
+ * @CMS autosite
+ * opensource http://code.google.com/p/autosite/
  */
 if (!function_exists('csv_plus')){//include_once its when it is include in the php lib
 class csv_plus implements tosave{
@@ -26,7 +28,7 @@ class csv_plus implements tosave{
 		if ($del_oldlines){
 			$this->del_oldlines();
 		}
-		$timestamp = ($this->minlivetime>0)?$this->minlivetime.$this->Delimiter:"";
+		$timestamp = ($this->minlivetime>0)?(time()+$this->minlivetime).$this->Delimiter:"";
 		$datastring =" ".$timestamp.implode($this->Delimiter,$arrData)."\n";//space on the front is for search
 		return ($this->open()&& fputs($this->file, $datastring));
 	}

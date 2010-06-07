@@ -1,7 +1,9 @@
 <?php
-/**
+ /**
  * @author Lieven Roegiers
- * @copyright 2008
+ * @copyright 2009 
+ * @CMS autosite
+ * opensource http://code.google.com/p/autosite/
  * <script language='JavaScript' src='<?php print $autosite['javascript']?>form.val.js'></script>
  * <form onsubmit="return formCheck()" enctype="text/plain" method="GET"></form>
 */
@@ -26,7 +28,7 @@ class valid{
 		//print  "<br /> validatefine:".$validfine."<br />";
 		if(is_array($formfields)){
 			foreach($formfields as $key=>$value){
-				$value = makeitvalidate($key);
+				$value = $this->makeitvalidate($key);
 				if(is_array($GETorPOST[$key])){
 					$GETorPOST[$key] = "".implode(",",$GETorPOST[$key])."";
 				}

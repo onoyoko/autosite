@@ -1,10 +1,11 @@
 <?php 
 class secuence{
-         /**
-		 * @author Lieven Roegiers
-		 * @copyright 2010
-		 * @CMS autosite
-		 */
+ /**
+ * @author Lieven Roegiers
+ * @copyright 2009 
+ * @CMS autosite
+ * opensource http://code.google.com/p/autosite/
+ */
 	private $name;
 	function __construct($name){
 		$this->name = name;
