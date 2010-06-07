@@ -12,10 +12,10 @@
 	function getpropertiefile($path,$lang="",$name){
 		//print $autosite['translations']. "forms_".$autosite['lang'].".properties";
 		if(isexist_propertiefile($path,$lang,"forms")){
-				print"<!-- @LANGlocale:".$autosite['lang']." IS USED -->";
+				print"<!-- @LANGlocale:".$lang." IS USED !!!properties!!! -->";
 				return new properties($path,"_".$lang,"forms");
 		}else{
-				print"<!-- @LANGlocale:".$autosite['lang']." IS NOT EXIST -->";
+				print"<!-- @LANGlocale:".$lang." IS NOT EXIST !!!properties!!! -->";
 				return new properties("./layout2/translations/","","forms");
 		}
 	}

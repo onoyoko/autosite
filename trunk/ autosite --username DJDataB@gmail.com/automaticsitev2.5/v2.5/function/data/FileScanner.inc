@@ -1,10 +1,11 @@
 <?php
 	class FileScanner{
-		 /**
-		 * @author Lieven Roegiers
-		 * @copyright 2009
-		 * @CMS autosite
-		 */
+ /**
+ * @author Lieven Roegiers
+ * @copyright 2009 
+ * @CMS autosite
+ * opensource http://code.google.com/p/autosite/
+ */
 		private $dirs =array();
 		private $files =array();
 		private $inc_ext =array();
