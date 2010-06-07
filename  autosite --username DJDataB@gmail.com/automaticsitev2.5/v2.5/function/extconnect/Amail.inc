@@ -18,7 +18,7 @@
  				$this->headers["X-Mailer"] = "PHP/".phpversion();
  				$this->headers["Reply-To:"]= "$from";
  			}else{
-			   $this=null;//kill myself
+			   //$this=null;//kill myself
  			}
 
  		}
