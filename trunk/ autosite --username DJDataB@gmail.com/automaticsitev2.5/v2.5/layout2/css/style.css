@@ -16,28 +16,28 @@ html {  margin: 0;
 }
 <?php include("../../generalvars.php"); ?>
 .test{}
-.ERROR{background:#FFCC00; border: 2px solid #FF6600;z-index:99;}
+.ERROR{background:#FFCC00; border: 2px solid #FF6600;z-index:99;position:absolute;top:200px; left:250px;right: 250px;
+		     z-index: 98;}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .nav{text-align:left; font-size:16px; font-weight:bold; line-height:31px; text-transform:uppercase; color:#444;
 	 display:block; position:absolute; z-index:5; top:120px;
 	 left:350px; margin-right:10%;}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .hidden{visibility:hidden;} 
-.click{display:block; background:url(../img/general/Mbg_more.gif) 0 0 no-repeat }
-.out{display:block;   background:url(../img/general/Mbg_more.gif) 0 0 no-repeat }
-.hover{display:block;  background:url(../img/general/Mbg_bleugreen.gif) 0 0 no-repeat }
 .mnuitem{text-align:center; font-weight:bold;text-transform:uppercase;
 		  display:block; height:15px; padding:2px 5px 5px 30px; line-height:30px; /*padding boven achter onder voor */
         margin:0;  display: inline;
-          clear:both;}
+        clear:both;}
 /*do not test others position ie do not uderstand it margin-left %10 or others*/
  .mnutop{	text-align:center; display:block; height:32px; top:70px;
  			position:absolute; left:350px; margin-right:10%;
-			 font-size:14px;}
+			 font-size:14px;
+			 background:#A291AA; filter:alpha(opacity=80); -moz-opacity:.80;	opacity:.80;}
  .mnu{	font-size:14px; text-align:center; display:block; top:10px;
  			position:absolute; margin-left:10%;
-        border:0px solid transparent; z-index:7; background:#565656 ;
-		left:350px; margin-right:10%;margin-top:100px;}
+        border:0px solid transparent; z-index:7;
+		left:350px; margin-right:10%;margin-top:100px;
+		background:#ddf; filter:alpha(opacity=50); -moz-opacity:.50;	opacity:.50;}
 .abbr{border-bottom: dotted 0.05em; cursor: help;z-index:4}
 .content{}
 .right{ float:left; top:200px;Right:10px; }
@@ -49,8 +49,9 @@ div .rss{}
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<BODY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 body{	min-height:100%; height: 100%; position: relative; width: 100%;
 		text-align:center; color:#707070; font-weight:bold; font:14px/18px Trebuchet MS,Helvetica, sans-serif;
-		background:url(../img/mainbg3.jpg) 0 0 repeat-x #ffe;  
-		margin: 0 auto; padding:0px;}
+		background:url(../img/mainbg4.jpg) 0 0 repeat-x #ffe;  
+		margin: 0 auto; padding:0px;
+		   }
 #logo{position:absolute; text-align:left; top:15px; left: 15px;}
 #langbar{position:absolute;left:180px; top:130px ;}
 #leftbar{position:absolute;left:1px; top:170px; z-index:20;
@@ -62,8 +63,11 @@ body{	min-height:100%; height: 100%; position: relative; width: 100%;
 			}
 #rightbar a{text-decoration: none; color:#000;}
 /* !important! use not height it makes pieces not visible */
-#container{position:absolute; text-align:left; top:175px; left:125px;right:110px;
+#container{position:absolute; text-align:left; top:175px; left:125px;right:150px;
 		   min-height: 45%;    border:#0000ff;  z-index: 98;
+}
+#container2{position:absolute; text-align:left; top:175px; left: 100px;
+           height: 100%; min-height: 45%; border:#0000ff;
 }
 .gallery{background:#eeffee;}
 #galleryitem{display:inline-block; 
@@ -74,11 +78,39 @@ body{	min-height:100%; height: 100%; position: relative; width: 100%;
 table #Aform{
 	 width:500px; border:0px solid transparent; border-spacing:0px; border-style:none;
 }
-#container2{position:absolute; text-align:left; top:175px; left: 100px;
-           height: 100%; min-height: 45%; border:#0000ff;
+.galleryitem{display:inline-block; 
+			vertical-align:top;text-decoration: none; border: none;}
+.mytooltip {    visibility: hidden; position: absolute; with:100;
+				top: 0;  left: 0; z-index: 100;  padding: 3px; border: solid 1px;
+				font: normal 8pt sans-serif;  background:#ffeeaa;border:#FFF;opacity:0.8;  
+}
+.mytool{    visibility: hidden; position: absolute;
+				top: 0;  left: 0; z-index: 100;  padding: 3px; border: solid 1px;
+				font: normal 8pt sans-serif;
 }
 #spacing{text-align:left; left: 100px;
 	       height:300px; min-height: 20%;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<webtoolkit INTERNET EXPLORER BUGs fixed>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
 }
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .toolbar{	position:absolute; 
