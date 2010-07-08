@@ -1,0 +1,10 @@
+	<fieldset style="padding:20px;">
+	<legend>%shops.title%</legend>
+		<label for="name"> %name% </label>	
+		<input type="text" class="ibb" value="" size="20" name="name" style="" />
+		<label for="website"> %website% </label>	
+		<input type="text" class="ibb" value="" size="20" name="website" style="" /><br/>
+		<label for="imglink"> %logo% </label>
+		<input type="file" class="ibb" value="" size="20" name="logo" style="" /><br/>
+		<input type="submit" class="ibd" value="%submit%" name="btn" />
+	</fieldset>
