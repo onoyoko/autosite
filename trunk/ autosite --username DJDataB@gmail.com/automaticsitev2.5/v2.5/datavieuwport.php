@@ -18,15 +18,20 @@
 	if(is_file($autosite['forms'].$formname.".vars")){
 		include($autosite['forms'].$formname.".vars");//print_r($formsdata[$formname]);
 	}
+	$attributen="?e=e";
+	$id = $formname;
 	include($autosite['functions']."users/User_data.inc");
 	include($autosite['functions']."users/User.inc");
 	session_start();
 	$user= getsessionuser();
 	$formlevel = isset($formsdata[$formname]['loginniveau'])?$formsdata[$formname]['loginniveau']:1;
+
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    SAVE DATA       >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
-	
-	if ($formlevel<100 ||(isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){	
+	//$_errors.= "to:".$formname."<br />id:".$_POST['id']."<br />formlevel:".$formlevel."<br />userlogin".((isset($user))?$user->islogin():"0")."<br />levels:formlevel(".$formlevel."&lt ".((isset($user))?$user->getlevel():"0").")userlevel<br />";
+	if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
+		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<use only post>>>>>>>>>>>>>>>>>>>>>
+		//$_errors.= "LOGIN OR FORMLEVEL FREE<br />";
 		if (isset($_POST['action']) && $_POST['action'] == 'submitted'){
 				try{
 					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<fileupload>>>>>>>>>>>>>>>>
@@ -37,17 +42,17 @@
 					//$opslagruimte->initdatabase($DS_filename,DB_source::TEST);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::PRODUCTION);
 					$opslagruimte->initfile($autosite['private']);
-					print $opslagruimte->save_line($datatosave,0,true);
+					$_errors.= $opslagruimte->save_line($datatosave,0,true);
 				}catch(Exception $e){
-					//print_r($e);
+					print_r($e);
 					//print $e->getMessage();
 					//array_merge(array("Form"=>"FORMname:".$formname),)
 					//print($autosite['private']);
 				}
+		}else{
+			//print "<h2>".$id."</h2>";
 		}
-	}else{
-			$_errors.="ERROR EN: NO PERMITION TO THIS FUNCTION";
-	}
+	}//else{	$_errors .= "DATA sendoptions not availeble: %permissiondenied%";	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    VIEUW DATA      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
 	$vieuwas = (isset( $_GET['vieuwas'] ) ) ? $_GET['vieuwas'] : 'gallery';
@@ -63,14 +68,19 @@
 	
 		include_once($autosite['functions']."Qhtml/Qvieuw.inc");
 		include_once($autosite['functions']."data/properties.inc");
+		include_once($autosite['layout']."tooltip.inc");
+		if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
+				include_once("./preparts/data_form.inc");
+		}
 				switch ($vieuwas){
-						case "formanddata":
-							include_once("./preparts/data_form.inc");
+						case "formanddata":						
 							include_once("./preparts/data_templatevieuw.inc");
-							
 							break;
 						case "gallery":
 							include_once("./preparts/data_gallery.inc");
+							break;
+						case "XML":
+							include_once("./preparts/data_xml.inc");
 							break;
 						case "table":
 							break;
