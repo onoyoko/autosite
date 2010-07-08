@@ -1,0 +1,10 @@
+<div id="galleryitem">
+	<fieldset>
+	<fieldset>
+	<legend>%name->value%</legend>	
+	    	%website->value%
+			%logo->value%
+	</fieldset>
+		%moreinfo%
+	</fieldset>
+</div>
