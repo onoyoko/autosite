@@ -19,18 +19,16 @@ class Visitor {
 
 	private $remoteip;
 	private $enabled;
-
+	private $isheajack
 	private $releasetime = 0 ;
 	function Visitor(){
 		session_start();
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<FUNCTIONS>>>>>>>>>>>>>>>>>>>>>>>>>
-	function setVisitor($username,$path,$kkey){
+	function setVisitor($kkey){
 		//$username=(isset($username)&& $username!="")?$username:$_SESSION['login'];
 		//parent:: wil go to extends
  		parent::__construct($username,$kkey);
-		$this->name =$username;
-		$this->userpath =$path.substr($username, 0, 1)."/".$username."/";
 		$this->isuser=(is_dir($this->userpath)&& $username!="")? true:false;
 	}
 	private function isenabled(){
@@ -60,7 +58,7 @@ class Visitor {
 		
 	}
 	public function __tostring(){
-		return "Welkom ".$this->name."releasetime".(($this->releasetime -time() )/60)."min";
+		return "Welkom ";
 	}
 	private function __toprintsession(){
 		print_r($_SESSION);
