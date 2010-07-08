@@ -1,0 +1,10 @@
+<div id="item-%i->value%" class="galleryitem" onmouseover="mytooltip_show('tooltip-%i->value%','item-%i->value%');"  onmouseout="mytooltip_hide('tooltip-%i->value%');">
+	<fieldset>
+	<legend>%name->value%</legend>
+		%website->value%
+	</fieldset>
+	<div id="tooltip-%i->value%" class="mytooltip">
+		<a href="http://%website->value%" target="_blank"><img src="./layout2/uploads/links/%logo->value%" /></a>
+	</div>
+</div>
+<!--visual hidden-->
