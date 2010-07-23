@@ -48,6 +48,14 @@ $autosite['layout'] = $loc."layout2/";//all layout from your site and global sit
 $autosite['error'] = $loc."error/";//all error messages/pages
 $autosite['functions'] = $loc."function/";//central place for all new functionalitie
 $autosite['javascript'] = $loc."js/";//central place for all new functionalitie
+/**
+*to enterprised application can you also use a http://www.aplicationserver.be/yourscript?prevar=more&
+*to enterprised application can you also use a http://255.255.255.255:80/yourscript?prevar=more&
+*when you not remake it your data is save here you must make the same output of the file.
+*ALERT you must make your firewall save for other users by ip that other users can not take the pasword
+*ALERT bij next release you must output true or false by giving the pasword.i think that we make it also as that you must make a key for encription
+* first we ask a key and we hash with them it make that we have always an new 
+*/
 $autosite['users'] = $loc."users/";//dir from userinfo important to //TODO rename this
 $autosite['forms'] = $autosite['layout']."forms/";//
 $autosite['-forms'] = $autosite['layout']."-forms/";//  
@@ -142,9 +150,7 @@ if ($offlinedebug){
 	}
 }else{//at onlinerun
 	if (!is_dir($autosite['users']."/L/Login")){
-		die("ERROR Delete pre instal Logins ***GOTO generalvars*** =>".$_SERVER['PHP_SELF']);//security
+		die("ERROR Delete pre instal Logins ***GOTO generalvars*** =>".$_SERVER['PHP_SELF']."{youruserpath}/L/Login");//security
 	}
 }
-
-
 ?>
