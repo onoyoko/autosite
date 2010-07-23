@@ -56,7 +56,19 @@
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    VIEUW DATA      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
 	$vieuwas = (isset( $_GET['vieuwas'] ) ) ? $_GET['vieuwas'] : 'gallery';
-	if ($formsdata[$formname]['vieuw']= true ||(isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
+	if ($formsdata[$formname]['vieuw']= true || (isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
+		if($vieuwas === "XML"){
+			header('Content-type: text/xml char');
+			print '<?xml version="1.0"?>'."\n";
+			print '<AUTOSITE><CONTENTTYPE>'.$formname.'</CONTENTTYPE>';
+			print '<URL>'.$_SERVER['PHP_SELF'].'</URL>';
+			print '<DATA>';
+			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
+			include_once("./preparts/data_xml.inc");
+			print '</DATA></AUTOSITE>';
+			die();
+		}else{
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 		include_once($autosite['layout']."head.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 			include_once("./preparts/Amenu.inc");
@@ -65,9 +77,14 @@
 			include_once ($autosite['layout']."aditudes.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
 	print'<div id="container" class="clearfix">';
-	
 		include_once($autosite['functions']."Qhtml/Qvieuw.inc");
 		include_once($autosite['functions']."data/properties.inc");
+			if (!isset($properties)){
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<take the properties vb(forms_NL.properties)>>>>>>>>>>>>>>>>		
+				$properties = getpropertiefile($autosite['translations'],$autosite['lang'],"forms");
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<the keys to translate>>>>>>>>>>>>>>>>
+				$translatedata = $properties->getproperties($formsdata[$formname]['totranslate']);
+			}
 		include_once($autosite['layout']."tooltip.inc");
 		if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
 				include_once("./preparts/data_form.inc");
@@ -79,10 +96,8 @@
 						case "gallery":
 							include_once("./preparts/data_gallery.inc");
 							break;
-						case "XML":
-							include_once("./preparts/data_xml.inc");
-							break;
 						case "table":
+							include_once("./preparts/data_table.inc");
 							break;
 						default:
 							include_once("./preparts/data_templatevieuw.inc");
@@ -90,6 +105,8 @@
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	print'</div>';
 			include_once ($autosite['layout']."foot.inc");
+		}
+
 	}
 ?>
 <!-- @OVERRIDE STYLE -->
