@@ -17,4 +17,5 @@
 	}else{
 		print "<!--NO VIEUWS-->";
 	}
+		print "preparts=>templatevieuw";
 ?>
