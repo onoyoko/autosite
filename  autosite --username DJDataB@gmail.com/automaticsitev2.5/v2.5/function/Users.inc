@@ -36,17 +36,21 @@ class users{//
 		"";
 	}
 	public function vieuwusers($pathname){
-		$opendir =opendir($pathname);
-		$i =1;
-		while ($file = readdir($opendir)) {
-    		if($file != '..' && $file !='.' && $file !=''){
-    			$pos = strpos ($file, "_.");
-        		if (is_dir($file)){
-				    print $file;
-        		}
-			}else{
-				print $file;
+		if(is_file($pathname)){
+			$opendir = opendir($pathname);
+			$i =1;
+			while ($file = readdir($opendir)) {
+	    		if($file != '..' && $file !='.' && $file !=''){
+	    			$pos = strpos($file, "_.");
+	        		if (is_dir($file)){
+					    print $file;
+	        		}
+				}else{
+					print $file;
+				}
 			}
+		}else{
+			print("<!--userspath not ready-->");
 		}
 	}
 }

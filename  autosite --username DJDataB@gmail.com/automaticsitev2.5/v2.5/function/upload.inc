@@ -14,6 +14,12 @@ class upload{
 	private $UPL_trueext;
 	private $maximgsize;
 	private $links =array();
+	/**
+	 * @param $FILES	your $_FILES by reference
+	 * @param $formdata	alle fields that can upload $formdata['items'][fieldname]
+	 * @param $trueext	al true extentions array(".gif",".png")
+	 * @param $to path	the path to move
+	*/
 	public function upload(&$FILES,&$formdata,$trueext,$topath){
 		$this->UPL_trueext = $trueext;
        	if($FILES!=null&& is_array($FILES)){

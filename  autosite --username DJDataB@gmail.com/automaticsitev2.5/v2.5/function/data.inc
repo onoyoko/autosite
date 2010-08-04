@@ -52,6 +52,8 @@
 			if($this->isopslagplaats){
 				if($dovalidation){
 					$validator = new valid();
+                    $data['formname']=$this->forminf['name'];
+					$data['time']=($this->minlivetime>0)?(time()+$this->minlivetime).$this->Delimiter:"";
 					$data = $validator->dovalidation($aso_arr,$this->forminf);
 					//$this->test($data);
 					if($validator->is_valid()){
