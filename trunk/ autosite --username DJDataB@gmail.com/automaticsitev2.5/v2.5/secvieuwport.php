@@ -9,6 +9,7 @@ include($autosite['functions']."users/User_data.inc");
 include($autosite['functions']."users/User.inc");
 include($autosite['functions']."util/redirector.inc");
 include($autosite['functions']."interfaces/tosave.inc");
+include($autosite['functions']."Qhtml/QPage.inc");
 include($autosite['functions']."data/csv_plus.inc");
 function userslog($info,$path="./",$file="log.log"){
 		$csvingelogd = new csv_plus($path,$file);
@@ -28,8 +29,9 @@ $id=(isset($_GET['id']))? addslashes($_GET['id'] ) : 'home' ;
 $id=(isset($_POST['id']))? addslashes($_POST['id'] ) : $id ;
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
 $attributen="?";
-$attributen.=(isset($Gfile))? "id=".$Gfile : "";
+$attributen.=(isset($id))? "id=".$id : "";
 $attributen.=(isset($load))? "&upload=".$load : "&upload=0";
+
 //<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
 if(isset($user)&& $user->islogin()){
  	include_once($autosite['layout']."head.inc");
@@ -39,22 +41,33 @@ if(isset($user)&& $user->islogin()){
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Toolbar by login>>>>>>>>>>>>>>>>>>>
     include_once ($autosite['layout']."toolbar.inc");
 	print'<div id="container">';
-	if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :Do not trust . Blocked BY DEVELOPER");}
-	if (!array_key_exists($handeling,$option_location)||!($selection=$autosite['functions'].$option_location[$handeling][2])){
-		//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  NOT FOUND >>>>>>>>>>>>>>>>>>>>>>>>>
-		include_once($autosite['error']."pagenotfound.inc");
-	}elseif(is_file($selection)&&($option_location[$handeling][1]<$user->getlevel())){
-		//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  PAGE like edit>>>>>>>>>>>>>>>>>>>>>>>>>
-		include_once($selection);
-	//private atribuut}elseif($user->isenabled()){
-		//<<<<<<<<<<<<<<<<<<<<<<<LEVEL TO LOW>>>>>>>>>>>>>>>>>>>>>>>>>
-			//include_once($autosite['error']."level.inc");			
-	}else {
-		//<<<<<<<<<<<<<<<<<<<<<<<VIEUW NO ERROR>>>>>>>>>>>>>>>>>>>>>>>>>
-	    include_once($autosite['home'].".dat");
-	}
+		if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :not trust site . Blocked BY DEVELOPER");}
+		if(isset($handeling)&& $handeling == "save"){
+			$html = (isset($_POST['html'])) ? $_POST['html']: null;
+			$page = new QPage();
+			if ($page->saveasfile($autositepath,$id,$html)){
+				print "<h1> saved </h1>";
+			}else{
+				print"<h1> not saved </h1>";
+			}
+			print($html);
+		}else{
+		   if (!array_key_exists($handeling,$option_location)||!($selection=$autosite['functions'].$option_location[$handeling][2])){
+				//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  NOT FOUND >>>>>>>>>>>>>>>>>>>>>>>>>
+				include_once($autosite['error']."pagenotfound.inc");
+			}elseif(is_file($selection)&&($option_location[$handeling][1]<$user->getlevel())){
+				//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  PAGE like edit>>>>>>>>>>>>>>>>>>>>>>>>>
+				include_once($selection);
+			//private atribuut}elseif($user->isenabled()){
+				//<<<<<<<<<<<<<<<<<<<<<<<LEVEL TO LOW>>>>>>>>>>>>>>>>>>>>>>>>>
+					//include_once($autosite['error']."level.inc");			
+			}else {
+				//<<<<<<<<<<<<<<<<<<<<<<<VIEUW NO ERROR>>>>>>>>>>>>>>>>>>>>>>>>>
+			    include_once($autosite['home'].".dat");
+			}	
+		}
 	print'</div>';
-
+	
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	include_once ($autosite['layout']."foot.inc");
 }else{
