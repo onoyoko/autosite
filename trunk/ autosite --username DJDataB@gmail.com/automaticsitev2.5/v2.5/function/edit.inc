@@ -17,15 +17,13 @@
 	?>
 <meta name="robots" content="noindex, nofollow" />
 <link href="<?php print $autosite['layout']?>css/editor.css" rel="stylesheet" type="text/css" />
-<div id="xx" class="ERROR">
-	UNDERCONSTRUCT.use at own risk. NOT WORKING EDITION
-</div>
 <div id="editERROR" class="ERROR">
 You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil not works
 </div>
-<div id="editor">
-	<form action="<?php print$_SERVER["PHP_SELF"]?>" method="get" enctype="text/plain" >
-    	<!-- ********************** EDITORMENU *********************-->
+
+
+	<form id="editor" action="<?php print$_SERVER["PHP_SELF"].(isset($attributen)?$attributen."&handeling=save":"handeling=save");?>" method="POST" enctype="multipart/form-data" >
+	   	<!-- ********************** EDITORMENU *********************-->
 		<div class="editormenu">
 	     	<?php include($autosite['functions']."editor/actionstoolbar.inc")?>
 		</div>
@@ -38,69 +36,90 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
         		<a class="editorbtn"		href="javascript:SelectClass()" 					id="make it">make it</a> 
         	</div>
         	<div class="editorbtn">
-        		
-      			
+       		      			
         	</div>
             <div class="editorbtn" align="right">
             	Name:<input type="text" name="title"  value="newpage" />
         	</div>
 		</div>
         <!-- ********************** SOURCEPANEL *********************-->
-		<div id="Sourcepanel">111111
-			<textarea id="Source" wrap="VIRTUAL" class="Source">
-				DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+		<div id="Sourcepanel" class="Apanel hidden">
+			<textarea id="Source" name="html" wrap="VIRTUAL" class="Source">
+				<?php include($autositelang[$autosite['lang']].$id.".dat");?>
 			</textarea>
 		</div>
-	    <div id="Centralpanel">222222<br />
-			<input type="button" value="test" /><br />
-			<input type="submit" value="Save" /><br />
-			<a class="editorbtn"	href="javascript:tosource();//gotoOtherView('source');" 	id="tosource">SOURCE     &lt;= </a>
-			<a class="editorbtn"	href="javascript:totexteditor();//gotoOtherView('WYSIWYG');" 	id="tosource">WYSIWYG   =&gt;</a> 
-		</div>
-        <!-- ********************** EDITORPANEL *********************-->		
-	    <div id="Editorpanel" contenteditable="true" onmouseout="selection=window.getSelection();">33333
-					<?php include($autositelang[$autosite['lang']].$id.".dat");?>
-		</div>
+
+        <!-- ********************** EDITORPANEL *********************-->
+		<!-- removed onmouseout="selection=window.getSelection();" for boring IE-->		
+	    <div id="Editorpanel" contenteditable="true" class="Apanel"  ><?php include($autositelang[$autosite['lang']].$id.".dat");?></div>
 	    <!-- ********************** EDITORFOOTER *********************-->
-		<div id="Editorfoot">
-			<b>Editor Size: 
+		<div id="Editorfoot" class="Apanel" >
+			<!--Editor Size: 
 			<input onchange="javascript:doresize()" type="text" id="width" size="4" value="70%" />
 			<input onchange="javascript:doresize()" type="text" id="height" size="4" value="350" />
 			<input onclick="javascript:gotoOtherView('source');" type="button" name="tocode" value="toCode" />
-      		</b>
-       </div>
+			-->
+			<a href="javascript:tosource();//gotoOtherView('source');" 	id="tosource">TOsource</a>&bull;
+			<a href="javascript:totexteditor();//gotoOtherView('WYSIWYG');" id="tosource">TOeditor</a>&bull;
+			<a href="javascript:senddata();//gotoOtherView('WYSIWYG');" id="tosource">SAVE</a>&bull;
+		</div>
        <div id="spacing">
 	   </div>
    </form>
-</div>
+
 		<div class="editorpanels">
 	     	<?php include($autosite['functions']."editor/panels.inc")?>
 		</div>
 <script >
   var editorpanelname = document.getElementById("Editorpanel");//(-- W3C correction OK! --)
+  doWYSIWYG('underline')
   function doWYSIWYG(command, condition, arg){
     //editorpanelname.focus();
     if(!condition) condition=false;
     document.execCommand(command, condition, arg);
   }
-  function todoifupload(){
- 	//move to textarea
-	 tosource();
-	//senddata();
+  function doWYSIWYG2(command, condition, arg){
+   editorpanelname.focus();
+   addPTag(editorpanelname, command);
   }
+  function doWYSIWYG3(){
+
+  }
+  function getselectedtext(){
+    var txt = '';
+    if (window.getSelection){
+        txt = window.getSelection();
+    }else if (document.getSelection){
+        txt = document.getSelection();
+    }else if (document.selection){
+        txt = document.selection.createRange().text;
+    }else
+	  return;
+    return txt;
+  } 
+  var issource =false;
   function tosource(){
-  	document.getElementById("Source").value = document.getElementById("Editorpanel").innerHTML;
+  	if (!issource){
+  		document.getElementById("Source").value = editorpanelname.innerHTML;
+  		issource = true;
+  	}
+  	
+  	//switch to other vieuw
+    setclass("Editorpanel",'hidden Apanel');
+  	setclass("Sourcepanel",'Apanel');
   }
   function totexteditor(){
-  	document.getElementById("Editorpanel").innerHTML = document.getElementById("Source").value;
+  	if (issource){
+  		editorpanelname.innerHTML = document.getElementById("Source").value;
+  		issource = false;
+  	}  	
+ 	//switch to other vieuw
+	setclass("Editorpanel",'Apanel');
+  	setclass("Sourcepanel",'hidden Apanel');
   }
   function senddata(Field){
-	//document.form.submit();
-	//document.forms[0].submit();
-  }
-		var returntext;   
-		function replaceastring(param){
- 		alert( "under construction" );
+	tosource();
+	document.getElementById("editor").submit();
   }
   function doselect(){
   		if(window.getSelection) {
@@ -125,9 +144,10 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
   //todo delete _moz_dirty if mozila
   function isbrowserok(){
   		if (navigator.userAgent.indexOf("Firefox")!=-1){
-  			
+  			return true;
   		}else if(window.navigator.appName == "Microsoft Internet Explorer"){//you must use a better browser
-			var IEversion = window.navigator.appVersion
+			var IEversion = window.navigator.appVersion;
+			alert(window.navigator.appName + "you must use a better browser for this function");
 			return (IEversion.substring(IEversion.indexOf("MSIE") + 5, IEversion.indexOf("MSIE") + 8) >= 5.5)
 		}else if(window.navigator.appName == "Netscape"){//&&(parseInt(appVersion)==4
 		  	return true;	
@@ -145,7 +165,8 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 		var ylen = Y.length;
 		if((Y.substring(ylen-1,ylen))=="%"||Y<200||isNaN(Y.substring(0,ylen-1))) {
 			return false;
-		}		
+		}
+		return true;		
 	}
 	function replacevalue(id,value){
 			  document.getElementById(id).value=value;
@@ -160,57 +181,11 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 	}else {
 		setclass("editor",'');
 	}
-	
-	var BrowserDetect = {
-	init: function () {
-		this.browser = this.searchString(this.dataBrowser) || "An unknown browser";
-		this.version = this.searchVersion(navigator.userAgent)|| this.searchVersion(navigator.appVersion)|| "an unknown version";
-		this.OS = this.searchString(this.dataOS) || "an unknown OS";
-	},
-	searchString: function (data) {
-		for (var i=0;i<data.length;i++)	{
-			var dataString = data[i].string;
-			var dataProp = data[i].prop;
-			this.versionSearchString = data[i].versionSearch || data[i].identity;
-			if (dataString) {
-				if (dataString.indexOf(data[i].subString) != -1)
-					return data[i].identity;
-			}
-			else if (dataProp)
-				return data[i].identity;
-		}
-	},
-	searchVersion: function (dataString) {
-		var index = dataString.indexOf(this.versionSearchString);
-		if (index == -1) return;
-		return parseFloat(dataString.substring(index+this.versionSearchString.length+1));
-	},
-	dataBrowser: [
-		{string: navigator.userAgent,	subString: "Chrome",									identity: "Chrome"	},
-		{string: navigator.userAgent,	subString: "OmniWeb",		versionSearch: "OmniWeb/",	identity: "OmniWeb"	},
-		{string: navigator.vendor,		subString: "Apple",			identity: "Safari",			versionSearch: "Version"},
-		{prop: window.opera,			identity: "Opera"},
-		{string: navigator.vendor,		subString: "iCab",			identity: "iCab"			},
-		{string: navigator.vendor,		subString: "KDE",			identity: "Konqueror"		},
-		{string: navigator.userAgent,	subString: "Firefox",		identity: "Firefox"  		},
-		{string: navigator.vendor,		subString: "Camino",		identity: "Camino"   		},
-		{		// for newer Netscapes (6+)
-			string: navigator.userAgent,	subString: "Netscape",	identity: "Netscape"		},
-		{	string: navigator.userAgent,	subString: "MSIE",		identity: "Explorer",		versionSearch: "MSIE"	},
-		{	string: navigator.userAgent,	subString: "Gecko",		identity: "Mozilla",		versionSearch: "rv"		},
-		{ 		// for older Netscapes (4-)
-			string: navigator.userAgent,	subString: "Mozilla",	identity: "Netscape",		versionSearch: "Mozilla"}
-	],
-	dataOS : [
-		{string: navigator.platform,		subString: "Win",		identity: "Windows"		},
-		{string: navigator.platform,		subString: "Mac",		identity: "Mac"			},
-		{string: navigator.userAgent,	 	subString: "iPhone",    identity: "iPhone/iPod" },
-		{string: navigator.platform,		subString: "Linux",		identity: "Linux"		}
-	]
-};
-BrowserDetect.init();
-
-	
-	
 </script>
+<div id="spacing">
+</div>
+<div id="spacing">
+</div>
+
+
 <link rel="StyleSheet" type="text/css" href="<?php print $autosite['layout']?>css/style_syntax_highlite.css" />
