@@ -1,5 +1,5 @@
 <fieldset style="padding:20px;">
-<legend>%Gboek.title%</legend>
+<legend> %Gboek.title% </legend>
 	<label for="name"> %name% </label>	
 	<input type="text" class="ibb" value="" size="30" name="name" style="" /><br /> 		
 	<label for="mail"> %mail% </label>
@@ -7,6 +7,6 @@
     <label for="comments">%msg%</label>
     <textarea class="ibc" rows="3" cols="30" name="msg"></textarea><br /> 
 	<input type="submit" class="ibd" value="%submit%" name="btn" />
-	<input type="reset" class="ibd" value="%Reset%" name="clear" onclick="return confirm('clear all text ?')" />
+	<input type="reset" class="ibd" value="%reset%" name="clear" onclick="return confirm('clear all text ?')" />
 </fieldset>
 
