@@ -1,4 +1,5 @@
 	<fieldset style="padding:20px;">
 	<legend>%gallery.title%</legend>
+	    <input type="file" class="ibb" value="" size="20" name="logo" style="" /><br/>
 		<input type="submit" class="ibd" value="%add%" name="btn" />
 	</fieldset>
