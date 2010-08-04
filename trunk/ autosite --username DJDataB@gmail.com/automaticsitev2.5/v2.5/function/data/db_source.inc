@@ -178,5 +178,3 @@ class DB_source implements tosave{//initialize = !important!security
 
       }
 ?>
-
-

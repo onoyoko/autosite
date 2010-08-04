@@ -31,7 +31,7 @@
            	        }
                 }
 			}
-			$this->test();
+			//$this->test();
 		}
 		private function is_incext(){
 			return count($this->inc_ext,1)<1;

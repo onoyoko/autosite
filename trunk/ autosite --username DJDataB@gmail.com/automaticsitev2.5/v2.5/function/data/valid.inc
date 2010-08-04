@@ -40,7 +40,6 @@ class valid{
 				}elseif(!array_key_exists($key,$GETorPOST)){
 					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< formfield is not exist >>>>>>>>>>>>>>>>>>>>>>
 					$this->seterror("notexist",$key);
-					print "notexist".$key;
 					return; //form NOT ok
 				}else{
 					$tmp =(isset($value))? addslashes($value) : "" ;
@@ -52,7 +51,6 @@ class valid{
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
 						if($testinjection &&  is_sqlinject($value)){
 							$this->seterror("injection",$key);
-							print "injection".$key;
 							return;
 						}
 						$returnval[$key]=$value;//add val to array
@@ -61,7 +59,6 @@ class valid{
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
 						if($testinjection && is_sqlinject($value)){
 							$this->seterror("injection",$key);
-							print "injection".$key;
 							return;
 						}
 						$returnval[$key]=$value;//add val to array
@@ -71,7 +68,6 @@ class valid{
 				}
 			}
 		}else{
-			print "geen juist imlementatie";
 			$this->seterror("!implementation!",$key);
 		}
 		//test($formfield,$returnval);	
