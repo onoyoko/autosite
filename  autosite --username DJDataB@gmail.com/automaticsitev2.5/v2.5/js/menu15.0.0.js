@@ -24,6 +24,7 @@ function menu_start(){
 	document.write(m_sub);
 	//document.write("</td></tr><tr><td> \r\n");
 	document.write("</div><br/><div class='nav' id='nav' >=>home</div><br />");//navigator
+	document.write("<div class='ERROR hidden' id='IE' >You need beter software for this function,IE has problems with his JS interperter a variable was lost</div>");//navigator
 	//document.write("</tr></td></table> \r\n");	
 	M_out('topid0');
 };
@@ -53,6 +54,7 @@ if (id.substring(0,3)=="top"&&!(id==m_topselect)){
 		document.getElementById(m_topselect).className = 'mnuitem out';
 		var m_top2=document.getElementById("menu").clientHeight + m_subtop ;
 	    //document.getElementById(id+"link").style.top = m_top2  + 5 + 'px';
+	    
 	    document.getElementById(id+"link").className = 'mnu';
 		m_topselect=id;
 		document.getElementById(m_select).className = 'mnuitem out';
@@ -90,11 +92,12 @@ function M_item(id,label,pos,nav,location){//subitem printen
 		V_return+=" "+label[3];
 		V_return+="</a> \r\n";
 	} else{
-	    V_return+="<a id='"+ id + "' class='mnuitem out '  ";
+	    V_return+="<div id='"+ id + "' class='mnuitem out' ";
+	    
 		V_return+="onmouseover=M_over('"+ id + "') ";
 		V_return+="onmouseout=M_out('"+ id + "') ";
 		V_return+='onClick=M_click("'+ id + '"),M_nav("'+M_replace(nav," ")+'")>\r\n';
-		V_return+=label[1]+"</a> \r\n";
+		V_return+=label[1]+"</div> \r\n";
 	}
 	return V_return;	
 }   
