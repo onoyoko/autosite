@@ -13,11 +13,12 @@
 		private $tagnotfound = array();
 		private $toolsbar="";
 		private $toolshandeler;
+        private $y=0;
 		/**
  		* @param var $html str html
  		*/
  		function __construct(&$html){
- 			print("<!--Qtemplate locale translator by autosite-->");
+ 			//print("<!--Qtemplate locale translator by autosite-->");
 	    	$this->html = $html;
 	    	$this->htmltag=new Qtagmaker();
 		}
@@ -39,16 +40,10 @@
 		  	   if ($key != "toolbar"){
 			  	   	if ($value !=" "){
 			  	 		$this->toreplace($key,$value);
-			  	 		//print $key.":".$value;
-			  	 	}//else{
-				  	 //	$new = "!".$key."!";
-				  	 //	$this->toreplace($key,$new);
-				  	 // print $key.":".$value;
-				  	 //}
+			  	 	}
 		  	   }else{
 		  	   		$this->toreplace($key,$this->toolsbar);
 		  	   } 	
-
 		  	 }
 		  }
 		}
@@ -67,5 +62,8 @@
 		public function gethtml(){
 			return $this->html;
 		}
+	}
+	function teller($i){
+		return $i++;
 	}
 ?>

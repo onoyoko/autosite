@@ -9,12 +9,13 @@
 	include($autosite['functions']."Qhtml/Qhtml.inc");
 	class Qvieuw{
 		private $template;
+		private $i;
 		/**
  		* @param var $Qtemplate
  		*/
  		function __construct(&$Qtemplate,$asoarrkeytranslations){
- 			print("<!--Qvieuw locale translator by autosite-->");
-	    	$this->template=new Qtemplate($Qtemplate);
+ 			print("<!-- Qvieuw locale translator by autosite -->");
+ 	    	$this->template=new Qtemplate($Qtemplate);
 	    	$this->template->translate($asoarrkeytranslations);
 		}
 		public function addtagitems($asoarr){
@@ -49,7 +50,7 @@
 			//TODO if no template print table
 			while (!feof($gbfile)){
 				$fileline=fgets($gbfile,1024);
-				$output= split(',',$fileline);
+				$output= explode(',',$fileline);
 				//array_shift($output);
 				$datamap = $this->array_aso_merge(array_keys($taglist),$output);
 				$this->printdata($datamap);
@@ -61,6 +62,8 @@
 		}
 		private function printdata($asoarr){
 			$temp = clone $this->template;
+			$adds = array("i"=>++$this->i);
+			$asoarr += $adds;
 			$temp->setvalues($asoarr);
 			print $temp->gethtml();
 		}
