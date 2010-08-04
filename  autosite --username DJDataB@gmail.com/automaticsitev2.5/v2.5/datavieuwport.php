@@ -25,7 +25,6 @@
 	session_start();
 	$user= getsessionuser();
 	$formlevel = isset($formsdata[$formname]['loginniveau'])?$formsdata[$formname]['loginniveau']:1;
-
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    SAVE DATA       >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
 	//$_errors.= "to:".$formname."<br />id:".$_POST['id']."<br />formlevel:".$formlevel."<br />userlogin".((isset($user))?$user->islogin():"0")."<br />levels:formlevel(".$formlevel."&lt ".((isset($user))?$user->getlevel():"0").")userlevel<br />";

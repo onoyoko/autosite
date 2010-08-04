@@ -17,15 +17,15 @@ array_walk($_SERVER,"test","test één");
 array_walk(preg_split('/;/', $_SERVER['PATH']),"test","test twee");
 */
 $offlinedebug = true;//TODO delete before upload 1==>>>
-if ($offlinedebug == true){
+
 		//$_SERVER['PHP_SELF']="http://localhost:8080/workspacesite";//to make a projectname autosite on your easyphp
 		//print $_SERVER['PHP_SELF'];
-}else{//<<<==1
-	if ($_SERVER['PHP_SELF']!="www.jouwdomein.be"){
+
+	if ($_SERVER["HTTP_HOST"]!="www.jouwdomein.be"&&$_SERVER["HTTP_HOST"]!="localhost"){
 		//print"ERROR NO access to this file";
-		die("ERROR INVALID domein or copy this to generalvars =>".$_SERVER['PHP_SELF']);//security
+		die("ERROR INVALID domein or copy this to generalvars =>".$_SERVER["PHP_SELF"]);//security
 	}
-}
+
 //<<<<<<<<<<<<<<<<<<<<<< general vars>>>>>>>>>>>>>>>>
 if(isset($loc)){
 	$loc = "./".$loc;
@@ -39,7 +39,7 @@ $autosite['servicenr']="BE_478394081";
 $autosite['servicemail']="info@djdb.be";//your service mail
 $autosite['publicmail']="info@djdb.be";//reclame and else
 $autosite['servicename']="Lieven Roegiers";
-$autosite['installoc']= ($offlinedebug == true)?"/automaticsitev2.5/v2.5/":"/v2.5/";//location from installation
+$autosite['installoc']= "/automaticsitev2.5/v2.5/";//location from installation
 $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
 $autosite['gallery']= $loc."layout2/";//all gallerys from your site and global site content
@@ -106,6 +106,8 @@ $autositelang['EN']= $autosite['path']."map_EN/";
 $autositelangimg['EN']="EN.gif";
 
 $autosite['home'] = $autositelang[$autosite['lang']]."home";//home referentie
+////////////////////////////////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TODO !!!!!>>>>>>>>>>>>>>>>>>>>>>
+$autositepath=$autositelang[$autosite['lang']];
 //Read: 001 = 1
 //Write: 010 = 2
 //Execute: 100 = 4
