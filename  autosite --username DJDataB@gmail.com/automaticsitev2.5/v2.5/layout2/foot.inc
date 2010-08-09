@@ -2,8 +2,8 @@
 <div id="spacing">
 </div>
 <?php if($_errors){
-	print"<div id='xx' class='ERROR'>$_errors</div>";
-};
+			print"<div id='xx' class='ERROR'>$_errors</div>";
+      };
 ?>
 <div id="foot">
 	<!--@layout @foot -->

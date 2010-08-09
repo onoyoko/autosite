@@ -9,8 +9,8 @@
 			<td background='<?php print $autosite['layout']; ?>img/general/form_brown_LM.jpg'>
 			</td>
 			<td background='<?php print $autosite['layout']; ?>img/general/form_brown_SP.jpg'>
-				<h1>[ERROR]:UNDER CONSTRUCTION</h1><br />
-				<form method='post' action='<?php print $_SERVER['PHP_SELF'].$attributen;?>' enctype="multipart/form-data">
+				
+				<form method='post' action='<?php print $_SERVER['PHP_SELF'].$attributen;?>' name="upForm" enctype="multipart/form-data" >
 					<input type='hidden' name='id' value='<?php print $formname; ?>'/>
 					<input type='hidden' value='submitted' name='action' />
 					<?php print $formtemplate; ?>				
