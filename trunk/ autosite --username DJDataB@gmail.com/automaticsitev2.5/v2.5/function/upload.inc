@@ -23,8 +23,9 @@ class upload{
 	public function upload(&$FILES,&$formdata,$trueext,$topath){
 		$this->UPL_trueext = $trueext;
        	if($FILES!=null&& is_array($FILES)){
-       		foreach($FILES as $key=>$value){ //watch all sended files      			
-       			if(array_key_exists($key,$formdata['items'])){//is the file askt in form
+       		foreach($FILES as $key=>$value){ //watch all sended files 
+			   //print "<H2>$key = ".print_r($value)."</H2>";    			
+       			if(is_array($formdata['items'])&& array_key_exists($key,$formdata['items'])){//is the file askt in form
 					if($value['name']!=null ){//if there is a upload 
 						if(is_array($value['name'])){//complex multiple upload
 							foreach($value['name'] as $kkey=>$namevalue){
@@ -39,29 +40,51 @@ class upload{
 							self::saveuploadedfile($value['tmp_name'],$value['name'],$topath,$key);	
 						}
 					}
+       			}else{
+       				print "upload.inc key not exist";
        			}
 				//print_r($_FILES);
 			}
 		}
 	}
+	/**
+	* @param $filename	string of the filename for get ext
+	* @param $error	$value['error'][$kkey]   =>404 or anything else
+	* @return true/false
+	*/
 	private function isfile($filename,$error){
-		if ($this->is_trueext($this->getext($filename))){
-			return $error<1;
-		}
+		return ($this->is_trueext($this->getext($filename))&&$error<1);
 	}
-
+	/**
+	* @return asoarray of the link to the files
+	*/
 	public function getlinks(){
 		return $this->links;
 	}
+	/**
+	* @param $ext	can use ext
+	* TODO make control for mimes
+	* @return true/false
+	*/
 	private function is_trueext($ext){
        	return in_array($ext,$this->UPL_trueext);
 	}
+	/**
+	* @param $filename the name of the file
+	* @return string extention and the point
+	*/
 	private function getext($filename){
 		//$exts = split("[/\\.]", $filename);
 		//$n = count($exts)-1;
 		//$ext = $exts[$n];
        	return (string)strtolower(strrchr($filename,'.'));
 	}
+	/**
+	* @param $tmpfile the name of the file to temp dir server
+    * @param $filename new name on the server
+    * @param $topath  the path on the server where we save the img
+	* @return string extention and the point
+	*/
 	private function saveuploadedfile($tmpfile,$filename,$topath,$from="upload_"){
 			if(!is_file($topath.$from.$filename)){
 				$len = sizeof($this->links[$from]);

@@ -52,7 +52,12 @@
 				$fileline=fgets($gbfile,1024);
 				$output= explode(',',$fileline);
 				//array_shift($output);
-				$datamap = $this->array_aso_merge(array_keys($taglist),$output);
+				try{
+					$datamap = $this->array_aso_merge(array_keys($taglist),$output);
+				}catch(Exception $s){
+					print(".vars are not correctly".$e);
+				}
+				
 				$this->printdata($datamap);
 			}
 			fclose($gbfile);

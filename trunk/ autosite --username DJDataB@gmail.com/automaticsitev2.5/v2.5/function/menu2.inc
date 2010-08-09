@@ -3,6 +3,7 @@
  * @author Lieven Roegiers
  * @copyright 2009
  * @CMS autosite
+ * @info write a variabele Items (path items)[key,value]
  */
 include($autosite['functions']."data/FileScanner.inc");
 class Menu{
@@ -20,15 +21,18 @@ class Menu{
 	    print"<!-- menu -->";
 	}
     /**
-     * @menu Lieven Roegiers
-     * @info write a variabele Items (path items)[key,value]
-     * @param $Nfile filename of js varfile ,$path  path Te doorzoeken path
+     * @param $arr [menuitem1, menuitem2],$tolocation targetlocation 
+     * @return null
      */
 	public function additems($arr,$tolocatie){
  		 foreach($arr as $key){
  		 	$this->additem($key,$tolocatie);
  		 }
  	}
+ 	/**
+    * @param $arr [menuitem1, menuitem2],$tolocation targetlocation 
+    * @return null
+    */
  	public function addsubitems($attlabel,$arr,$tolocatie){
  		 foreach($arr as $key){
  		 	$this->addsubitem($attlabel,$key,$tolocatie);
