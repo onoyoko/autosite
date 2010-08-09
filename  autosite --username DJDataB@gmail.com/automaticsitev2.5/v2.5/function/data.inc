@@ -9,10 +9,20 @@
 	include($autosite['functions']."data/csv_plus.inc");//databaseconection
 	include($autosite['functions']."data/db_source.inc");
 	include($autosite['functions'].'upload.inc');
-	function addfilesatlink(&$asoarrdata){
-		$uploader = new upload($_FILES,$formsdata[$formname],$autosite['trueext'],$autosite['uploads'].$formname."/");
+	/**
+	* @param $forminf array(items=>array(""=>""),valid=>array(""=>""))
+	* @param $type "database","filesystem"
+	*/
+	function addfilesatlink(&$asoarrdata,$to,$formsdata){
+		$uploader = new upload($_FILES,$formsdata,$autosite['trueext'],$to);
 		$uploadlinks = $uploader->getlinks();
-		$datatosave=array_merge(&$asoarrdata,$uploadlinks);
+		//print_r($asoarrdata);
+		foreach ($uploadlinks as $key =>&$value){
+			$s = implode(',',$value);
+    		$asoarrdata[$key] = $s;
+		}
+		//print_r($asoarrdata);
+		return $uploaders;
 	}
 	class data{
 		private $faze;
@@ -57,14 +67,14 @@
 					$data = $validator->dovalidation($aso_arr,$this->forminf);
 					//$this->test($data);
 					if($validator->is_valid()){
-						if ($this->opslagplaats->save_line($aso_arr)){
-							return "saved";
+						if ($this->opslagplaats->save_line($data)){
+							return "saved ";
 						}						
 					}else{
 						//only if there is a error
-						return $validator->geterrors();
+						//return $validator->geterrors();
 						if(isset($this->validationmsg)){
-							while (list($key, $val) = each($this->errormsgs)){
+							while(list($key, $val) = each($this->errormsgs)){
 			    				print "key".$this->validationmsg[$key];
 								print "value".$this->validationmsg[$value];
 							}

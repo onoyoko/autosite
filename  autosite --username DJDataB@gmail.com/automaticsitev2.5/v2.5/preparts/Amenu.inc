@@ -24,6 +24,7 @@ if($autosite['hasclientjs']){
 		if(!$menu->getif_menu_exist($hasclientjs)){
 			$menu->createMNUitemsfrom_filesystem($autositelang[$autosite['lang']],"vieuwport.php",$exts);
 			$menu->createMNUitemsfrom_filesystem($autosite['forms'],"datavieuwport.php",array("from"));
+			$menu->additems($shop['prod_catogory'],"products.php");
 			$menu->Generate_menu(false);
 		}
 		print("</div>\r\n");

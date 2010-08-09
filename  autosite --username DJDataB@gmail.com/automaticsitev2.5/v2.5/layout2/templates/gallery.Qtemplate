@@ -1,4 +1,6 @@
-<div class="gallery img">
-	<h3>%name%:%name->value%</h3>
-	%img%: %img->value% <br />
+<div id="galleryitem">
+	<fieldset>
+	<legend>%name%:%name->value%</legend>	
+			%img->value%
+	</fieldset>	
 </div>

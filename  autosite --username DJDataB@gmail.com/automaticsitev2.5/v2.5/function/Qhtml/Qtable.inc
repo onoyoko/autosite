@@ -1,13 +1,9 @@
 <?php
 	class Qtable{
-		/** list of posible tags
-	    *@param array("naam" => "","mail" => "","date" => "","inf" => "","status" => "","phone" => "",)
-	    *@param $codeprettify wil make tag mail => <a href='mailto:%value%'>%value%</a>";
-		**/
-		$tablehead;
-		$tablefoot;
-		$tableX =0;
-		$tableY =0;
+		private $tablehead;
+		private $tablefoot;
+		private $tableX =0;
+		private $tableY =0;
 		Public function preset($head,$foot){
 			$this->tablehead =  $head
 			$this->tablefoot =  $foot
