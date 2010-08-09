@@ -29,7 +29,8 @@ class csv_plus implements tosave{
 			$this->del_oldlines();
 		}
 		$timestamp = ($this->minlivetime>0)?(time()+$this->minlivetime).$this->Delimiter:"";
-		$datastring =" ".$timestamp.implode($this->Delimiter,$arrData)."\n";//space on the front is for search
+		$datastring =" ".$timestamp.implode($this->Delimiter,$arrData);//space on the front is for search
+		$datastring =nl2br($datastring)."\n";
 		return ($this->open()&& fputs($this->file, $datastring));
 	}
 	public function is_readytouse(){
