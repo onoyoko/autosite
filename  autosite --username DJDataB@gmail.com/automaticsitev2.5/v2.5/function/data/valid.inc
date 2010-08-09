@@ -70,7 +70,7 @@ class valid{
 		}else{
 			$this->seterror("!implementation!",$key);
 		}
-		//test($formfield,$returnval);	
+		$this->test($formfield,$returnval);	
    		return $returnval;
    }
    private function validatefine($key , $value,$testinjection){	
@@ -128,7 +128,7 @@ class valid{
    }
    private function setok(){}
    public function __printerrors(){
-   		print "<div class='errormsg'>";
+   		print "<div class='ERROR'>";
    		array_walk($this->errormsg,"__ERRtostring");
    		print "</div>";
    		print "<br /><input type='button' id='button' onClick='javascript:history.go(-1)' value=' Return '>\n";
@@ -137,9 +137,10 @@ class valid{
    		print $key."".$item.$ad;
    }
    private function test($formfield,$returnval){
-   		print("dovalidation formfields");
+   		print("<div class='ERROR apanel'>test dovalidation formfields");
 		print_r($formfields);
 		print_r($returnval);
+		print("</div>");
    }
 }
 /**
