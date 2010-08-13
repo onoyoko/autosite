@@ -26,9 +26,11 @@
           body { height: 100%; }
       </style>
     <![endif]-->
+    
 </head>
 	<!-- @STYLE --> 
-	<link rel='stylesheet' href='<?php print $autosite['layout']?>css/style.css' type='text/css' /> 
+	<link rel='stylesheet' href='<?php print $autosite['layout']?>css/style.css' type='text/css' />
+
 	<!--link media = 'screen'type = 'text/css'rel = 'stylesheet'href = '".$layout."/css/webtoolkit.shadow.css.php' />
 	<link rel = 'stylesheet'href = '".$layout."css/edit.css.php'type = 'text/css' /-->
 	<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->
@@ -45,5 +47,9 @@
 	    }else{
 	    	print '<body>';
 	    }
+	    $attributen="?";
+		$attributen.=(isset($id))? "id=".$id : "";
+		$attributen.=(isset($load))? "&upload=".$load : "&upload=0";
+		$attributen.=(isset($autosite['lang']))? "&lang=".$autosite['lang'] : "";
 	?>
 	
