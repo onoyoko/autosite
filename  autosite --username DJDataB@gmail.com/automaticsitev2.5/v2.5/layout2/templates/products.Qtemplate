@@ -1,0 +1,31 @@
+<div  class="productitem" >
+	<fieldset id="item-%i->value%" class="Aproductitem" onmouseover="mytooltip_show('tooltip-%i->value%','item-%i->value%');"  onmouseout="mytooltip_hide('tooltip-%i->value%');">
+	
+	<legend>%name%:%name->value%</legend>
+			<div class="productiteminf">
+				%img->value%
+				<br />
+				%shortinfo->value%
+				</div>
+
+   			<div id="tooltip-%i->value%" class="mytooltip"><!--visual hidden-->
+		 		<fieldset>
+					<legend>%placetouse%</legend>
+						%placetouse->value%
+				</fieldset>
+				<fieldset>
+					<legend>%generation%</legend>
+						%generation->value%
+				</fieldset>
+				<fieldset class="price">
+					<legend>%price%</legend>
+					<div>%onrequest%</div>
+				</fieldset>		
+				%moreinfo->value%"
+			</div>
+	</fieldset>
+		<fieldset class="tools">
+				<legend>%tools%</legend>
+			<!--<div>edit add to card</div>	<a href"/shop.php?productid=id">id</a>-->
+		</fieldset>
+</div>
