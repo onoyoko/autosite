@@ -4,7 +4,7 @@ you can use this project for free when:
 -	when you use this 3% of your profit from This product for charity;
 -	any used code that has a mark ref: with a domain was/is opensource
 
-This product is made by:(opensource using is free but do not remove the docs)
+This product is made by:(opensource using is free but do not remove the docs you can translate it )
 -	Lieven Roegiers BE 800726 311-56
 
 
@@ -14,6 +14,7 @@ install svn  http://subclipse.tigris.org/update_1.4.x/
 
 new =>other=> svn checkoutproject; put de link that you find on the project pages
 
+comment are when not English dutch you can translate if you do not understand http://translate.google.be/#nl|en|
 
 Using :
 -	DMVC: DATA MODEL VIEW CONTOLER(strikt)
