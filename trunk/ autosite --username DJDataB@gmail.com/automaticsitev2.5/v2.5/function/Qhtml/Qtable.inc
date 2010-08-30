@@ -5,11 +5,11 @@
 		private $tableX =0;
 		private $tableY =0;
 		Public function preset($head,$foot){
-			$this->tablehead =  $head
-			$this->tablefoot =  $foot
+			$this->tablehead =  $head;
+			$this->tablefoot =  $foot;
 		}
 		private function tableheaders($title,$arr){
-		    print"<script type='text/javascript' src='/webtoolkit.sortabletable.js'></script>")
+		    print"<script type='text/javascript' src='/webtoolkit.sortabletable.js'></script>";
 			print"<table><thead><tr><th colspan='$tableY'>$title</th></tr><tr>";
 			foreach ($arr as $value){
 			   print"<th class='c$tableY++'>$value</th>";
@@ -41,14 +41,14 @@
 		    }
 			print"</tr><tr><th colspan='$tableY'>$title</th></tr></tfoot></table>";
 		}
-		private trlineprinter($arr,$addtags = false){
-			if($tableX%2 =1){
-				$returnval ="<tr class="r1">";
+		private function trlineprinter($arr,$addtags = false){
+			if($tableX%2 == 1){
+				$returnval ="<tr class='r1''>";
 			}else{
 				$returnval ="<tr>";
 			}
-			$tableX++
-	    	if ($addtags){//!important! sneller als je geen de if niet in de foreach plaatst
+			$tableX++;
+	    	if($addtags){//!important! sneller als je geen de if niet in de foreach plaatst
 		        foreach ($arr as $value){
 				   $returnval .="<td>";
 			       tagmaker($value[0],$value[1]);
@@ -74,7 +74,7 @@
 	                $i=0  ;
 	            	}          
 			$i++; 
-                  endif;
+
 	    }
    }
 ?>
