@@ -28,7 +28,11 @@ $autosite['templates'] =$autosite['layout']."templates/";//
 $autosite['translations'] =$autosite['layout']."translations/";//
 $autosite['uploads'] =$autosite['layout']."uploads/";//
 $standartform="djs";
-$autosite['trueext']=array(".doc",".jpg",".txt");
+$autosite['trueext']=array(".doc",".jpg",".txt",".gif",".png");
+$views["templatevieuw"]= "./preparts/data_templatevieuw.inc";
+$views["gallery"]= "./preparts/data_gallery.inc";
+$views["table"]= "./preparts/data_table.inc";
+$views["XML"]= "./preparts/data_table.inc";
 /**
  * $formsdata['formname']
  * 		['items']=the items form the form

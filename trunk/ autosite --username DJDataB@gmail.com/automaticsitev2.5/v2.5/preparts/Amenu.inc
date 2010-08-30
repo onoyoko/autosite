@@ -16,7 +16,7 @@ if($autosite['hasclientjs']){
 		print("];\n ");
 		include($autosite['layout']."menusettings.inc");
 		//set the navigation
-		print("M_nav(M_replace('".$id."',' '));\n</script>");
+		print("M_nav(M_replace('".$content."',' '));\n</script>");
 }else {
 		$exts['inc']= array(".dat");
 		print("<div id='menuERROR' class='ERROR'>[ERROR:JS NOT FOUND]</div>\r\n");
