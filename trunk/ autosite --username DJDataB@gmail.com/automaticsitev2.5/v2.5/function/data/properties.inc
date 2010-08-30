@@ -6,17 +6,17 @@
  	* opensource http://code.google.com/p/autosite/ 
 	*/
 	/**
-	* @param Lieven Roegiers
+	* @param path 
 	* @return new properties()
 	*/
-	function getpropertiefile($path,$lang="",$name){
-		//print $autosite['translations']. "forms_".$autosite['lang'].".properties";
-		if(isexist_propertiefile($path,$lang,"forms")){
+	function getpropertiefile($path,$lang,$name){
+		//print $path.$autosite['translations']. "forms_".$lang.".properties exist:".isexist_propertiefile($path,$lang,$name);
+		if(isexist_propertiefile($path,$lang,$name)){
 				print"<!-- @LANGlocale:".$lang." IS USED !!!properties!!! -->";
-				return new properties($path,"_".$lang,"forms");
+				return new properties($path,"_".$lang,$name);
 		}else{
 				print"<!-- @LANGlocale:".$lang." IS NOT EXIST !!!properties!!! -->";
-				return new properties("./layout2/translations/","","forms");
+				return new properties("./layout2/translations/","",$name);
 		}
 	}
 	function isexist_propertiefile($filelocation,$locale,$name){
@@ -40,8 +40,9 @@
 		private function open_2write($mode='a+'){
 			return $this->is_filelocation() && $this->file=fopen($this->filelocation,'a+');
 		}
-		public function getproperties($tofind_keys){
+		public function getproperties($tofind_keys,$prefix=""){
 			$asoarr=array();
+            
 			if(!is_array($tofind_keys)){
 				print("[error]varkeys translations not found (properties.inc)");
 			}else{
@@ -50,9 +51,10 @@
 			    			$fline = fgets($this->file, 4096);
 			    			$pos = strpos($fline,$this->delemiter);
 			    			$key = substr($fline,0,$pos);
-			    			if($pos>1 && array_key_exists($key,$tofind_keys) ){
+                            $propertie = $prefix.$key;
+			    			if($pos>1 && array_key_exists($propertie,$tofind_keys) ){
 								$value = substr($fline,$pos+1);
-								$asoarr[$key]=$value;
+								$asoarr[$key]=str_replace(array("\r\n", "\n", "\r"), "",$value);
 							}
 					}
 				}
