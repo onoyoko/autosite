@@ -5,21 +5,23 @@
 	include('./generalvars.php');
 	include('./generaldatavars.php');
 	include($autosite['functions'].'data.inc');
-	$formname=(isset($_GET['id']))?addslashes($_GET['id']):'djs';
-	$formname=(isset($_POST['id']))?addslashes($_POST['id']):$formname;
+	$formname=(isset($_GET['content']))?addslashes($_GET['content']):'';
+	$formname=(isset($_POST['content']))?addslashes($_POST['content']):$formname;
 	$autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
+	$steplen = (isset ($_POST['step']))?addslashes($_POST['step']):0;//staplengte split in
 	$steplen = (isset ($_POST['steplen']))?addslashes($_POST['steplen']):10;//staplengte split in
 	//$step = (isset ($_POST['step']))//stap
 	$DS_filename = "./".$autosite['path']."databaseconection_ymlds2.xml";
 	$Errmsg['NL']['empty']="Het %errkey% veld werd niet ingevuld";
 	$Errmsg['NL']['fatal']="geen juiste data/Form doorgestuurd kijk form velden na!";
 	$datatosave = $_POST;
+	//print_r($_POST);
+	//print_r($_FILES);
 	$datatosave["date"] = date("l j F Y");
 	if(is_file($autosite['forms'].$formname.".vars")){
 		include($autosite['forms'].$formname.".vars");//print_r($formsdata[$formname]);
 	}
-	$attributen="?e=e";
-	$id = $formname;
+	$content = "".$formname;
 	include($autosite['functions']."users/User_data.inc");
 	include($autosite['functions']."users/User.inc");
 	session_start();
@@ -32,42 +34,50 @@
 		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<use only post>>>>>>>>>>>>>>>>>>>>>
 		//$_errors.= "LOGIN OR FORMLEVEL FREE<br />";
 		if (isset($_POST['action']) && $_POST['action'] == 'submitted'){
-				try{
-					//<<<<<<<<<<<<<<<<<<<<<<<<<<<<fileupload>>>>>>>>>>>>>>>>
-					addfilesatlink($datatosave);
+				try{//<<<<<<<<<<<<<<<<<<<<<<<<<<<<fileupload>>>>>>>>>>>>>>>>
+				    addfilesatlink($datatosave,$autosite['uploads'].$formname."/",$formsdata[$formname]);
 					$opslagruimte = new data($formsdata[$formname]);
 					$opslagruimte->setvalidationmsg($Errmsg['NL']);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::DEVELOPMENT);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::TEST);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::PRODUCTION);
 					$opslagruimte->initfile($autosite['private']);
+                    
 					$_errors.= $opslagruimte->save_line($datatosave,0,true);
 				}catch(Exception $e){
-					print_r($e);
+					//print_r($e);
 					//print $e->getMessage();
 					//array_merge(array("Form"=>"FORMname:".$formname),)
 					//print($autosite['private']);
 				}
+		}elseif(isset($_POST['action']) && $_POST['action'] == 'edit'){
+                   /* $opslagruimte = new data($formsdata[$formname]);
+					$opslagruimte->setvalidationmsg($Errmsg['NL']);
+					//$opslagruimte->initdatabase($DS_filename,DB_source::DEVELOPMENT);
+					//$opslagruimte->initdatabase($DS_filename,DB_source::TEST);
+					//$opslagruimte->initdatabase($DS_filename,DB_source::PRODUCTION);
+					$opslagruimte->initfile($autosite['private']);
+					//$_errors.= "".print_r(
+					$opslagruimte->update_line($datatosave,0,true);//."";*/
+		}elseif(isset($_POST['action']) && $_POST['action'] == 'delete'){
+			
 		}else{
-			//print "<h2>".$id."</h2>";
+		  
 		}
-	}//else{	$_errors .= "DATA sendoptions not availeble: %permissiondenied%";	}
+	}elseif(isset($_POST['action']) && $_POST['action'] == 'submitted'){
+		$_errors .= "%nopermission%";//nopermissiondenied DATA sendoptions not availeble:
+	}
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    VIEUW DATA      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
-	$vieuwas = (isset( $_GET['vieuwas'] ) ) ? $_GET['vieuwas'] : 'gallery';
+	$viewas = (isset( $_GET['viewas'] ) ) ? $_GET['viewas'] : '';
 	if ($formsdata[$formname]['vieuw']= true || (isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
-		if($vieuwas === "XML"){
-			header('Content-type: text/xml char');
-			print '<?xml version="1.0"?>'."\n";
-			print '<AUTOSITE><CONTENTTYPE>'.$formname.'</CONTENTTYPE>';
-			print '<URL>'.$_SERVER['PHP_SELF'].'</URL>';
-			print '<DATA>';
-			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
-			include_once("./preparts/data_xml.inc");
-			print '</DATA></AUTOSITE>';
-			die();
+		if($viewas === "XML"){
+			//include_once($autosite['functions']."Qhtml/Qvieuw.inc");
+            //header ("Content-Type:text/xml");
+			//include_once("./preparts/data_xml.inc");
+			die("[PRIVATE]");
 		}else{
-				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>				
 		include_once($autosite['layout']."head.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 			include_once("./preparts/Amenu.inc");
@@ -75,7 +85,7 @@
 			include_once ($autosite['layout']."toolbar.inc");
 			include_once ($autosite['layout']."aditudes.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
-	print'<div id="container" class="clearfix">';
+print'<div id="container" class="clearfix">';
 		include_once($autosite['functions']."Qhtml/Qvieuw.inc");
 		include_once($autosite['functions']."data/properties.inc");
 			if (!isset($properties)){
@@ -88,26 +98,30 @@
 		if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
 				include_once("./preparts/data_form.inc");
 		}
-				switch ($vieuwas){
-						case "formanddata":						
-							include_once("./preparts/data_templatevieuw.inc");
-							break;
-						case "gallery":
-							include_once("./preparts/data_gallery.inc");
-							break;
-						case "table":
-							include_once("./preparts/data_table.inc");
-							break;
-						default:
-							include_once("./preparts/data_templatevieuw.inc");
-				}
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	print'</div>';
-			include_once ($autosite['layout']."foot.inc");
+        print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
+		if(array_key_exists($viewas,$views)){
+			include_once($views[$viewas]);
+		}else{
+			include_once("./preparts/data_templatevieuw.inc");
 		}
+        	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+         ?>
+            </div>
+            <div class="views">
+            <form method="post" action="<?php print $_SERVER['PHP_SELF'].$attributen;?>" enctype="text/plain">
+            <input type="hidden" name="selecteditem"  id="selecteditem"/>
+        <?php    
+	/*	foreach($views as $key=>$value){
+			print" <a href='".$_SERVER['SELF'].$attributen."&viewas=$key' class='viewsitem'>$key</a>";
+		}*/
+	   print'</form></div>';
+			include_once ($autosite['layout']."foot.inc");
+		?>
+        <!-- @OVERRIDE STYLE -->
+        <link rel='stylesheet' href='<?php print $autosite['layout'];?>css/style.css'  type='text/css' />
+        <!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->
+        <?php
+        }
 
 	}
 ?>
-<!-- @OVERRIDE STYLE -->
-<link rel='stylesheet' href='<?php print $autosite['layout'];?>css/style.css'  type='text/css' />
-<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->

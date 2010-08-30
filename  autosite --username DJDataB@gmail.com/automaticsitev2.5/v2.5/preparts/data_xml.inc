@@ -1,5 +1,10 @@
 <?php
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Vieuw data>>>>>>>>>>>>>>>>
+			print '<?xml version="1.0" encoding="ISO-8859-15"?>'."\n";
+			print '<AUTOSITE><CONTENTTYPE>'.$formname.'</CONTENTTYPE>';
+			print '<URL>'.$_SERVER['PHP_SELF'].$attributen.'</URL>';
+			print '<DATA>';
+			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
     $string = " ";
     $formfields = $formsdata[$formname]['items'];
 		if(is_array($formfields)){
@@ -22,4 +27,5 @@
 		print "<!-- NO VIEUWS -->";
 	}
 	print "<!-- preparts=>XML -->";
+	print '</DATA></AUTOSITE>';
 ?>
