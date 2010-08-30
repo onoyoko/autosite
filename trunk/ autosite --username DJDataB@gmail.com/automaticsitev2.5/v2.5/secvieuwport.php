@@ -25,17 +25,13 @@ $kkey=( isset( $_GET['key'] ) ) ? addslashes( $_GET['key'] ) : NULL ;
 $handeling = (isset($_GET['handeling'])) ? addslashes($_GET['handeling']) : "beheer";
 $autosite['lang']	= ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 $path = $handeling.'/'.$lang.'/'	;
-$id=(isset($_GET['id']))? addslashes($_GET['id'] ) : 'home' ;
-$id=(isset($_POST['id']))? addslashes($_POST['id'] ) : $id ;
+$content=(isset($_GET['content']))? addslashes($_GET['content'] ) : 'home' ;
+$content=(isset($_POST['content']))? addslashes($_POST['content'] ) : $content ;
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
-$attributen="?";
-$attributen.=(isset($id))? "id=".$id : "";
-$attributen.=(isset($load))? "&upload=".$load : "&upload=0";
-
 //<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
 if(isset($user)&& $user->islogin()){
  	include_once($autosite['layout']."head.inc");
- 	userslog($handeling."=>".$id,$user->getpath());
+ 	userslog($handeling."=>".$content,$user->getpath());
  	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 	include_once("./preparts/Amenu.inc");
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Toolbar by login>>>>>>>>>>>>>>>>>>>
@@ -45,7 +41,7 @@ if(isset($user)&& $user->islogin()){
 		if(isset($handeling)&& $handeling == "save"){
 			$html = (isset($_POST['html'])) ? $_POST['html']: null;
 			$page = new QPage();
-			if ($page->saveasfile($autositepath,$id,$html)){
+			if ($page->saveasfile($autositepath,$content,$html)){
 				print "<h1> saved </h1>";
 			}else{
 				print"<h1> not saved </h1>";

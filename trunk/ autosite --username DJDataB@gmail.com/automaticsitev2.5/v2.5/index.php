@@ -13,7 +13,7 @@ if(!$underconstruct){
 	print"<body>";
 	print"<noframes>";
 	include($autosite['error']."ernoframes.inc");
-	print "</noframes>\n";
+	print "</noframes> \n";
 }else{
 	include_once($autosite['layout']."head.inc");
 	print"<div id='container'>";
