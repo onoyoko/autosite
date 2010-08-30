@@ -1,7 +1,7 @@
 <?PHP
  /**
  * @author Lieven Roegiers
- * @copyright 2009 
+ * @copyright 2007 refactor 2009
  * @CMS autosite
  * opensource http://code.google.com/p/autosite/
  */
@@ -13,38 +13,60 @@ class csv_plus implements tosave{
     private $minlivetime =0;
 	private $file;
 	private $errornr;
-	/**
-	* @author Lieven Roegiers
-	* @copyright 2007 refactor 2009
-	*/
+	/** 
+	 * @param mixed $pathname
+	 * @param mixed $filelocation
+	 * @param integer $lifetime
+	 * @return
+	 */
 	public function __construct($pathname,$filelocation,$lifetime = 0){
 		$this->filelocation=$pathname.$filelocation;
 		$this->minlivetime = $lifetime;//(1 * 1 * 60 * 60);
 	}
+	/**
+	 * @param string $mode
+	 * @return
+	 */
 	private function open($mode='a+'){
 		return($this->is_readytouse()&& $this->file = fopen($this->filelocation,$mode)); //File!found E53 
 	}
+	/**
+	 * @param mixed $arrData
+	 * @param bool $del_oldlines
+	 * @return
+	 */
 	function save_line($arrData,$del_oldlines=true){
 		if ($del_oldlines){
 			$this->del_oldlines();
 		}
 		$timestamp = ($this->minlivetime>0)?(time()+$this->minlivetime).$this->Delimiter:"";
 		$datastring =" ".$timestamp.implode($this->Delimiter,$arrData);//space on the front is for search
-		$datastring =nl2br($datastring)."\n";
+		$datastring = $this->Aln2br($datastring)."\n";
 		return ($this->open()&& fputs($this->file, $datastring));
 	}
+	/**
+	 * @return bool
+	 */
+    private function Aln2br($txt){
+        return strtr($txt, array("\r\n" => '<br/>', "\r" => '<br/>', "\n" => '<br/>'));
+    }
+    private function Abr2ln($txt){
+        return strtr($txt, array("<br />" => "\n", "<br/>" => "\n","<br  />" => "\n"));
+    }
 	public function is_readytouse(){
 		return(isset($this->filelocation)&& is_file($this->filelocation));
 	}
 	/**
-	* @param datatype $source
-	*/
+	 * @param mixed $source fname
+	 * @param string $destprefix
+	 * @return bool
+	 */
 	private function bakup($source,$destprefix=".BAK"){
 		return (is_file($source) && (filesize($source)>0)&& !copy($source, $source.$destprefix));
 	}
-	/**
-	* 
-	*/
+    /**
+	 * @return void
+	 */
 	private function del_oldlines(){
 		if ($this->is_readytouse()&& filesize($this->filelocation)>$this->maxfilesize){
 			if ($this->bakup($this->filelocation)){//rename($path.$file, $path.$bakfile);
@@ -62,6 +84,10 @@ class csv_plus implements tosave{
 			}
 		}	
 	}
+	/**
+	 * @param mixed $Fname
+	 * @return
+	 */
 	function HTML_listvieuw($Fname){
 		$row = 1;
 		$fp = fopen ($fname,"r");
@@ -86,6 +112,11 @@ class csv_plus implements tosave{
 		    }
 		}	
 	}*/
+	/**
+	 * @param mixed $findstring
+	 * @param integer $resul
+	 * @return
+	 */
 	function find_line($findstring,$resul=1){
 		if ($this->open()){
 			while (!feof($this->file))
@@ -104,6 +135,9 @@ class csv_plus implements tosave{
 			}
 		}
 	}
+	/**
+	 * @return
+	 */
 	function __destruct(){
 		//fclose ($this->file);
 	}	 	
