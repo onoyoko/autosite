@@ -6,6 +6,7 @@
  * @info write a variabele Items (path items)[key,value]
  */
 include($autosite['functions']."data/FileScanner.inc");
+include_once($autosite['functions']."data/properties.inc");
 class Menu{
 	private $lang;
     private $path;//path van de menu
@@ -15,9 +16,13 @@ class Menu{
     private $items =array();
     private $jsvarname = "Items";
     private $id=0;
+    private $properties;
+    private $translations;
     public function Menu($lang) {//./Layout is for security
     	$this->lang = $lang;
 	    $this->filename = "Menu.".$lang.".dat";
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<take the properties vb(forms_NL.properties)>>>>>>>>>>>>>>>>		
+		$this->properties = getpropertiefile($autosite['translations'],$this->lang,"forms");
 	    print"<!-- menu -->";
 	}
     /**
@@ -70,16 +75,17 @@ class Menu{
         }
  	}
 	public function Generate_menu($has_clientjs=true){
+	       $this->translations =$this->gettranslations($this->items);
             $this->path = $path;
         	foreach($this->items as $page => $to){	
 			   if(is_array($to)){
 			   		$this->save_Item(++$this->id,$page);
 			   		foreach($to as $page2 => $to){
-			   			$this->save_Item("^".$this->id,$to,"id=".$page."/".$page2."&amp;lang=".$this->lang,$page2);
-			   			$this->save_robotitem($to,"id=".$page."/".$page2."&amp;lang=".$this->lang);
+			   			$this->save_Item("^".$this->id,$to,"content=".$page."/".$page2."&amp;lang=".$this->lang,$page2);
+			   			$this->save_robotitem($to,"content=".$page."/".$page2."&amp;lang=".$this->lang);
 	  		 		}
 	  		 	}else{
-	  		 		$this->save_Item(++$this->id,$to,"id=".$page."&amp;lang=".$this->lang,$page);	
+	  		 		$this->save_Item(++$this->id,$to,"content=".$page."&amp;lang=".$this->lang,$page);	
 	  		 	}
 		 	}
 		  return $this->getif_menu_exist($has_clientjs);
@@ -106,16 +112,24 @@ class Menu{
     private function sethomeatfirst(){
     }
     private function test(){
-    	  print "<br><br>print start<pre>";
+    	  print "<br><br>print start<div class='ERROR'><pre>";
 		  print_r($this->items);
-		  print "</pre><br>print start<br>";
+		  print "</pre><br></div>print start<br>";
     }
-    private function save_Item($id,$to,$attributen=null,$label){
+    private function save_Item($content,$to,$attributen=null,$label){
     	$toloc=(isset($to))?",'".$to."'":"";
-		$this->save_line($this->filename,"['".$id."-'".$toloc.",'".$attributen."','".$label."','-'],");
+		$this->save_line($this->filename,"['".$content."-'".$toloc.",'".$attributen."','".((isset($this->translations[$label]))?$this->translations[$label]:"%".$label."%")."','-'],");
  	}
  	private function save_robotitem($to,$attributen){
-    	$this->save_line("robots.txt", "Allow: /".$to.$attributen."\n");
+        if (!$file2 = fopen("robots.txt", 'a+')) {
+            return false;
+            exit ;
+        }
+        if (!fwrite($file2, "Allow: /".$to.$attributen."\n")) {
+            return false;
+            exit ;
+        }
+        return true;
  	}
     private function save_line($Fname, $data) {
         //print "printdata '".$data."'naar $Fname";
@@ -134,10 +148,17 @@ class Menu{
             rename($this->filename, $this->filename.".bak");
         }
     }
-    function Menu_refrech() {
+    public function Menu_refrech() {
         if (unlink($file3)) {
             $this->menu_write();
         }
+    }
+    private function gettranslations($keys){
+        	if (isset($this->properties)){
+     		    return $this->properties->getproperties($keys,"menu.");
+            }else {
+                return null;
+            }
     }
 }
 ?>
