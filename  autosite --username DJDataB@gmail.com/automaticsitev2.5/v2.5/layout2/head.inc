@@ -7,15 +7,15 @@
 	 * @CMS autosite
 	 */
 	 -->
-	<title>AUTO SITE</title>
+	<title><?php print $autosite['title']?></title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<meta name="GENERATOR" content="PHP Designer 2009 profesional, @CMS autosite By Lieven Roegiers" />
 	<meta name="ROBOTS" content="INDEX" />
-	<meta name="DESCRIPTION" content="AUTOMATIC SITE" />
+	<meta name="DESCRIPTION" content="<?php print $autosite['title']?>" />
 	<meta name="KEYWORDS" content="content,dynamic site" />
 	<meta name="TITLE" content="keyword1, keyword2" />
 	<meta name="LANGUAGE" content="nederlands" />
-	<meta name="revisit-after" content="30 days" />
+	<meta name="revisit-after" content="10 days" />
 	<meta name="rating" content="General" />
 	<meta name="REPLY-TO" content="info@djdb.be" />
 	<meta name="WEB_AUTHOR" content="Lieven Roegiers" />
@@ -26,6 +26,15 @@
           body { height: 100%; }
       </style>
     <![endif]-->
+    <!--[if IE]><style>
+        .Aproductitem span, .Aproductitem div {zoom: 1;}
+</style><![endif]-->
+<!--[if lt IE 5.5000]><style>
+.Aproducitem span, .Aproductitem div {
+	height: 0;
+	vertical-align: bottom;
+}
+</style><![endif]-->
     
 </head>
 	<!-- @STYLE --> 
@@ -48,8 +57,8 @@
 	    	print '<body>';
 	    }
 	    $attributen="?";
-		$attributen.=(isset($id))? "id=".$id : "";
+		$attributen.=(isset($content))? "content=".$content : "";
 		$attributen.=(isset($load))? "&upload=".$load : "&upload=0";
 		$attributen.=(isset($autosite['lang']))? "&lang=".$autosite['lang'] : "";
 	?>
-	
+	<div id="topimg"></div>
