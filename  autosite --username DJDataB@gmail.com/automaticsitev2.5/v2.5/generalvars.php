@@ -1,6 +1,5 @@
 <?php
 /**
- * copyright = a right to coppy
  * @author Lieven Roegiers
  * @copyright 2004
  * @copyright 2008 
@@ -21,7 +20,7 @@ $offlinedebug = true;//TODO delete before upload 1==>>>
 		//$_SERVER['PHP_SELF']="http://localhost:8080/workspacesite";//to make a projectname autosite on your easyphp
 		//print $_SERVER['PHP_SELF'];
 
-	if ($_SERVER["HTTP_HOST"]!="www.jouwdomein.be"&&$_SERVER["HTTP_HOST"]!="localhost"){
+	if ($_SERVER["HTTP_HOST"]!="www.jouwdomein.be"&&$_SERVER["HTTP_HOST"]!="localhost"&&$_SERVER["HTTP_HOST"]!="120.114.1.4"){
 		//print"ERROR NO access to this file";
 		die("ERROR INVALID domein or copy this to generalvars =>".$_SERVER["PHP_SELF"]);//security
 	}

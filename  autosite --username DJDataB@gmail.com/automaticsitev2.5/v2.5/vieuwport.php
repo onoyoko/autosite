@@ -10,8 +10,8 @@ include_once($autosite['layout']."head.inc");
  * @phpvieuwport
  * @CMS autosite
  */
-$id = (isset ($_GET['id']))?addslashes($_GET['id']):'home';
-$id = (isset ($_POST['id']))?addslashes($_POST['id']):$id;
+$content = (isset ($_GET['content']))?addslashes($_GET['content']):'home';
+$content= (isset ($_POST['content']))?addslashes($_POST['content']):$content;
 $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 		include_once("./preparts/Amenu.inc");
@@ -19,11 +19,11 @@ $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 		include_once($autosite['layout']."toolbar.inc");
 		include_once($autosite['layout']."aditudes.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
-		$selectincfile =$autosite['optiepath'].$autositelang[$autosite['lang']].$id.".inc";//prefunctiefile
-		$selectdatfile =$autositelang[$autosite['lang']].$id.".dat";//datafile
+		$selectincfile =$autosite['optiepath'].$autositelang[$autosite['lang']].$content.".inc";//prefunctiefile
+		$selectdatfile =$autositelang[$autosite['lang']].$content.".dat";//datafile
 		print'<div id="container" class="clearfix">';
 		if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :Do not trust . Blocked BY DEVELOPER"); }
-		if (isset($id)) {
+		if (isset($content)) {
 		    if (is_file($selectincfile) && is_file($selectdatfile)) {
 		        //<<<<<<<<<<<<<<<<<<<<<<<page with a function>>>>>>>>>>>>>>>>>>>>>>>>>
 		        include_once($selectdatfile);

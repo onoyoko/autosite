@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./factuur_V0.2.xsl" type="text/xsl"?>
+
+<!-- 
+/*
+*<!DOCTYPE facturen[
+	<!ELEMENT facturen(factuur*)>
+	<!ELEMENT factuur(koper,verkoper,generaldata,items,prijs)>
+	<!ELEMENT koper(naam,adres)>
+	<!ELEMENT verkoper(naam,adres)>
+	<!ELEMENT naam(#PCDATA)>
+	<!ELEMENT adres(#PCDATA)>
+	<!ELEMENT generaldata(link,nr)>
+	<!ELEMENT link(barcode,facnr)>
+	<!ELEMENT barcode(#PCDATA)>
+	<!ELEMENT facnr(#PCDATA)>
+	<!ELEMENT nr(#PCDATA)>
+	<!ELEMENT items(item)>
+	<!ELEMENT item(aantal,description,btw,stukprijs)>
+	<!ELEMENT aantal(#PCDATA)>
+	<!ELEMENT description(#PCDATA)>
+	<!ELEMENT btw(#PCDATA)>
+	<!ELEMENT stukprijs(#PCDATA)>
+	<!ELEMENT calc(subtotal,btw,total)>
+	<!ELEMENT subtotal(#PCDATA)>
+	<!ELEMENT btw(#PCDATA)>
+	<!ELEMENT total(#PCDATA)>	
+]>
+*/
+-->
+<factuur>  
+	<koper>
+		<naam>naamkoper</naam>
+		<adres>
+		adress verkoper
+		BE-0000 mijndorp	
+		</adres>
+	</koper>
+	<verkoper>
+	    <naam>naamverkoper</naam>
+		<adres>
+		adress verkoper
+		BE-0000 mijndorp
+		</adres>
+	</verkoper>
+	<link>
+		<barcode>1111000111</barcode>
+		<facnr>120</facnr>
+		<hyperlink>http:www.mijnsite.be</hyperlink>
+	</link>
+	<items>
+	    <item>
+		   <aantal>10
+		   </aantal>
+	       <description>producten met veelzijdige kenmerken
+		   </description>
+	   	   <stukprijs>10euro
+		   </stukprijs>
+		   <linetotal>100
+		   </linetotal>
+		</item>
+	    <item>
+		   <aantal>5
+		   </aantal>
+	       <description>producten met minder kenmerken
+		   </description>
+	   	   <stukprijs>5euro
+		   </stukprijs>
+		   <linetotal>25
+		   </linetotal>		
+		</item>
+	</items>
+	<calc>
+ 		<subtotaal>125
+		</subtotaal>
+	    <btw>0
+		</btw>
+	   	<totaal>125
+		</totaal>
+	</calc>
+</factuur>
+
+
+
+
+	

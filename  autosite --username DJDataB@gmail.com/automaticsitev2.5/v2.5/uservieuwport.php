@@ -26,8 +26,6 @@ if ($handeling == "Users"){
 }else{
 	$get=(isset( $_GET['id'] )) ? addslashes($_GET['id'] ) : 'a' ;
 }
-									
-
 $autosite['lang']	= ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
 $attributen="?";
