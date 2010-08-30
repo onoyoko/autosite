@@ -1,6 +1,6 @@
 <?php
 	class IPcfg{
-		$arr
+		private $arr;
 		/**
 		 * info about a IP address.
 		 */
