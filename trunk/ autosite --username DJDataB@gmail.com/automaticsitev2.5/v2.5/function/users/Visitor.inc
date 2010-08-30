@@ -16,11 +16,10 @@ function getsessionvisitor(){
 	return(isset($_SESSION['visitor']))?unserialize($_SESSION['visitor']):null;
 }
 class Visitor {
-
 	private $remoteip;
 	private $enabled;
-	private $isheajack
-	private $releasetime = 0 ;
+	private $isheajack;
+	private $releasetime=0;
 	function Visitor(){
 		session_start();
 	}
