@@ -19,6 +19,7 @@
  				$this->headers["Reply-To:"]= "$from";
  			}else{
 			   //$this=null;//kill myself
+			   die("spam filter");
  			}
 
  		}
@@ -65,7 +66,7 @@
 		}
 		private function is_headerinject($from){
 			//%0D%0A HTML-equivalent =>    \r\n
-			return pos($var,"%0D%0A")||pos($var,"%0D%0Abcc:");
+			return pos($var,"%0D%0A")||pos($var,"%0D%0Abcc:")||pos($var,"telser");
 		}
 	}
 ?>
