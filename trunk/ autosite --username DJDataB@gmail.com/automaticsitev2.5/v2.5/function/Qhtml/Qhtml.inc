@@ -95,5 +95,4 @@ class oldstuf{
              print"</select>";
     }
 }
- 	
-?> 
+?>
