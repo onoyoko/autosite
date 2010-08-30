@@ -68,24 +68,19 @@
 					//$this->test($data);
 					if($validator->is_valid()){
 						if ($this->opslagplaats->save_line($data)){
-							return "saved ";
+							return "%saved%";
+						}else{
+						    return "%not saved%%some errors%".$validator->geterrors();
 						}						
 					}else{
 						//only if there is a error
-						//return $validator->geterrors();
-						if(isset($this->validationmsg)){
-							while(list($key, $val) = each($this->errormsgs)){
-			    				print "key".$this->validationmsg[$key];
-								print "value".$this->validationmsg[$value];
-							}
-						}
-						return "some errors";
+						return "%some errors%".print_r($validator->geterrors())."%E%";
 					}
 				}else{
 					return "must not validate";
 				}
 			}else{
-				return "[error]DATA.inc place to save data not ready";
+				return "[error:DATA.inc]%not ready%";//place to save is not ready
 			}
 		}
 		/**
