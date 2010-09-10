@@ -5,10 +5,15 @@
  	* @CMS autosite
  	* opensource http://code.google.com/p/autosite/ 
 	*/
+
 	/**
-	* @param path 
-	* @return new properties()
-	*/
+	 * getpropertiefile()
+	 * 
+	 * @param mixed $path the path where the translation file is
+	 * @param mixed $lang lang = locale like(NL, FR) and is like form_FR.properties 
+	 * @param mixed $name name of the file
+	 * @return new properties()
+	 */
 	function getpropertiefile($path,$lang,$name){
 		//print $path.$autosite['translations']. "forms_".$lang.".properties exist:".isexist_propertiefile($path,$lang,$name);
 		if(isexist_propertiefile($path,$lang,$name)){
@@ -19,6 +24,13 @@
 				return new properties("./layout2/translations/","",$name);
 		}
 	}
+	/**
+	 * isexist_propertiefile()
+	 * @param mixed $filelocation the path where the translation file is
+	 * @param mixed $locale lang = locale like(NL, FR) and is like form_FR.properties 
+	 * @param mixed $name name of the file
+	 * @return bool
+	 */
 	function isexist_propertiefile($filelocation,$locale,$name){
 		return is_file($filelocation.$name."_".$locale.".properties");
 	}	
@@ -27,19 +39,52 @@
 	    private	$file;
 	    private	$toget=array();//!important!speed you if you not check of it is a array
 	    private $delemiter = " ";
+		/**
+		 * properties::__construct()
+		 * 
+    	 * @param mixed $filelocation the path where the translation file is
+    	 * @param mixed $locale lang = locale like(NL, FR) and is like form_FR.properties 
+    	 * @param mixed $name name of the file
+		 * @param integer $lifetime not used at this time
+		 * @return
+		 */
 		function __construct($filelocation,$locale,$name,$lifetime = 0){
 			$this->filelocation= $filelocation.$name.$locale.".properties";
 			//$this->test();
 		}
+		/**
+		 * properties::is_filelocation()
+		 * 
+		 * @return bool
+		 */
 		private function is_filelocation(){
 			return(isset($this->filelocation)&& is_file($this->filelocation));
 		}
+		/**
+		 * properties::open()
+		 * 
+		 * @param string $mode
+		 * @return bool
+		 */
 		private function open($mode='r'){
 			return $this->is_filelocation() && $this->file=fopen($this->filelocation,'r');
 		}
+		/**
+		 * properties::open_2write()
+		 * 
+		 * @param string $mode
+		 * @return bool
+		 */
 		private function open_2write($mode='a+'){
 			return $this->is_filelocation() && $this->file=fopen($this->filelocation,'a+');
 		}
+		/**
+		 * properties::getproperties()
+		 * 
+		 * @param mixed $tofind_keys
+		 * @param string $prefix
+		 * @return array(key=>value)
+		 */
 		public function getproperties($tofind_keys,$prefix=""){
 			$asoarr=array();
             
@@ -62,9 +107,22 @@
 			}
 			return $asoarr;	
 		}
+		/**
+		 * properties::isexist()
+		 * //TODO underconstruction
+		 * @param mixed $label
+		 * @return bool not used at this time
+		 */
 		private function isexist($label){//
 			return true;
 		}
+		/**
+		 * properties::find_value()
+		 *  //TODO underconstruction
+		 * @param mixed $str_tofind
+		 * @param mixed $bufferarr
+		 * @return return if exist in list else
+		 */
 		public function find_value($str_tofind,&$bufferarr){
 			if (array_key_exists($bufferarr,$str_tofind)){
 				return $bufferarr[$str_tofind];
@@ -82,10 +140,22 @@
 				}	
 			}	
 		}
+		/**
+		 * properties::test()
+		 * 
+		 * @return 
+		 */
 		private function test(){
 			print("debug<br />");
 			print($this->filelocation ."is".$this->is_filelocation().'<br />');
 		}
+		/**
+		 * properties::test2()
+		 * 
+		 * @param mixed $keyarr
+		 * @param mixed $foundarr
+		 * @return
+		 */
 		private function test2($keyarr,$foundarr){
 			print("debug<br />");
 			print_r($keyarr);
@@ -93,6 +163,11 @@
 			print_r($foundarr);
 			print("<br />");
 		}
+		/**
+		 * properties::__destruct()
+		 * 
+		 * @return
+		 */
 		function __destruct(){
 			    $this->file=null ;	
 		}	
