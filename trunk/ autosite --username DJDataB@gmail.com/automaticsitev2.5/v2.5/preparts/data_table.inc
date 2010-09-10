@@ -1,6 +1,5 @@
 <?php
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Vieuw data>>>>>>>>>>>>>>>>
-
     if($formsdata[$formname]['vieuw']==true){
 		$formfields = $formsdata[$formname]['items'];
 		print"<script type='text/javascript' src='".$autosite['javascript']."table.sort.js'>
@@ -32,7 +31,15 @@
 				$vieuw->addtagitems($overroletemplate[$formname]);
 			}
 			if(is_file($autosite['private'].$formsdata[$formname]['name'].".csv")){
-				$vieuw->getfrom_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items']);	
+			 	
+				$count = $vieuw->getfrom_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items'],$step,$steplen);
+                $i = $count/$steplen;
+                print '<div class"paginato">ddd';
+                
+                for($i=1;$i==0;--$i){
+                    print" <a href='".$_SERVER['SELF'].$attributen."&viewas=$key' class='viewsitem'>-[$key]-</a>";
+                }
+                print '</div>';
 			}else{
 				print"<!--NO DATA-->";
 			}
@@ -41,5 +48,4 @@
 		print "<!-- NO VIEUWS -->";
 	}
 	print "<!-- preparts=>tablevieuw -->";
-
 ?>

@@ -32,7 +32,8 @@ $autosite['trueext']=array(".doc",".jpg",".txt",".gif",".png");
 $views["templatevieuw"]= "./preparts/data_templatevieuw.inc";
 $views["gallery"]= "./preparts/data_gallery.inc";
 $views["table"]= "./preparts/data_table.inc";
-$views["XML"]= "./preparts/data_table.inc";
+$views["XML"]= "./preparts/data_xml.inc";
+$views["RSS"]= "./preparts/data_rss.inc";
 /**
  * $formsdata['formname']
  * 		['items']=the items form the form
@@ -43,13 +44,6 @@ $views["XML"]= "./preparts/data_table.inc";
 */
 $today=date("l j F Y");
 
-$formsdata['nota']['items']=array("naam"=>"","mail"=>"","date"=>"","msg"=>"","submit"=>"");
-$formsdata['nota']['tovalid']=array("naam","mail","msg");
-$formsdata['nota']['type']="file";
-$formsdata['nota']['name']="guestbook";
-$formsdata['nota']['title']="sign here";
-$formsdata['nota']['vieuw']=true;
-$formsdata['nota']['loginniveau']=111;
 
 $xmlplugs['xmlcv']['items']=array("test"=>"");
 $xmlplugs['xmlcv']['tovalid']=array("test"=>"");
@@ -59,13 +53,6 @@ $xmlplugs['xmlcv']['type']="file";
 $xmlplugs['xmlcv']['dtd']="???";
 $xmlplugs['xmlcv']['loginniveau']=0;
 
-$xmlplugs['rss']['items']=array("test"=>"");
-$xmlplugs['rss']['tovalid']=array("test"=>"");
-$xmlplugs['rss']['vieuw']=false;//do not vieuw new data
-$xmlplugs['rss']['name']="rssin";
-$xmlplugs['rss']['type']="file";
-$xmlplugs['rss']['dtd']="???";
-$xmlplugs['rss']['loginniveau']=222;
 
 $A_vmbridge['j2ee'];
 $A_vmbridge['j2ee'];

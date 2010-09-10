@@ -83,6 +83,35 @@
 				return "[error:DATA.inc]%not ready%";//place to save is not ready
 			}
 		}
+        		/**
+		 * @param $aso_arr array key=>value
+		 * @param $key always 0 this is for a use with array_walk
+		*/
+		public function update_line(&$aso_arr,$key,$dovalidation = true ){
+			if($this->isopslagplaats){
+				if($dovalidation){
+					$validator = new valid();
+                    $data['formname']=$this->forminf['name'];
+					$data['time']=($this->minlivetime>0)?(time()+$this->minlivetime).$this->Delimiter:"";
+					$data = $validator->dovalidation($aso_arr,$this->forminf);
+					//$this->test($data);
+					if($validator->is_valid()){
+						if ($this->opslagplaats->update_line($data)){
+							return "%saved%";
+						}else{
+						    return "%not saved%%some errors%".$validator->geterrors();
+						}						
+					}else{
+						//only if there is a error
+						return "%some errors%".print_r($validator->geterrors())."%E%";
+					}
+				}else{
+					return "must not validate";
+				}
+			}else{
+				return "[error:DATA.inc]%not ready%";//place to save is not ready
+			}
+		}
 		/**
 		 * @param $aso_arr byrefence
 		*/
