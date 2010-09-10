@@ -51,7 +51,7 @@ class csv_plus implements tosave{
         return strtr($txt, array("\r\n" => '<br/>', "\r" => '<br/>', "\n" => '<br/>'));
     }
     private function Abr2ln($txt){
-        return strtr($txt, array("<br />" => "\n", "<br/>" => "\n","<br  />" => "\n"));
+        return strtr($txt, array("<br />" => "\n", "<br/>" => "\n"));
     }
 	public function is_readytouse(){
 		return(isset($this->filelocation)&& is_file($this->filelocation));
@@ -62,6 +62,12 @@ class csv_plus implements tosave{
 	 * @return bool
 	 */
 	private function bakup($source,$destprefix=".BAK"){
+		return (is_file($source) && (filesize($source)>0)&& !copy($source, $source.$destprefix));
+	}
+    /**
+	 * @return void
+	 */
+ 	private function add($source,$destprefix=".BAK"){
 		return (is_file($source) && (filesize($source)>0)&& !copy($source, $source.$destprefix));
 	}
     /**
@@ -115,9 +121,32 @@ class csv_plus implements tosave{
 	/**
 	 * @param mixed $findstring
 	 * @param integer $resul
-	 * @return
+	 * @return string line
 	 */
 	function find_line($findstring,$resul=1){
+		if ($this->open()){
+			while (!feof($this->file))
+	    		{$line = fgetcsv($this->file,1024,",");
+	    			if(is_array ($line)){
+						if (!$pos = array_search($findstring,$line )){ 
+	     				//print_r($line); //niet gekozen items	
+	     				}else{
+	     					return  $line ;
+	     					exit;	
+						}
+	     			}else{
+						//fun_error(381);//Invalid array
+					}
+	 		$line=""; 
+			}
+		}
+	}
+    	/**
+	 * @param mixed $findstring
+	 * @param integer $resul
+	 * @return string line
+	 */
+	function pos_line($findstring,$resul=1){
 		if ($this->open()){
 			while (!feof($this->file))
 	    		{$line = fgetcsv($this->file,1024,",");
