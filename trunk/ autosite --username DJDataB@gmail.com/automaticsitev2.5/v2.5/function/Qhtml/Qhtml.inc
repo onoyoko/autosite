@@ -63,7 +63,6 @@ if (!function_exists('Qtagmaker')){//include_once its when it is include in the 
 	    }
 	}
 }
-
 //hidden class
 class Qhtml{
  		
