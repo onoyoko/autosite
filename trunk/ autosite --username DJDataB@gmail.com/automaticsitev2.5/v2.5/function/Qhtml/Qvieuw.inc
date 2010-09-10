@@ -45,10 +45,10 @@
 			
 		}
 		function getfrom_csv($filename,$taglist,$from=0,$steplen=20){
-			$row = 2;
+			$row = 1;
 			$gbfile = fopen($filename,'r');
 			//TODO if no template print table
-            $to = $from + $steplen+1;
+            $to = $from + $steplen;
 			while (!feof($gbfile)){
 				$fileline=fgets($gbfile,1024);
                 if($row>$from &&$row<$to||$to==0){
