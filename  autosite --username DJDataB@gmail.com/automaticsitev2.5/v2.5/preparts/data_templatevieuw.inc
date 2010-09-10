@@ -11,7 +11,7 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
 	}
 	if(is_file($autosite['private'].$formsdata[$formname]['name'].".csv")){
             $BROL =$step*$steplen;
-            $count = $vieuw->getfrom_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items'],$BROL,$steplen);
+            $count = $vieuw->getfrom_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items'],$BROL,$steplen+1);
             print '<div class="paginator"><h2>count ' .$BROL.'=>'.$steplen.'counter ' . $counter;
             for($i=0;$i<ceil($count/$steplen);$i++){
                 print" <a href='".$_SERVER['SELF'].$attributen."&step=$i&steplen=$steplen' class='viewsitem'>-[$i ".($i)*$steplen."%&gd; ".($i+1)*$steplen."/$count ]-</a>";
