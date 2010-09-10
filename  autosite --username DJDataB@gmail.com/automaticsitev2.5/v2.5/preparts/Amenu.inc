@@ -7,6 +7,7 @@ if($autosite['hasclientjs']){
 			<script type="text/javascript">
     		<?php
     	$exts['inc']= array(".dat");
+        $forms['inc']= array(".vars");
 		print("var Items = [");
 		if(!$menu->getif_menu_exist(true)){
 			$menu->createMNUitemsfrom_filesystem($autositelang[$autosite['lang']],"vieuwport.php",$exts);
@@ -23,7 +24,7 @@ if($autosite['hasclientjs']){
 		print("<div  id='menu' class='mnutop'>\r\n");
 		if(!$menu->getif_menu_exist($hasclientjs)){
 			$menu->createMNUitemsfrom_filesystem($autositelang[$autosite['lang']],"vieuwport.php",$exts);
-			$menu->createMNUitemsfrom_filesystem($autosite['forms'],"datavieuwport.php",array("from"));
+			$menu->createMNUitemsfrom_filesystem($autosite['forms'],"datavieuwport.php",$forms);
 			$menu->additems($shop['prod_catogory'],"products.php");
 			$menu->Generate_menu(false);
 		}

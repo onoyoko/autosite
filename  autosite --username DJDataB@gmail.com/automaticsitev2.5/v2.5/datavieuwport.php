@@ -8,8 +8,8 @@
 	$formname=(isset($_GET['content']))?addslashes($_GET['content']):'';
 	$formname=(isset($_POST['content']))?addslashes($_POST['content']):$formname;
 	$autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
-	$steplen = (isset ($_POST['step']))?addslashes($_POST['step']):0;//staplengte split in
-	$steplen = (isset ($_POST['steplen']))?addslashes($_POST['steplen']):10;//staplengte split in
+	$step = (isset($_GET['step']))?addslashes($_GET['step']):0;//staplengte split in         
+	$steplen = (isset($_GET['steplen']))?addslashes($_GET['steplen']):5;//staplengte split in
 	//$step = (isset ($_POST['step']))//stap
 	$DS_filename = "./".$autosite['path']."databaseconection_ymlds2.xml";
 	$Errmsg['NL']['empty']="Het %errkey% veld werd niet ingevuld";
@@ -51,14 +51,14 @@
 					//print($autosite['private']);
 				}
 		}elseif(isset($_POST['action']) && $_POST['action'] == 'edit'){
-                   /* $opslagruimte = new data($formsdata[$formname]);
+                    $opslagruimte = new data($formsdata[$formname]);
 					$opslagruimte->setvalidationmsg($Errmsg['NL']);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::DEVELOPMENT);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::TEST);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::PRODUCTION);
 					$opslagruimte->initfile($autosite['private']);
 					//$_errors.= "".print_r(
-					$opslagruimte->update_line($datatosave,0,true);//."";*/
+					$opslagruimte->update_line($datatosave,0,true);//."";
 		}elseif(isset($_POST['action']) && $_POST['action'] == 'delete'){
 			
 		}else{
@@ -72,10 +72,15 @@
 	$viewas = (isset( $_GET['viewas'] ) ) ? $_GET['viewas'] : '';
 	if ($formsdata[$formname]['vieuw']= true || (isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
 		if($viewas === "XML"){
-			//include_once($autosite['functions']."Qhtml/Qvieuw.inc");
-            //header ("Content-Type:text/xml");
-			//include_once("./preparts/data_xml.inc");
+			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
+            header ("Content-Type:text/xml");
+			include_once("./preparts/data_xml.inc");
 			die("[PRIVATE]");
+		}elseif($viewas === "RSS"){
+			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
+            header ("Content-Type:text/xml");
+			include_once("./preparts/data_rss.inc");
+			die();
 		}else{
 				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>				
 		include_once($autosite['layout']."head.inc");
@@ -100,8 +105,10 @@ print'<div id="container" class="clearfix">';
 		}
         print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
 		if(array_key_exists($viewas,$views)){
-			include_once($views[$viewas]);
+			//include_once("./preparts/data_paginator.inc");
+            include_once($views[$viewas]);
 		}else{
+            //include_once("./preparts/data_paginator.inc");
 			include_once("./preparts/data_templatevieuw.inc");
 		}
         	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<end >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -122,6 +129,5 @@ print'<div id="container" class="clearfix">';
         <!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->
         <?php
         }
-
 	}
 ?>
