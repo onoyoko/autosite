@@ -44,23 +44,43 @@
 		function getfrom_XML(){
 			
 		}
-		function getfrom_csv($filename,$taglist){
+		function getfrom_csv($filename,$taglist,$from=0,$steplen=20){
+			$row = 2;
+			$gbfile = fopen($filename,'r');
+			//TODO if no template print table
+            $to = $from + $steplen+1;
+			while (!feof($gbfile)){
+				$fileline=fgets($gbfile,1024);
+                if($row>$from &&$row<$to||$to==0){
+                    $this->rowhandel(array_keys($taglist),explode(',',$fileline));
+                }
+                $row++;
+			}
+			fclose($gbfile);
+            return $row;
+		}
+        function rowhandel($keys,$line){
+    				try{
+    					$datamap = $this->array_aso_merge($keys,$line);
+    				}catch(Exception $e){
+    					print(".vars are not correctly".$e);
+                        exit;
+    				}
+    				$this->printdata($datamap);
+        }
+		function search_csv($filename,$taglist,$tofind,$from=0,$step=20){
 			$row = 1;
 			$gbfile = fopen($filename,'r');
 			//TODO if no template print table
 			while (!feof($gbfile)){
 				$fileline=fgets($gbfile,1024);
-				$output= explode(',',$fileline);
-				//array_shift($output);
-				try{
-					$datamap = $this->array_aso_merge(array_keys($taglist),$output);
-				}catch(Exception $s){
-					print(".vars are not correctly".$e);
-				}
-				
-				$this->printdata($datamap);
+                if($row>$from && $to== 0 || $row<$to){
+                    $this->rowhandel(array_keys($taglist),explode(',',$fileline));
+                }
+                $row++;
 			}
 			fclose($gbfile);
+            return $row;
 		}
 		function settoolbar($toolbar,$link){
 			$this->template;
