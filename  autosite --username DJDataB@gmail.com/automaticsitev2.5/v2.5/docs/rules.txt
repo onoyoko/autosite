@@ -1,0 +1,8 @@
+use always the label tag
+<label for="phone">%phone%</label><br /> 	   	
+<input type="text" name="phone" maxlength="35" /><br />
+
+Voor de toegankelijkheid gebruik ik nooit <b> en <i>, maar <strong> en <em>. Bv. tekst-voorleesbrowsers kunnen een <b>...</b> woord niet vet voorlezen, maar een <strong>...</strong> woord wel met nadruk uitspreken. En schermbrowsers maken van <strong> ook vet. -
+ In html5 wordt het gebruik van <b> en <i> dan ook sterk afgeraden (alleen als laatste redmiddel te gebruiken):
+
+http://dev.w3.org/html5/spec/Overvie...#the-b-element 
