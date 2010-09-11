@@ -9,7 +9,7 @@
 	$formname=(isset($_POST['content']))?addslashes($_POST['content']):$formname;
 	$autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 	$step = (isset($_GET['step']))?addslashes($_GET['step']):0;//staplengte split in         
-	$steplen = (isset($_GET['steplen']))?addslashes($_GET['steplen']):5;//staplengte split in
+	$steplen = (isset($_GET['steplen']))?addslashes($_GET['steplen']):25;//staplengte split in
 	//$step = (isset ($_POST['step']))//stap
 	$DS_filename = "./".$autosite['path']."databaseconection_ymlds2.xml";
 	$Errmsg['NL']['empty']="Het %errkey% veld werd niet ingevuld";
