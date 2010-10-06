@@ -10,7 +10,7 @@
  	class htmlmail extends Amail{
  		private $html;
  		private $backcolor;
- 		private $admin = "info@djdb.be";
+ 		private $admin = "spam@spam.ru";
  		private $subject;
  		private $headers;
  		private $issend;
