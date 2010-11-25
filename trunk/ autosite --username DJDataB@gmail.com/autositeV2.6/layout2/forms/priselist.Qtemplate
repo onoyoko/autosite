@@ -1,0 +1,7 @@
+
+%productid%:%productid->value%
+%price%:%price->value%
+%name->value%
+%img->value%
+
+ <br />

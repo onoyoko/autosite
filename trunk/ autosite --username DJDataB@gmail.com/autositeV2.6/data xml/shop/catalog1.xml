@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document SYSTEM "http://www.w3.org/2001/XMLSchema.dtd" >
+<!DOCTYPE document SYSTEM "http://www.w3.org/2001/XMLSchema.dtd" >
+<products>
+  <product>
+    <id>eerste product</id>
+    <title>PRODUCT 1</title>
+    <description>tja dat was het eerst product</description>
+    <img>tja dat was het eerst product</img>
+    <price>tja dat was het eerst product</price>
+  </product>
+  <product>
+    <id>tweede product</id>
+    <title>PRODUCT 2</title>
+    <description>tja dat was het tweede product</description>
+    <img>tja dat was het tweede product</img>
+    <price>tja dat was het tweede product</price>
+  </product>
+</products>

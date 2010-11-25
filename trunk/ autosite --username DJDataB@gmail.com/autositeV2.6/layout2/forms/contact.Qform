@@ -1,0 +1,26 @@
+<table width="75%">
+    <tbody>
+        <tr>
+			<td width="10%">
+				<label for="name">%name%</label><br /> 	   	
+				<input type="text" name="name" maxlength="35" class="ibb" /><br />
+				<label for="mail">%mail%</label><br /> 		
+				<input type="text" name="mail" maxlength="35" class="ibb" /><br />
+				<label for="phone">%phone%</label><br /> 	   	
+				<input type="text" name="phone" maxlength="35" class="ibb" /><br />
+			</td><td width="10">
+				<center>
+					<label for="msg">%msg%</label><br /> 	
+					<span class="ibc">         
+						<textarea rows="8" cols="35" name="msg" id="msg" class="ibc"></textarea>
+					</span>
+				</center>
+			</td>
+		</tr>
+		<tr>
+			<td width="10%">    
+				<input type="submit" value="%submit%" name="submit" class="ibd" />     
+			</td>
+        </tr>
+    </tbody>
+</table>

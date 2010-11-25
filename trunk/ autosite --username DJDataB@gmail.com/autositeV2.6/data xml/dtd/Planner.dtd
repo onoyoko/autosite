@@ -1,0 +1,20 @@
+<!DOCTYPE Planner[
+	<!ELEMENT planner(month*)>
+	<!ELEMENT month(day*)>
+	<!ELEMENT day(activity*,appointment*)>
+	<!ELEMENT activity(name,start,stop,msg)>
+	<!ELEMENT appointment(title,start,stop,msg,Googlepoint)>
+	<!ELEMENT title(#PCDATA)>
+	<!ELEMENT start(time,date)>
+	<!ELEMENT stop(time,date)>
+    <!ELEMENT time(#PCDATA)>
+	<!ELEMENT date(#PCDATA)>
+	<!ELEMENT msg(#PCDATA)>
+	<!ELEMENT Googlepoint(name,ordinates)>
+	<!ELEMENT msg(#PCDATA)>
+    <!ELEMENT ordinates(adress,street,length,with)>
+    <!ELEMENT adress(#PCDATA)>
+    <!ELEMENT street(#PCDATA)>
+    <!ELEMENT length(#PCDATA)>
+    <!ELEMENT with(#PCDATA)>
+]>s

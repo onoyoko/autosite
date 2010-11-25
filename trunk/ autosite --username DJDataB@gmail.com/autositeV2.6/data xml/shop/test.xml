@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE student [
+  <!--'student' must contain three
+    child elements in the order listed-->
+  <!ELEMENT student (id,surname,firstname)>
+  <!--the elements listed below may
+    only contain text that is not markup-->
+  <!ELEMENT id (#PCDATA)>
+  <!ELEMENT firstname (#PCDATA)>
+  <!ELEMENT surname (#PCDATA)>
+]>
+<student>
+  <id>9216735</id>
+  <surname>Smith</surname>
+  <firstname>Jo</firstname>
+</student>
+

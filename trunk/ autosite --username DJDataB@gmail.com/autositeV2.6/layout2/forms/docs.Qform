@@ -1,0 +1,9 @@
+	<fieldset style="padding:20px;">
+	<legend>%file.title%</legend>
+		<label for="name">%name%</label> 	   	
+		<input type="text" name="name" value="test" maxlength="35" class="ibb" /><br />
+		<h3>%Upload.file%</h3>
+	    <input type="file" class="ibb" value="" name="file" />
+
+		<input type="submit" class="ibd" value="%add%" name="btn" />
+	</fieldset>

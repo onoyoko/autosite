@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes" ?>
+<!DOCTYPE facturen[
+	<!ELEMENT facturen(factuur*)>
+	<!ELEMENT factuur(koper,verkoper,generaldata,items,prijs)>
+	<!ELEMENT koper(naam,adres)>
+	<!ELEMENT verkoper(naam,adres)>
+	<!ELEMENT naam(#PCDATA)>
+	<!ELEMENT adres(#PCDATA)>
+	<!ELEMENT generaldata(link,nr)>
+	<!ELEMENT link(barcode,facnr)>
+	<!ELEMENT barcode(#PCDATA)>
+	<!ELEMENT facnr(#PCDATA)>
+	<!ELEMENT nr(#PCDATA)>
+	<!ELEMENT items(aantal,description,btw,stukprijs)>
+	<!ELEMENT aantal(#PCDATA)>
+	<!ELEMENT description(#PCDATA)>
+	<!ELEMENT btw(#PCDATA)>
+	<!ELEMENT stukprijs(#PCDATA)>
+]>
