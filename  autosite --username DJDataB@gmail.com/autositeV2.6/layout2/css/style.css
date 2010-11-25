@@ -1,0 +1,124 @@
+
+/*<<<<//TODO php creator >>>>>*/
+/**
+*@
+*
+*/
+/*<<<<//RGB  rood #FF0000 Groen#00FF00 Blue #0000FF>>>>>*/
+/*<<<<//div naast elkaar           display: inline;>>>>>*/
+/*<<<<//div buiten range hidden   overflow: hidden;>>>>>*/
+html {  margin: 0; 
+     height: 100%; 
+     background: white;
+}
+*{margin:0 0;padding:0 0;
+	-moz-box-sizing:border-box !important;
+}
+
+.test{}
+.ERROR{background:#FFCC00; border: 2px solid #FF6600;z-index:99;position:absolute;top:200px; left:250px;right: 250px;
+		     z-index: 98;}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.nav{text-align:left; font-size:16px; font-weight:bold; line-height:31px; text-transform:uppercase; color:#444;
+	 display:block; position:absolute; z-index:5; top:120px;
+	 left:350px; margin-right:10%;}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.hidden{visibility:hidden;} 
+.mnuitem{text-align:center; font-weight:bold;text-transform:uppercase;
+		  display:block; height:15px; padding:2px 5px 5px 30px; line-height:30px; /*padding boven achter onder voor */
+        margin:0;  display: inline;
+        clear:both;}
+/*do not test others position ie do not uderstand it margin-left %10 or others*/
+ .mnutop{	text-align:center; display:block; height:32px; top:70px;
+ 			position:absolute; left:350px; margin-right:10%;
+			 font-size:14px;
+			 background:#A291AA; filter:alpha(opacity=80); -moz-opacity:.80;	opacity:.80;}
+ .menu{	font-size:14px; text-align:center; display:block; top:10px;
+ 			position:absolute; margin-left:10%;
+        border:0px solid transparent; z-index:7;
+		left:350px; margin-right:10%;margin-top:100px;
+		background:#ddf; filter:alpha(opacity=50); -moz-opacity:.50;	opacity:.50;}
+.abbr{border-bottom: dotted 0.05em; cursor: help;z-index:4}
+.content{}
+.right{ float:left; top:200px;Right:10px; }
+.left{ float:left; top:200px;Left:10px;}
+/* will the next line wil make a error you have a bad editor */
+.input_login{}
+.btn_login{}
+div .rss{}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<BODY >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+body{	min-height:100%; height: 100%; position: relative; width: 100%;
+		text-align:center; color:#707070; font-weight:bold; font:14px/18px Helvetica, sans-serif;
+		background:url(../img/mainbg4.jpg) 0 0 repeat-x #ffe;  
+		margin: 0 auto; padding:0px;
+		   }
+#logo{position:absolute; text-align:left; top:15px; left: 15px;}
+#langbar{position:absolute;left:180px; top:130px ;}
+#leftbar{position:absolute;left:1px; top:170px; z-index:20;
+			height:150%; min-height: 45%; width:150px;
+			text-align:left;}
+#leftbar a{text-decoration: none; color:#000;}
+#rightbar{position:absolute;right:1px; top:170px; z-index:20;
+          height:150%; min-height: 45%; width:150px; margin-left: 10px;margin-right: 10px;
+			}
+#rightbar a{text-decoration: none; color:#000;}
+/* !important! use not height it makes pieces not visible */
+#container{position:absolute; text-align:left; top:175px; left:125px;right:150px;
+		   min-height: 45%;    border:#0000ff;  z-index: 98;
+}
+#container2{position:absolute; text-align:left; top:175px; left: 100px;
+           height: 100%; min-height: 45%; border:#0000ff;
+}
+
+table #Aform{
+	 width:500px; border:0px solid transparent; border-spacing:0px; border-style:none;
+}
+#spacing{text-align:left; left: 100px;
+	       height:300px; min-height: 20%;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<webtoolkit INTERNET EXPLORER BUGs fixed>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.toolbar{	position:absolute; 
+			text-align:right; right:5px; width:70px; top:25px;
+			border: 2px solid #0000ff;
+			background:#777777;
+			z-index:99;
+}
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOOT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+/*#footer{ clear: both;
+margin: 0;
+padding: .5em;  }*/
+.icon{width:15px;height:15px;}
+#foot{background:#565656 repeat-x scroll 0 0;border-top: 2px solid black;
+	  display:block; position: fixed; left: 0; bottom: 0;bottom: 0%;
+       height: 50px; width: 100%; padding:10px ; z-index: 98;
+       text-align: center; color:#fff;	
+}
+#foot a:link	{text-decoration: none; color:#fff;}
+#foot a:visited {text-decoration: none; color:#fff;}
+#foot a:active  {color:#fff; }
+#foot a:hover   {color:#fff; }
+#foot a:hover   {color:#fff; }
+.btn_skype{border:none;}

@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes" ?>
+<!DOCTYPE catalog SYSTEM "Acatalog_V01.dtd" >
+<catalog>
+	<title>mijn eerst catalog</title>
+	<product>
+		<id>eerste product</id>
+		<title>PRODUCT 1</title>
+		<description>tja dat was het eerst product</description>
+		<img>tja dat was het eerst product</img>
+		<price>tja dat was het eerst product</price>
+	</product>
+	<product>
+		<id>tweede product</id>
+		<title>PRODUCT 2</title>
+		<description>tja dat was het tweede product</description>
+		<img>tja img tweede product</img>
+		<price>tja €€ product</price>
+	</product>
+</catalog>
