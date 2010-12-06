@@ -20,7 +20,6 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
 	}else{
 		print"<!--NO DATA-->";
 	}
-    
 }else{
 	print "<!--NO VIEUWS-->";
 }
