@@ -5,6 +5,7 @@
  * <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<security vieuwport>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  */
 require_once("generalvars.php");
+include('./generaldatavars.php');
 include($autosite['functions']."users/User_data.inc");
 include($autosite['functions']."Users.inc");
 include($autosite['functions']."users/User.inc");
@@ -21,20 +22,20 @@ session_start();
 $user=(isset($_SESSION['user']))?unserialize($_SESSION['user']):null;
 $handeling = (isset($_GET['handeling'])) ? addslashes($_GET['handeling']) : "Users";
 if ($handeling == "Users"){
-	$get=(isset( $_GET['id'] ) ) ? 'a' : 'a' ;
+	$get=(isset( $_GET['content'] ) ) ?  addslashes($_GET['content'] ) : 'a' ;
 	$handeling ="";
 }else{
-	$get=(isset( $_GET['id'] )) ? addslashes($_GET['id'] ) : 'a' ;
+	$get=(isset( $_GET['content'] )) ? addslashes($_GET['content'] ) : 'a' ;
 }
 $autosite['lang']	= ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
 $attributen="?";
-$attributen.=(isset($selection)) ? "id=".$selection : "";
+$attributen.=(isset($selection)) ? "content=".$selection : "";
 $attributen.=(isset($load)) ? "&upload=".$load : "&upload=0";
 	if (strlen($get)>1){
-		$id = "User ".$get;
+		$content = "User ".$get;
 	}else{
-		$id = "Users => list  ".$get;
+		$content = "Users => list  ".$get;
 	}
 if(isset($user)&& $user->islogin()){
  	include_once($autosite['layout']."head.inc");
@@ -46,13 +47,13 @@ if(isset($user)&& $user->islogin()){
 		include_once("./preparts/Amenu.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 		include_once ($autosite['layout']."toolbar.inc");
-	print'<div id="container" class="clearfix"><br /><br />';
+	print'<div id="container" class="clearfix"> <br /><br />';
 		$faze =1;
 		if ($faze ==1){
 			  $tekens = 'ABCDEFGHIJKLMNOPQRSTUWXYZ';
 			  for( $i = 0; $i < strlen($tekens); $i++ ){
 			  	$char = $tekens{$i};
-			  	print '[<a href="'.$_SERVER["PHP_SELF"].'?id='.$tekens{$i}.'" target="_self">'.$tekens{$i}.'</a>]';
+			  	print '[<a href="'.$_SERVER["PHP_SELF"].'?content='.$tekens{$i}.'" target="_self">'.$tekens{$i}.'</a>]';
 			  }
 		}
 		//<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -61,11 +62,13 @@ if(isset($user)&& $user->islogin()){
 			print "Get User".$get;
 			$user= new User($autosite['users']);
 		}else{
-			$user= new Users($autosite['users']);
-			$user->vieuwusers($autosite['users'].''.$get);
+			$users= new Users($autosite['users']);
+            print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
+            $template = (string)file_get_contents($autosite['templates']."user.Qtemplate");
+			$users->vieuwusers($get,$_SERVER['PHP_SELF']."?content=",new User(),$template);
 			print  "Users => list  ".$get;
 		}	
-		if ($id > 2){
+		if ($content > 2){
 			include_once ($autosite['users'].".dat");
 		}else {
 		    include_once ($autosite['home'].".dat");
