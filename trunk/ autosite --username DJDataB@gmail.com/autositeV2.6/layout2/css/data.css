@@ -9,6 +9,18 @@
 .galleryitem{display:inline-block;
 			vertical-align:top;text-decoration: none; border: none;
 }
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Users>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+.useritem{display:inline-block; height:200px; min-height:200px; width:150px; margin:7px 7px 7px 7px;
+			vertical-align:top;
+}
+.useritem li{display:inline-block; width:150px;}
+.Auseritem{height:150px;padding:5px 5px 5px 5px;text-overflow:ellipsis; overflow:hidden;}
+.useriteminf a{text-decoration:none;}
+.useriteminf{height: 150px; min-width: 100px; overflow:hidden;text-decoration:none; margin:7px 7px 7px 7px;
+					border-width:4px;
+}
+.useriteminf img{text-decoration:none; border:5px solid #999999; height: 100px;}
+
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<PRODUCTS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 .productitem{display:inline-block; height:320px; min-height:320px; width:200px; margin:7px 7px 7px 7px;
 			vertical-align:top;
