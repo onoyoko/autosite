@@ -97,7 +97,8 @@
             }
         }
         function find_AND(&$data,$tofind){
-            if(is_array($tofind)){
+             if($tofind == ""){return true;}
+             if(is_array($tofind)){
                 foreach($tofind as $value){
 				    if(!strpos($data, $value)){
 				        return false;
