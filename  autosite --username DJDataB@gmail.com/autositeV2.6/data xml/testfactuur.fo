@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ * @author Lieven Roegiers
+ * @copyright 2010
+ * @CMS autosite
+ * @from http://javamylibs.googlecode.com/svn/trunk/
+ -->
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format"
+	xmlns="http://www.w3.org/1999/XSL/Format" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<layout>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<xsl:attribute-set name="H1">
+		<xsl:attribute name="font-size">18pt</xsl:attribute>
+		<xsl:attribute name="space-before">10pt</xsl:attribute>
+		<xsl:attribute name="color">blue</xsl:attribute>
+		<xsl:attribute name="font-family">Helvetica</xsl:attribute>
+		<xsl:attribute name="border">solid</xsl:attribute>
+	</xsl:attribute-set>
+    <xsl:attribute-set name="Vendor">
+		<xsl:attribute name="margin-left">0.5cm</xsl:attribute>
+		<xsl:attribute name="margin-bottom">1cm</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="Customer">
+		<xsl:attribute name="margin-left">0.5cm</xsl:attribute>
+		<xsl:attribute name="margin-bottom">1cm</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="H2">
+		<xsl:attribute name="font-size">18pt</xsl:attribute>
+		<xsl:attribute name="color">black</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="itemheader">
+		<xsl:attribute name="text-align">justify</xsl:attribute>
+		<xsl:attribute name="padding">0cm</xsl:attribute>
+		<xsl:attribute name="margin">0cm</xsl:attribute>
+		<xsl:attribute name="font-size">12pt</xsl:attribute>
+		<xsl:attribute name="font-weight">bold</xsl:attribute>
+		<xsl:attribute name="color">blue</xsl:attribute>
+		<xsl:attribute name="border">solid</xsl:attribute>
+		<xsl:attribute name="background-color">#999999</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="item">
+	    <xsl:attribute name="margin">0.01cm</xsl:attribute>
+		<xsl:attribute name="border-end-color">blue</xsl:attribute>
+		<xsl:attribute name="border-end-width">2px</xsl:attribute>
+		<xsl:attribute name="border-style">ridge</xsl:attribute>
+		<xsl:attribute name="border-color">orange</xsl:attribute>
+		<xsl:attribute name="border-width">0.2mm</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="itemR">
+		<xsl:attribute name="text-align">right</xsl:attribute>
+	    <xsl:attribute name="margin">0.01cm</xsl:attribute>
+		<xsl:attribute name="border-end-color">blue</xsl:attribute>
+		<xsl:attribute name="border-end-width">2px</xsl:attribute>
+		<xsl:attribute name="border-style">ridge</xsl:attribute>
+		<xsl:attribute name="border-color">orange</xsl:attribute>
+		<xsl:attribute name="border-width">0.2mm</xsl:attribute>
+	</xsl:attribute-set>
+	<xsl:attribute-set name="foot">
+		<xsl:attribute name="text-align">center</xsl:attribute>
+		<xsl:attribute name="font-size">10pt</xsl:attribute>
+		<xsl:attribute name="color">blue</xsl:attribute>
+	</xsl:attribute-set>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<document start>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+		<xsl:template match="/">
+		<fo:root>
+			<fo:layout-master-set>
+				<fo:simple-page-master master-name="Main" page-height="29.7cm" page-width="21cm" margin-top="1.7cm"	margin-bottom="1.5cm" margin-left="1.5cm" margin-right="1.5cm">
+					<fo:region-body margin-top="1cm" margin-bottom="2cm" />
+					<fo:region-before extent="1cm"/>
+					<fo:region-after extent="1cm"/>
+				</fo:simple-page-master>
+			</fo:layout-master-set>
+			<fo:page-sequence master-reference="Main" initial-page-number="1">
+		        <fo:static-content flow-name="xsl-region-before">
+		           <fo:block>
+		           		<xsl:apply-templates select="AUTOSITE/CONTENTTYPE" />:<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/NAME" />//	
+		           	</fo:block>
+		        </fo:static-content>
+		        <fo:static-content flow-name="xsl-region-after">
+		           <fo:block>
+		           		<xsl:copy-of select="$link" />
+		           			Page<fo:page-number/>/<fo:page-number-citation ref-id="lastBlock"/> 
+		           </fo:block>
+		        </fo:static-content>
+				<fo:flow flow-name="xsl-region-body"  >
+				<fo:block id="first"></fo:block>		
+					<xsl:copy-of select="$CUSTOMER" />
+					<xsl:copy-of select="$VENDOR" />
+					<xsl:copy-of select="$refheader" /> 
+		<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<iteratie items>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+					<fo:table table-layout="fixed" border-width="2mm" border-color="black" >
+						<fo:table-column column-width="1.5cm"/>
+						<fo:table-column column-width="4cm"/>
+						<fo:table-column column-width="*"/>
+						<fo:table-column column-width="1cm"/>
+						<fo:table-column column-width="2cm"/>
+						<fo:table-column column-width="2cm"/>
+						<fo:table-body>
+								<xsl:copy-of select="$itemsheader" />
+								<xsl:apply-templates select="AUTOSITE/DATA/ITEMS/ITEM" /> 
+						</fo:table-body>
+					</fo:table>	
+					<xsl:copy-of select="$total" />	
+				</fo:flow>
+			</fo:page-sequence>
+		</fo:root>
+	</xsl:template>
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<per element transaction>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<xsl:template match="AUTOSITE/DATA/ITEMS/ITEM">
+				<fo:table-row >
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemR">   <xsl:value-of select="NUMBER" />  	</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemR">   <xsl:value-of select="PRODUCTID" />	</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="item">		<xsl:value-of select="DESCRIPTION" />	<fo:block linefeed-treatment="preserve"/> </xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemR">		<xsl:value-of select="BTW" />		</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemR">     <xsl:value-of select="UNITPRICE" />	</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemR">		<xsl:value-of select="LINETOTAL" />	</xsl:element>
+					</fo:table-cell>
+				</fo:table-row>
+	</xsl:template>
+	<xsl:variable name="itemsheader">
+		<fo:table-row>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader" >aantal</xsl:element>
+			</fo:table-cell>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader" >bestelcode</xsl:element>
+			</fo:table-cell>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader" >beschrijving</xsl:element>
+			</fo:table-cell>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader" >btw</xsl:element>
+			</fo:table-cell>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader">eenheids.</xsl:element>
+			</fo:table-cell>
+			<fo:table-cell >
+				<xsl:element name="fo:block" use-attribute-sets="itemheader">lijntotaal</xsl:element>
+			</fo:table-cell>
+		</fo:table-row>
+	</xsl:variable>
+	<xsl:variable name="refheader" >
+			<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<factuur detail >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+		<fo:table table-layout="fixed" border-width="1mm" border-color="black" >
+				<fo:table-column column-width="*"/>
+				<fo:table-column column-width="2cm"/>
+				<fo:table-column column-width="2cm"/>
+				<fo:table-column column-width="4cm"/>
+				<fo:table-body>
+				<fo:table-row>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemheader faclinec1">
+							ref:
+						</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemheader faclinec2">
+ 							klantnr
+						</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemheader faclinec2">
+							facnr:
+						</xsl:element>
+					</fo:table-cell>
+					<fo:table-cell >
+						<xsl:element name="fo:block" use-attribute-sets="itemheader faclinec3">
+							datum:
+						</xsl:element>
+					</fo:table-cell>
+				</fo:table-row>
+			</fo:table-body>
+		</fo:table>	
+	</xsl:variable>
+	<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<fixed blokken>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+	<xsl:variable name="link" >
+		<xsl:element name="fo:block">
+		     		www. AUTOSITE FACTUUR opensource free template.
+	    </xsl:element>
+	</xsl:variable>
+	<xsl:variable name="CUSTOMER" >
+		<xsl:element name="fo:block" use-attribute-sets="Customer">
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/NAME" />
+					<fo:block linefeed-treatment="preserve"/>
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/ADRESS/STREET" />
+					<fo:block linefeed-treatment="preserve"/>
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/ADRESS/CITY" />
+					<fo:block linefeed-treatment="preserve"/>
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/ON" />
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/BTW" />
+					<xsl:value-of select="AUTOSITE/DATA/CUSTOMER/TEL" />
+					<fo:block linefeed-treatment="preserve"/>
+	  </xsl:element>
+	</xsl:variable>
+	<xsl:variable name="VENDOR">
+	<xsl:element name="fo:block" use-attribute-sets="Vendor">
+		     		<xsl:value-of select="AUTOSITE/DATA/VENDOR/NAME" />
+		     		<fo:block linefeed-treatment="preserve"/>
+					<xsl:value-of select="AUTOSITE/DATA/VENDOR/ADRESS/STREET" />
+					<fo:block linefeed-treatment="preserve"/>
+					<xsl:value-of select="AUTOSITE/DATA/VENDOR/ADRESS/CITY" />
+					<fo:block linefeed-treatment="preserve"/>
+					<!-- on = ondernemingnr -->
+					%on%:<xsl:value-of select="AUTOSITE/DATA/VENDOR/ON" />
+					%BTW%:<xsl:value-of select="AUTOSITE/DATA/VENDOR/BTWNR" />
+					%tel%:<xsl:value-of select="AUTOSITE/DATA/VENDOR/TEL" />
+					<fo:block linefeed-treatment="preserve"/>
+	  </xsl:element>
+	</xsl:variable>
+	<xsl:variable name="total">
+	<xsl:element name="fo:block">
+					<fo:block linefeed-treatment="preserve"/>
+					<fo:table table-layout="fixed" border-width="2mm" border-color="black" >
+						<fo:table-column column-width="5cm"/>
+						<fo:table-column column-width="5cm"/>
+						<fo:table-body>
+							<fo:table-row><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="item" >
+								%subtotal%
+								</xsl:element>
+							</fo:table-cell><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="itemR" >
+									<xsl:value-of select="AUTOSITE/DATA/CALC/SUBTOTAL" />
+								</xsl:element>
+							</fo:table-cell></fo:table-row>
+							
+							<fo:table-row><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="item" >
+								%btw%
+								</xsl:element>
+							</fo:table-cell><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="itemR" >
+									<xsl:value-of select="AUTOSITE/DATA/CALC/BTW" />
+								</xsl:element>
+							</fo:table-cell></fo:table-row>
+							
+							<fo:table-row><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="item" >
+								%total%
+								</xsl:element>
+							</fo:table-cell><fo:table-cell >
+								<xsl:element name="fo:block" use-attribute-sets="itemR" >
+									<xsl:value-of select="AUTOSITE/DATA/CALC/TOTAL" />
+								</xsl:element>
+							</fo:table-cell></fo:table-row>
+						</fo:table-body>
+					</fo:table>	
+	  </xsl:element>
+	</xsl:variable>
+</xsl:stylesheet>
