@@ -33,12 +33,12 @@
     
 	if ($formsdata[$formname]['vieuw']= true || (isset($user)&& $user->islogin()&& $formlevel<$user->getlevel())){
 		if($viewas === "XML"){
-		    if(!isset($user)|| !$user->islogin()||!$user->getlevel()>50) die("[PRIVATE:USERLEVEL ASK B2B CONNECTION]");
+		    //if(!isset($user)|| !$user->islogin()||!$user->getlevel()>50) die("[PRIVATE:USERLEVEL ASK B2B CONNECTION]");
 			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
             header ("Content-Type:text/xml");
 			include_once("./preparts/data_xml.inc");
 		}elseif($viewas === "RSS"){
-		    if(!isset($user)|| !$user->islogin()||!$user->getlevel()>50) die("[PRIVATE:USERLEVEL ASK RSS CONNECTION]");
+		    //if(!isset($user)|| !$user->islogin()||!$user->getlevel()>50) die("[PRIVATE:USERLEVEL ASK RSS CONNECTION]");
 			include_once($autosite['functions']."Qhtml/Qvieuw.inc");
             header ("Content-Type:text/xml");
 			include_once("./preparts/data_rss.inc");
@@ -80,6 +80,7 @@ print'<div id="container" class="clearfix">';
                 <input type="hidden" name="selecteditem"  id="selecteditem"/>
             </form></div>
         <?php
+        include_once ($autosite['layout']."search.inc");
         print"<div class='views'>";
     	    foreach($views as $key=>$value){
     			print" <a href='".$_SERVER['SELF'].$attributen."&viewas=$key' class='viewsitem'>$key</a>|";
@@ -89,7 +90,7 @@ print'<div id="container" class="clearfix">';
 		?>
         <!-- @OVERRIDE STYLE -->
         <link rel='stylesheet' href='<?php print $autosite['layout'];?>css/style.css'  type='text/css' />
-        <!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->
+        <!-- @AUTHOR Lieven Roegiers @CMS autosite V2.6 automaticsite -->
         <?php
         }
 	}
