@@ -47,7 +47,7 @@ class User extends User_data{
 	function setUser($username,$path,$kkey){
 		//$username=(isset($username)&& $username!="")?$username:$_SESSION['login'];
 		//parent:: wil go to extends
- 		parent::__construct($username,$kkey);
+ 		parent::__construct($username,$kkey,$path);
 		$this->name =$username;
 		$this->userpath =$path.substr($username, 0, 1)."/".$username."/";
 		$this->isuser=(is_dir($this->userpath)&& $username!="")? true:false;
@@ -154,6 +154,7 @@ class User extends User_data{
 	public function __tostring(){
 		return "Welkom ".$this->name."releasetime".(($this->releasetime -time() )/60)."min";
 	}
+
 	/**
 	 * @return testfunction void
 	 */

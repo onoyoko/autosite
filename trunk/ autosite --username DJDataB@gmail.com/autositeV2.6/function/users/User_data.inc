@@ -1,4 +1,5 @@
-<?php
+<?php	
+
 class User_data{
 	private $userdata;
 	 /**
@@ -7,13 +8,17 @@ class User_data{
 	 * @CMS autosite
 	 *-->UNDER construction
 	 */
+    private $path;
 	private $encripty;
 	private $kkey;
 	private $hasguestbook = false;
 	private $hasuserimg = false;
 	private $haspublicvieuw = false;
 	private $has = false;
-	public function __construct($username,$kkey){
+	public function __construct($username,$kkey,$path){
+	    $this->path=$path;
+	    $this->userdata['name']=$username;
+        $this->setuserpath($path);
 		$this->kkey = (isset($kkey)&& $kkey!="")? $kkey:$this->generatekey(10);
 	}
 	function getkkey(){
@@ -28,26 +33,34 @@ class User_data{
 		  $tekens = 'abcdefghijklmnopqrstuvwxyz';
 		  $tekens .= 'ABCDEFGHIJKLMNOPQRSTUWXYZ';
 		  $tekens .= '01234567890123456789';
-		  for( $i = 0; $i < $lengte; $i++ )
-		  {  
+		  for( $i = 0; $i < $lengte; $i++ ){  
 		  	$string .= $tekens{ rand( 0, ( strlen( $tekens ) - 1 ) ) };
 		  }
 		  return $string;
 	}
-	function getuserdata($name){
-		/*if(isset($userdata)){
-			return $userdata[$name];
-		}*/
+	function getuserdata($user){
+            $this->initdata($user->getlevel());	
+			return $this->userdata;
     }
-    function setuserdata($name){
-    	//$this->userdata[$name];
+    private function initdata($level){
+        switch ($level){
+        	case 100:
+            
+            break;   
+        	default :
+            $this->userdata['guestbook']=$this->getguestbook();
+            break;
+        }
     }
     /**
      * @param $username name of user
      * Not session but hard database or 
      **/
-    function saveuserdata($username){
+    function saveuserdata(){
     	//TODO generate stuf
+    }
+    function setuserpath($path){
+        $this->userdata['path']=$path.substr($this->userdata['name'], 0, 1)."/".$this->userdata['name']."/";  	 
     }
    /**
     * @param $username name of user
@@ -60,11 +73,13 @@ class User_data{
     	//if ($this->isuser)include $this->userpath."data.php";
     }
     private function __printuserdata(){//DEBUG !!!not secure!!!
-    	//print_r($userdata);
+    	print_r($userdata);
     }
-    
+    /**
+	 * @return string
+	 */
     function getguestbook(){
-    	//TODO generate stuf
+    	return "here comes the guestbook";
     }
     private function isguestbook(){
     	return $this->hasguestbook;//TODO generate stuf 
@@ -80,7 +95,6 @@ class User_data{
     	return ;//TODO generate stuf
     }
     
-    
     function setnewuser(){
     	if($this->cansetuser()){
     		//TODO generate stuf
@@ -89,7 +103,9 @@ class User_data{
     private function cansetnewuser(){//!!!security!!! set not higher level of current user level
     	return false;//TODO generate stuf
     }
-    
+    function getAvatar(){
+    	return "here comes the avatar";
+    }
     
     private function getpublicvieuw(){
     	if($this->ispublicvieuw()){
