@@ -44,10 +44,11 @@ class User_data{
     }
     private function initdata($level){
         switch ($level){
-        	case 100:
             
+        	case 100:
             break;   
         	default :
+            $this->userdata['pic']=$this->getuserimg();
             $this->userdata['guestbook']=$this->getguestbook();
             break;
         }
@@ -84,15 +85,17 @@ class User_data{
     private function isguestbook(){
     	return $this->hasguestbook;//TODO generate stuf 
     }
-    
     public function getuserimg(){//!!!security!!! return only the data of the img include("imagename.gif");
-  		if($this->cansetuser()){
-    		return "data:";//TODO generate stuf
+  		if($this->isuserimg($imgname)){
+  		    $img = new IMGmasker();
+    		return $img->__getimg($this->userdata['path'],$this->userdata['name'].".jpg");//TODO generate stuf
+    	}else{
+    	   print "img nog avalable";
     	}
     	//return ;//TODO generate stuf
     }
-    private function isuserimg(){
-    	return ;//TODO generate stuf
+    private function isuserimg($imagename){
+    	return is_dir($this->userdata['path'])&& is_file($this->userdata['path'].$this->userdata['name'].".jpg");//TODO generate stuf
     }
     
     function setnewuser(){
