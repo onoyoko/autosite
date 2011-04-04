@@ -1,12 +1,14 @@
 <li  class="useritem  Auseritem" >
-	<fieldset id="item-%i->value%" class="Auseritem" onmouseover="mytooltip_show('tooltip-%i->value%','item-%i->value%');"  onmouseout="mytooltip_hide('tooltip-%i->value%');">
-	
+	<fieldset id="item-%i->value%" class="Auseritem" onmouseover="mytooltip_show('mytooltip-%i->value%','item-%i->value%');"  onmouseout="mytooltip_hide('mytooltip-%i->value%');">
 	<legend> %i->value% %name%  %name->value% </legend>
 			<div class="useriteminf">
+            %pic->value%
+            <br />
             %guestbook->value%
             </div>
+            
 			<div id="mytooltip-%i->value%" class="mytooltip"><!--visual hidden-->
-		          <img src="%pic%" border="2" width="20" height="20" vspace="5" class="userpic" />
+		          %pic->value%
             </div> 
 	       </fieldset>
             <fieldset class='tools'><legend>%tools%</legend>

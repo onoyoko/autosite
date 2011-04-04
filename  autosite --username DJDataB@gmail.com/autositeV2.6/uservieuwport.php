@@ -48,14 +48,13 @@ if(isset($user)&& $user->islogin()){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 		include_once ($autosite['layout']."toolbar.inc");
 	print'<div id="container" class="clearfix"> <br /><br />';
-		$faze =1;
-		if ($faze ==1){
+
 			  $tekens = 'ABCDEFGHIJKLMNOPQRSTUWXYZ';
 			  for( $i = 0; $i < strlen($tekens); $i++ ){
 			  	$char = $tekens{$i};
 			  	print '[<a href="'.$_SERVER["PHP_SELF"].'?content='.$tekens{$i}.'" target="_self">'.$tekens{$i}.'</a>]';
 			  }
-		}
+
 		//<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
 		print'<br /><br />';
 		if (strlen($get)>1){
@@ -63,6 +62,7 @@ if(isset($user)&& $user->islogin()){
 			$user= new User($autosite['users']);
 		}else{
 			$users= new Users($autosite['users']);
+            include_once($autosite['layout']."tooltip.inc");
             print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
             $template = (string)file_get_contents($autosite['templates']."user.Qtemplate");
 			$users->vieuwusers($get,$_SERVER['PHP_SELF']."?content=",new User(),$template);
