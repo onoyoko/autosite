@@ -57,6 +57,7 @@ if(isset($user)&& $user->islogin()){
 
 		//<<<<<<<<<<<<<<<<<<<<<<<!!!!!!!!!!!!!!!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>
 		print'<br /><br />';
+        
 		if (strlen($get)>1){
 			print "Get User".$get;
 			$user= new User($autosite['users']);

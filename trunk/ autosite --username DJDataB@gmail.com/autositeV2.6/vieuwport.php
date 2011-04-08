@@ -1,7 +1,7 @@
 <?php
 include("generalvars.php");//security no include_once
 if(!session_start()){
-	print "session error";
+	print "session error ALERT TO ENABLE JS";
 }
 include_once($autosite['layout']."head.inc");
 /**
