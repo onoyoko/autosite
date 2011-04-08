@@ -8,12 +8,10 @@
             </div>
             
 			<div id="mytooltip-%i->value%" class="mytooltip"><!--visual hidden-->
-		          %pic->value%
+TOOLTIP
             </div> 
 	       </fieldset>
             <fieldset class='tools'><legend>%tools%</legend>
-            <span  onclick='document.getElementById("selecteditem").value="%i->value%";zend("edit");' class='edit' ></span>
-            <span  onclick='document.getElementById("selecteditem").value="%i->value%";zend("delete");' class='delete' ></span>
             %ref%      
      </fieldset> 
 </li>

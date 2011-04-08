@@ -49,13 +49,13 @@
 			font: normal 8pt sans-serif;
 }
 .edit{display:inline-block;height:35px;width:35px;
-    background:url(../img/general/edit.png) no-repeat scroll 0 0;
+    background:url(../img/icons/edit.png) no-repeat scroll 0 0;
 }
 .delete{display:inline-block;height:35px;width:35px;
-    background:url(../img/general/delete.png) no-repeat scroll 0 0;
+    background:url(../img/icons/delete.png) no-repeat scroll 0 0;
 }
 .addtocard{display:inline-block;height:35px;width:35px;
-    background:url(../img/general/addtocard.png) no-repeat scroll 0 0;
+    background:url(../img/icons/addtocard.png) no-repeat scroll 0 0;
 }
 .paginator{	  display:block; position: fixed; right:150px; top:200px;
               height: 100px; width: 50px; padding:10px ; z-index: 98;
