@@ -8,10 +8,12 @@
  */
 include($autosite['functions']."Qhtml/Qtemplate.inc");
 include($autosite['functions']."Qhtml/Qhtml.inc");
+include($autosite['functions']."GD/IMGmasker.inc");
 class users{//
 	private $userspath;
 	public function __construct($userspath){
 		$this->userspath = $userspath;
+        
 	}
 	public function can_i_create(){
 		
@@ -54,11 +56,7 @@ class users{//
 			$i = 0;
             print("<ul>");
             $template = new Qtemplate($htmltemplate);
-            $template->addtagitem("name","");
-    		$template->addtagitem("pic","<img src='%value%' />");
-            $template->addtagitem("contact","<img src='%value%' />");
-            $template->addtagitem("i","teller");
-            $template->addtagitem("guestbook"," %value% ");
+    		$template->addtagitem("pic","<img class='userimg' src='%value%' />");
             //$template->translate($translatioons);
 			while ($dir = readdir($opendir)) {
 	    		$pos = strpos(" ".$dir, ".");
