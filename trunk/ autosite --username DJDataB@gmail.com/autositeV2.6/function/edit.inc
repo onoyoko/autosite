@@ -26,6 +26,7 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 	   	<!-- ********************** EDITORMENU *********************-->
 		<div class="editormenu">
 	     	<?php include($autosite['functions']."editor/actionstoolbar.inc")?>
+            <?php include($autosite['functions']."editor/linktoolbar.inc")?>
 		</div>
        	<div class="editormenu">
 	     	<div class="editorbtn" align="left">
@@ -41,6 +42,8 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
             <div class="editorbtn" align="right">
             	Name:<input type="text" name="title"  value="newpage" />
         	</div>
+                                    <!-- hidden" align="right"-->
+            <div id="return" class="ERROR"> return </div>
 		</div>
         <!-- ********************** SOURCEPANEL *********************-->
 		<div id="Sourcepanel" class="Apanel hidden">
@@ -172,6 +175,9 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 			  document.getElementById(id).value=value;
 	}
 	function setclass(id,value){
+			  document.getElementById(id).className=value;
+	}
+    function setclass(id,value){
 			  document.getElementById(id).className=value;
 	}
 	var oldpanel;
