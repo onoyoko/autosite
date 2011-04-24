@@ -57,6 +57,7 @@ class users{//
             print("<ul>");
             $template = new Qtemplate($htmltemplate);
     		$template->addtagitem("pic","<img class='userimg' src='%value%' />");
+            $template->addtagitem("ref","<a href='$link%value%' />view user</a>");
             //$template->translate($translatioons);
 			while ($dir = readdir($opendir)) {
 	    		$pos = strpos(" ".$dir, ".");
@@ -66,6 +67,7 @@ class users{//
                         $temp = clone $template;
                         $asoarr = $user->getuserdata($MyUserSelf);
                         $asoarr["i"]=++$i;
+                        $asoarr["ref"]=$dir;
 			            
                         $temp->setvalues($asoarr);
 					    print($temp->gethtml());

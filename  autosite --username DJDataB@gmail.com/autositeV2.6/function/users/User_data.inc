@@ -38,7 +38,11 @@ class User_data{
 		  }
 		  return $string;
 	}
-	function getuserdata($user){
+     function getdata(){
+            $this->initdata(777);	
+			return $this->userdata;
+    }
+	public function getuserdata($user){
             $this->initdata($user->getlevel());	
 			return $this->userdata;
     }
@@ -60,7 +64,7 @@ class User_data{
     function saveuserdata(){
     	//TODO generate stuf
     }
-    function setuserpath($path){
+    private function setuserpath($path){
         $this->userdata['path']=$path.substr($this->userdata['name'], 0, 1)."/".$this->userdata['name']."/";  	 
     }
    /**

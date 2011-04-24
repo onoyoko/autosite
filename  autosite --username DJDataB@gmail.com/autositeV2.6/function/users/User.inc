@@ -161,5 +161,17 @@ class User extends User_data{
 	private function __toprintsession(){
 		print_r($_SESSION);
 	}
+    public function viewUser(&$htmltemplate){
+        $template = new Qtemplate($htmltemplate);
+    		$template->addtagitem("pic","<img class='userimg' src='%value%' />");
+        if (is_dir($this->userspath.$selectie."/".$dir)){ 
+                $asoarr = $this->getdata();
+                $asoarr["i"]=++$i;
+                $template->setvalues($asoarr);
+                print($template->gethtml());
+        }
+        
+
+    }
 }
 ?>

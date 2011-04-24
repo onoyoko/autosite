@@ -59,13 +59,16 @@ if(isset($user)&& $user->islogin()){
 		print'<br /><br />';
         
 		if (strlen($get)>1){
-			print "Get User".$get;
+			print "Get User ".$get;
 			$user= new User($autosite['users']);
+            print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
+            $template = (string)file_get_contents($autosite['templates']."user.Qtemplate");
+            $user->viewUser($template);            
 		}else{
 			$users= new Users($autosite['users']);
             include_once($autosite['layout']."tooltip.inc");
             print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
-            $template = (string)file_get_contents($autosite['templates']."user.Qtemplate");
+            $template = (string)file_get_contents($autosite['templates']."users.Qtemplate");
 			$users->vieuwusers($get,$_SERVER['PHP_SELF']."?content=",new User(),$template);
 			print  "Users => list  ".$get;
 		}	
