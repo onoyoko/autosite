@@ -37,7 +37,7 @@ $autosite['hasclientjs']=(!isset($_GET['js'])||$_GET['js']!="false")?true : fals
 $autosite['servicenr']="BE_478394081";
 $autosite['servicemail']="info@djdb.be";//your service mail
 $autosite['publicmail']="info@djdb.be";//reclame and else
-$autosite['servicename']="Lieven Roegiers";
+$autosite['servicename']="Your name";
 $autosite['installoc']= "/automaticsitev2.6/v2.6/";//location from installation
 $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
@@ -47,6 +47,7 @@ $autosite['preparts'] = $loc."preparts/";//all layout from your site and global 
 $autosite['error'] = $loc."error/";//all error messages/pages
 $autosite['functions'] = $loc."function/";//central place for all new functionalitie
 $autosite['javascript'] = $loc."js/";//central place for all new functionalitie
+$autosite['KEYWORDS']= array("autosite","dynamic site","cms");
 /**
 *to enterprised application can you also use a http://www.aplicationserver.be/yourscript?prevar=more&
 *to enterprised application can you also use a http://255.255.255.255:80/yourscript?prevar=more&

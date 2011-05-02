@@ -16,7 +16,7 @@
 	
 	<a href="mailto:<?php print $autosite['servicemail']; ?>">mailto:</a>&bull;
 	<a href="skype:<?php print $autosite['servicenr']; ?>?call" class="btn_skype">
-	<img src="<?php print $autosite['layout']; ?>img/general/skype.gif" class="btn_skype icon"  /></a>
+	<img src="<?php print $autosite['layout']; ?>img/icons/skype.gif" class="btn_skype icon"  /></a>
 	<a href="skype:<?php print $autosite['servicenr']; ?>?add" >-add to skype-</a>	
 <?php
 /**

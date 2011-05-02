@@ -14,7 +14,7 @@
 	<meta name="ROBOTS" content="INDEX" />
 	<meta name="DESCRIPTION" content="<?php print $autosite['title']?>" />
 	<meta name="KEYWORDS" content="content,dynamic site" />
-	<meta name="TITLE" content="keyword1, keyword2" />
+	<meta name="TITLE" content="<?php print $autosite['title']?>" />
 	<meta name="LANGUAGE" content="nederlands" />
 	<meta name="revisit-after" content="10 days" />
 	<meta name="rating" content="General" />
