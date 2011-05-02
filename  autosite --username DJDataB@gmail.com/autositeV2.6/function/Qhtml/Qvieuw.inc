@@ -41,6 +41,16 @@
 					$ischema++;
 				}
 		}
+        function getform_DB2($tabelname,$taglist){
+                mysql_connect('localhost',$username,$password);
+                mysql_select_db('test');
+                $resultaat = mysql_query("SELECT * FROM $tabelname");
+                $rij = mysql_fetch_array($resultaat);
+                while ($rij) {
+                    print"<div>block".$this->printdata($rij)."</div>";
+                    $rij = mysql_fetch_array($resultaat);
+                }
+        }
 		function getfrom_XML(){
 			
 		}

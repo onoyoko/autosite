@@ -93,7 +93,6 @@ function M_item(id,label,pos,nav,location){//subitem printen
 		V_return+="</a> \r\n";
 	} else{
 	    V_return+="<div id='"+ id + "' class='mnuitem out' ";
-	    
 		V_return+="onmouseover=M_over('"+ id + "') ";
 		V_return+="onmouseout=M_out('"+ id + "') ";
 		V_return+='onClick=M_click("'+ id + '"),M_nav("'+M_replace(nav," ")+'")>\r\n';
