@@ -9,18 +9,21 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
 	if(is_array($overroletemplate[$formname])){
 		$vieuw->addtagitems($overroletemplate[$formname]);
 	}
-	if(is_file($autosite['private'].$formsdata[$formname]['name'].".csv")){
-            $BROL =$step*$steplen;
+    $BROL =$step*$steplen;
+    $count= 1 ;
+	if(isset($formsdata[$formname]['type']['file'])&& is_file($autosite['private'].$formsdata[$formname]['name'].".csv")){
             $count = $vieuw->getfrom_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items'],$BROL,$steplen+1);
-            print '<div class="paginator"><h2>';
+	}elseif(isset($formsdata[$formname]['type']['db'])){
+	   print"<-- -->test";
+	   $count = $vieuw->getfrom_DB($formsdata[$formname]['name'],$formsdata[$formname]['items']);
+    }else{
+		print"<--NO DATA-->";
+	}
+    print '<div class="paginator"><h2>';
             for($i=0;$i<ceil($count/$steplen);$i++){
                 print" <a href='".$_SERVER['SELF'].$attributen."&step=$i&steplen=$steplen' class='viewsitem'>[$i]</a>";
             }
             print '<h2></div>';	
-	}else{
-		print"<--NO DATA-->";
-	}
-    
 }else{
 	print "<!--NO VIEUWS-->";
 }
