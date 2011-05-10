@@ -131,7 +131,7 @@ $option2location['uconstruct']= array("error.php",111,'');//upload of a page
 
 $linkbanners=$autosite['layout']."img/aditionals/";
 $linkextern['left'][0]= array("http://www.freewebstuff.be","freewebstuff",'freewebstuff.gif');
-$linkextern['left'][1]= array("http://www.skype.com","skype",'');
+
 $linkextern['left'][2]= array("http://www.search-belgium.com/","search-belgium",'BelgaSearch_animbadge.gif');
 
 $linkextern['left'][5]= array("http://www.ogone.com/","ogone",'');
