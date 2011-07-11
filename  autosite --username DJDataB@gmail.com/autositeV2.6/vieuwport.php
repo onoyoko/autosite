@@ -3,7 +3,7 @@ include("generalvars.php");//security no include_once
 if(!session_start()){
 	print "session error ALERT TO ENABLE JS";
 }
-include_once($autosite['layout']."head.inc");
+
 /**
  * @author Lieven Roegiers
  * @copyright 2007
@@ -13,6 +13,7 @@ include_once($autosite['layout']."head.inc");
 $content = (isset ($_GET['content']))?addslashes($_GET['content']):'home';
 $content= (isset ($_POST['content']))?addslashes($_POST['content']):$content;
 $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
+include_once($autosite['layout']."head.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 		include_once("./preparts/Amenu.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
