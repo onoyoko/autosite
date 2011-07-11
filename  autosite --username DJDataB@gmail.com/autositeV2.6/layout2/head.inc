@@ -13,7 +13,9 @@
 	<meta name="GENERATOR" content="PHP Designer 2009 profesional, @CMS autosite By Lieven Roegiers" />
 	<meta name="ROBOTS" content="INDEX" />
 	<meta name="DESCRIPTION" content="<?php print $autosite['title']?>" />
-	<meta name="KEYWORDS" content="content,dynamic site" />
+	<meta name="KEYWORDS" content="Autosite, content,dynamic site,<?php $autosite['meta']= $autositelang[$autosite['lang']].$content.".meta";
+    print $autosite['title'].",";
+    print (is_file($autosite['meta']))?include($autosite['meta']).'"/>' :'"/><!--no meta -->';?>
 	<meta name="TITLE" content="<?php print $autosite['title']?>" />
 	<meta name="LANGUAGE" content="nederlands" />
 	<meta name="revisit-after" content="10 days" />
