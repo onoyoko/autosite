@@ -16,28 +16,14 @@ function getsessionvisitor(){
 	return(isset($_SESSION['visitor']))?unserialize($_SESSION['visitor']):null;
 }
 class Visitor {
-
+    private $brower;
 	private $remoteip;
 	private $enabled;
 	private $isheajack;
-	private $releasetime = 0 ;
 	function Visitor(){
 		session_start();
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<FUNCTIONS>>>>>>>>>>>>>>>>>>>>>>>>>
-	function setVisitor($kkey){
-		//$username=(isset($username)&& $username!="")?$username:$_SESSION['login'];
-		//parent:: wil go to extends
- 		parent::__construct($username,$kkey);
-		$this->isuser=(is_dir($this->userpath)&& $username!="")? true:false;
-	}
-	private function isenabled(){
-  		return true;
-  	}
-  	//set not public security
-	private function isReleasetime(){
-		return ($this->releasetime > time());	
-	}
 	private function isRemoteip(){
 		if($this->remoteip === $_SERVER['REMOTE_ADDR']){
 			return true;
@@ -48,20 +34,25 @@ class Visitor {
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<Setters>>>>>>>>>>>>>>>>>>>>>>>>>
 
-	private function setReleasetime(){
-		$this->releasetime = time() + (1 * 1 * 60 * 60);	
-	}
 	private function setRemoteip(){
 		$this->remoteip = $_SERVER['REMOTE_ADDR'];
 	}
-	public function setpassword($oldpwx){
-		
+    public function setBrowser($browername){
+		$this->brower= $browername;
 	}
-	public function __tostring(){
-		return "Welkom ";
+    public function setLanguage($langname){
+		$this->lang= $langname;
 	}
+
 	private function __toprintsession(){
 		print_r($_SESSION);
 	}
+	//<<<<<<<<<<<<<<<<<<<<<<<Getters>>>>>>>>>>>>>>>>>>>>>>>>>
+    public function getBrowser(){
+		return $this->brower;
+	}
+    public function getLanguage(){
+		return $this->lang;
+	}    
 }
 ?>
