@@ -42,9 +42,8 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
             <div class="editorbtn" align="right">
             	Name:<input type="text" name="title"  value="newpage" />
         	</div>
-                                    <!-- hidden" align="right"-->
-            <div id="return" class="ERROR"> return </div>
-		</div>
+                                  <!-- hidden" align="right"-->
+
         <!-- ********************** SOURCEPANEL *********************-->
 		<div id="Sourcepanel" class="Apanel hidden">
 			<textarea id="Source" name="html" wrap="VIRTUAL" class="Source">
@@ -79,14 +78,12 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
   function doWYSIWYG(command, condition, arg){
     //editorpanelname.focus();
     if(!condition) condition=false;
-    document.execCommand(command, condition, arg);
+    var test = document.execCommand(command, condition, arg);
+    test.className="Manipulated";
   }
   function doWYSIWYG2(command, condition, arg){
    editorpanelname.focus();
    addPTag(editorpanelname, command);
-  }
-  function doWYSIWYG3(){
-
   }
   function getselectedtext(){
     var txt = '';
@@ -106,7 +103,6 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
   		document.getElementById("Source").value = editorpanelname.innerHTML;
   		issource = true;
   	}
-  	
   	//switch to other vieuw
     setclass("Editorpanel",'hidden Apanel');
   	setclass("Sourcepanel",'Apanel');
@@ -195,3 +191,4 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 
 
 <link rel="StyleSheet" type="text/css" href="<?php print $autosite['layout']?>css/style_syntax_highlite.css" />
+lewistr.com
