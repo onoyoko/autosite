@@ -43,6 +43,7 @@ $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
 $autosite['gallery']= $loc."layout2/";//all gallerys from your site and global site content
 $autosite['layout'] = $loc."layout2/";//all layout from your site and global site content
+$autosite['webeditor']['pages'] = $loc."layout2/editor/";//all layout from your site and global site content
 $autosite['preparts'] = $loc."preparts/";//all layout from your site and global site content 
 $autosite['error'] = $loc."error/";//all error messages/pages
 $autosite['functions'] = $loc."function/";//central place for all new functionalitie
