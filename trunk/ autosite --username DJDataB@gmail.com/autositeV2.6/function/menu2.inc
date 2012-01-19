@@ -18,11 +18,18 @@ class Menu{
     private $id=0;
     private $properties;
     private $translations;
-    public function Menu($lang) {//./Layout is for security
+    /*public function Menu($lang) {//./Layout is for security
     	$this->lang = $lang;
 	    $this->filename = "Menu.".$lang.".dat";
 				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<take the properties vb(forms_NL.properties)>>>>>>>>>>>>>>>>		
 		$this->properties = getpropertiefile($autosite['translations'],$this->lang,"forms");
+	    print"<!-- menu -->";
+	}*/
+    public function Menu($lang,$translationslocation) {//./Layout is for security
+    	$this->lang = $lang;
+	    $this->filename = "Menu.".$lang.".dat";
+				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<take the properties vb(forms_NL.properties)>>>>>>>>>>>>>>>>		
+		$this->properties = getpropertiefile($translationslocation,$this->lang,"forms");
 	    print"<!-- menu -->";
 	}
     /**

@@ -14,7 +14,7 @@ class DB_source implements tosave{//initialize = !important!security
 	  private $DSfilename;//datasourcefilename
 	  private $datasource;
 	  private $DB_adapter;
-      private $DB_connection;
+     
       private $DB_hosturl;
       private $DB_name;
       private $DB_user;
@@ -62,31 +62,10 @@ class DB_source implements tosave{//initialize = !important!security
       private function IS_conneced(){
       			return $this->DB_is_connect;
       }
-	  public function CON_Startup(){
-            try{
-            	if (!$this->IS_conneced()){
-            		switch ($this->DB_adapter){ 
-						case "mysql":
-						case "MYSQL":
-						$this->DB_connection = 	mysql_connect($this->DB_hosturl,$this->DB_user,$this->DB_pwx);
-						//! important!security
-	  			    	@mysql_select_db($this->DB_name) or die( "MySQL DB Error: Unable to select database");
-	  			    	$this->DB_is_connect = true;
-						
-						break;
-						default :
-	  			    print $this->getfullconnectionstring();
-				}
-  			    }
-            }catch (Exception $e){
-                //echo $e->getMessage();//do not unescape this !important! security
-            }
-            return $this->DB_is_connect;
-       }
-       private function getfullconnectionstring(){//!important!security do not set it public
-        	//jdbc:mysql://domein.be:port/databasename
-        	return $this->DB_adapter."://".$this->DB_hosturl.":".$this->DB_port."/".$this->DB_name." ";
-       }
+      /**
+ 	  *@return
+     */
+
  /*
  * CREATE TABLE contacts (id int(6) NOT NULL auto_increment,firstname varchar(15) NOT NULL,PRIMARY KEY (id),UNIQUE id (id),KEY id_2 (id))
  * INSERT INTO contacts VALUES ('','yourfirstname')

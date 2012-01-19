@@ -85,7 +85,7 @@
 			while (!feof($gbfile)){
 				$fileline=fgets($gbfile,1024);
                  if($this->find_AND($fileline,$tofind)){ 
-                    if($row>$from && $to== 0 || $row<$to){
+                    if($row>$from && $tofind== 0 || $row<$tofind){
                         $this->rowhandel(array_keys($taglist),explode(',',$fileline));
                     }
                     $row++;
