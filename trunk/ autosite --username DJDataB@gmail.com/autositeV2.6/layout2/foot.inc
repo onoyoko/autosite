@@ -1,9 +1,16 @@
 <!--whitepace for scrolling correction -->
 <div id="spacing">
 </div>
-<?php if($_errors){
-			print"<div id='xx' class='ERROR'>$_errors</div>";
-      };
+<?php if(isset($_errors)){
+            if(is_array($_errors)){
+                print"<div id='xx' class='ERROR'>";
+                 pint_r($_errors);
+                print"</div>";
+            }else{
+                print"<div id='xx' class='ERROR'>$_errors</div>";
+
+            }
+      }
 ?>
 <div id="foot">
 	<!--@layout @foot -->

@@ -6,7 +6,7 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
 		$translatedata =$properties->getproperties($formsdata[$formname]['totranslate']);
 	}
 	$vieuw = new Qvieuw($string,$translatedata);
-	if(is_array($overroletemplate[$formname])){
+	if(isset($overroletemplate[$formname])&& is_array($overroletemplate[$formname])){
 		$vieuw->addtagitems($overroletemplate[$formname]);
 	}
     $q=(isset($_GET['q']))?$_GET['q']:'';
@@ -14,7 +14,7 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
             $count = $vieuw->search_csv($autosite['private'].$formsdata[$formname]['name'].".csv",$formsdata[$formname]['items'],$q,($step*$steplen),$steplen+1);
             print '<div class="paginator"><h2>';
             for($i=0;$i<ceil($count/$steplen);$i++){
-                print" <a href='".$_SERVER['SELF'].$attributen."&step=$i&steplen=$steplen' class='viewsitem'>[$i]</a>";
+                print" <a href='".$_SERVER['PHP_SELF'].$attributen."&step=$i&steplen=$steplen' class='viewsitem'>[$i]</a>";
             }
             print '<h2></div>';	
 	}else{

@@ -45,7 +45,7 @@
 
 	<!--link media = 'screen'type = 'text/css'rel = 'stylesheet'href = '".$layout."/css/webtoolkit.shadow.css.php' />
 	<link rel = 'stylesheet'href = '".$layout."css/edit.css.php'type = 'text/css' /-->
-	<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.6 automaticsite -->
+	<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.7 automaticsite -->
 	<script language='JavaScript' src='<?php print $autosite['javascript']?>menu15.0.0.js'></script>
 	<script type="text/javascript"> 
 		//if (parent.frames.length <1)

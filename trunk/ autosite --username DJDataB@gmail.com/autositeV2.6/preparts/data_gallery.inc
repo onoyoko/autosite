@@ -8,7 +8,7 @@
 			$translatedata =$properties->getproperties($formsdata[$formname]['totranslate']);
 		}	
 	    $vieuw = new Qvieuw($string,$translatedata);
-		if(is_array($overroletemplate[$formname])){
+		if(isset($overroletemplate[$formname])&&is_array($overroletemplate[$formname])){
 			$vieuw->addtagitems($overroletemplate[$formname]);
 		}
 		if(is_file($autosite['private'].$formsdata[$formname]['name'].".csv")){
