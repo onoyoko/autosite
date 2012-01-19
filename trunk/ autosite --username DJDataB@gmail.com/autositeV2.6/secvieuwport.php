@@ -24,7 +24,7 @@ $user= getsessionuser();
 $kkey=( isset( $_GET['key'] ) ) ? addslashes( $_GET['key'] ) : NULL ;											
 $handeling = (isset($_GET['handeling'])) ? addslashes($_GET['handeling']) : "beheer";
 $autosite['lang']	= ( isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
-$path = $handeling.'/'.$lang.'/'	;
+$path = $handeling.'/'.$autosite['lang'].'/'	;
 $content=(isset($_GET['content']))? addslashes($_GET['content'] ) : 'home' ;
 $content=(isset($_POST['content']))? addslashes($_POST['content'] ) : $content ;
 /*$clog->is_login_ok('',$kkey)&& isset($Gfile)||*/
@@ -40,8 +40,8 @@ if(isset($user)&& $user->islogin()){
 		if("www.jm-bru"."neau.be"==$_SERVER["HTTP_HOST"]){ die("readme copyright :not trust site . Blocked BY DEVELOPER");}
 		if(isset($handeling)&& $handeling == "save"){
 			$html = (isset($_POST['html'])) ? $_POST['html']: null;
-			$page = new QPage();
-			if ($page->saveasfile($autositepath,$content,$html)){
+            $page = new QPage($autositelang[$autosite['lang']],$content);
+			if ($page->saveasfile($html)){
 				print "<h1> saved </h1>";
 			}else{
 				print"<h1> not saved </h1>";
