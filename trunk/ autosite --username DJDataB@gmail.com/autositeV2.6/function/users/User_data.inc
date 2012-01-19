@@ -90,7 +90,7 @@ class User_data{
     	return $this->hasguestbook;//TODO generate stuf 
     }
     public function getuserimg(){//!!!security!!! return only the data of the img include("imagename.gif");
-  		if($this->isuserimg($imgname)){
+  		if($this->isuserimg()){
   		    $img = new IMGmasker();
     		return $img->__getimg($this->userdata['path'],$this->userdata['name'].".jpg");//TODO generate stuf
     	}else{
@@ -98,7 +98,7 @@ class User_data{
     	}
     	//return ;//TODO generate stuf
     }
-    private function isuserimg($imagename){
+    private function isuserimg(){
     	return is_dir($this->userdata['path'])&& is_file($this->userdata['path'].$this->userdata['name'].".jpg");//TODO generate stuf
     }
     
