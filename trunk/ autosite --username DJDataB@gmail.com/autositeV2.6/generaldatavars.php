@@ -55,7 +55,7 @@ $xmlplugs['xmlcv']['dtd']="???";
 $xmlplugs['xmlcv']['loginniveau']=0;
 
 
-$A_vmbridge['j2ee'];
-$A_vmbridge['j2ee'];
+$A_vmbridge['j2ee']="";
+
 
 ?>
