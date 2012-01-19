@@ -36,7 +36,8 @@ class User extends User_data{
 	 * @return void
 	 */
 	function User(){
-		session_start();
+		
+       
 	}
 	//<<<<<<<<<<<<<<<<<<<<<<<FUNCTIONS>>>>>>>>>>>>>>>>>>>>>>>>>
 	/**
@@ -163,15 +164,16 @@ class User extends User_data{
 	}
     public function viewUser(&$htmltemplate){
         $template = new Qtemplate($htmltemplate);
-    		$template->addtagitem("pic","<img class='userimg' src='%value%' />");
-        if (is_dir($this->userspath.$selectie."/".$dir)){ 
+    	$template->addtagitem("pic","<img class='userimg' src='%value%' />");
+        $i=0;
+        $dir="";
+        $selectie="";
+        if (is_dir($this->userpath)){//.$selectie."/".$dir)){ 
                 $asoarr = $this->getdata();
                 $asoarr["i"]=++$i;
                 $template->setvalues($asoarr);
                 print($template->gethtml());
         }
-        
-
     }
 }
 ?>
