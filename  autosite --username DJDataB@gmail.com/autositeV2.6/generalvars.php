@@ -39,7 +39,7 @@ $autosite['servicenr']="BE_478394081";
 $autosite['servicemail']="info@djdb.be";//your service mail
 $autosite['publicmail']="info@djdb.be";//reclame and else
 $autosite['servicename']="Your name";
-$autosite['installoc']= "/myhome/automaticsitev2.6/v2.6/";//location from installation
+$autosite['installoc']= "/myhome/automaticsitev2.6/v2.7/";//location from installation
 $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
 $autosite['gallery']= $loc."layout2/";//all gallerys from your site and global site content
@@ -105,12 +105,10 @@ function myHandler($errno, $errstr, $errfile, $errline){
     case E_USER_WARNING:
         $_errors.= "<b>WARNING</b> [$errno] $errstr at $errline =>&gt; $errfile".",[PHP]".PHP_VERSION."(".PHP_OS.")<br />\n";
         break;
-
     case E_USER_NOTICE:
     case E_NOTICE:
         $_errors.= "<b>NOTICE</b> [$errno] $errstr at $errline =>&gt; $errfile".",[PHP]".PHP_VERSION."(".PHP_OS.")<br />\n";
         break;
-    
     default:
         $_errors .= "Unknown error type: [$errno] $errstr<br />\n";
         break;

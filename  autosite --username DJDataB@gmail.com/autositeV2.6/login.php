@@ -37,6 +37,7 @@ if(isset($kkey)&& $kkey!=""){
 	$istime = new istime();
 	if($kkey==$resline[2]&&$istime->is_notpasse($resline[0])){
 		if($user->login($pass,$resline[2],$resline[3])){//login ok
+            session_start();
 		     $csvingelogd = new csv_plus($autosite['users'],"ILOG.dat");
 		     $data = array($kkey,$user,"L0G1N",$_SERVER['REMOTE_ADDR']);
 			 $csvingelogd->save_line($data);
@@ -63,7 +64,7 @@ if(isset($kkey)&& $kkey!=""){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 	//include_once ($autosite['layout']."toolbar.inc");
 	include_once ($autosite['layout']."aditudes.inc");
-	$formname=$id;
+	//$formname=$id;
 	print "<script type='text/javascript' src='".$autosite['javascript']."webtoolkit.".$cripty.".js'></script>";
 			print'<div id="container">';
 			include_once($autosite['functions']."Qhtml/Qvieuw.inc");

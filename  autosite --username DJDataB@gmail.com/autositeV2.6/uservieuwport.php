@@ -39,7 +39,7 @@ $attributen.=(isset($load)) ? "&upload=".$load : "&upload=0";
 	}
 if(isset($user)&& $user->islogin()){
  	include_once($autosite['layout']."head.inc");
- 	userlog($handeling."=>".$Gfile,$user->getpath());
+ 	userlog($handeling."=>".$attributen,$user->getpath());
 	//$menu2 = new Menu("Users.dat", $autosite['users'],false);//write menu 
 	//include($autosite['layout']."menusettings.inc");
 	include_once($autosite['layout']."head.inc");
@@ -69,7 +69,7 @@ if(isset($user)&& $user->islogin()){
             include_once($autosite['layout']."tooltip.inc");
             print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
             $template = (string)file_get_contents($autosite['templates']."users.Qtemplate");
-			$users->vieuwusers($get,$_SERVER['PHP_SELF']."?content=",new User(),$template);
+			$users->vieuwusers($get,$_SERVER['PHP_SELF']."?content=",$user,$template);
 			print  "Users => list  ".$get;
 		}	
 		if ($content > 2){
