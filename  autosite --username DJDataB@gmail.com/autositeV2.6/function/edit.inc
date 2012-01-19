@@ -26,7 +26,7 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 	   	<!-- ********************** EDITORMENU *********************-->
 		<div class="editormenu">
 	     	<?php include($autosite['functions']."editor/actionstoolbar.inc")?>
-            <?php include($autosite['functions']."editor/linktoolbar.inc")?>
+            <?php //include($autosite['functions']."editor/linktoolbar.inc")?>
 		</div>
        	<div class="editormenu">
 	     	<div class="editorbtn" align="left">
@@ -191,4 +191,3 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 
 
 <link rel="StyleSheet" type="text/css" href="<?php print $autosite['layout']?>css/style_syntax_highlite.css" />
-lewistr.com
