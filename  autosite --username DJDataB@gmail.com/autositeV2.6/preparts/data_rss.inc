@@ -2,6 +2,10 @@
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<Vieuw data>>>>>>>>>>>>>>>>
 		print '<?xml version="1.0" ?>'."\n";
 		print '<rss version="2.0">'."\n  <channel>\n<title>".$formname."</title>\n";
+        $attributen="?";
+		$attributen.=(isset($content))? "content=".$content : "";
+		$attributen.=(isset($autosite['lang']))? "&lang=".$autosite['lang'] : "";
+        $attributen.=(isset($_GET['viewas']))? "&viewas=".$_GET['viewas'] : "";
         print '<link>'.$_SERVER['PHP_SELF'].$attributen.'</link>';
         print '<description>Autosite contentgenerator rss</description>';
         print "<language>$lang</language>\n";

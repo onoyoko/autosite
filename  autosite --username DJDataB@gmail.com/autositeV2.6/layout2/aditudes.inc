@@ -6,7 +6,10 @@
 
 <div id="langbar">	
 	<?php	foreach ($autositelangname as $key => $item){
-				print "<a href='".$_SERVER['PHP_SELF']."?lang=$key&content=$formname$Gfile' title='".$item."'>";
+				print "<a href='".$_SERVER['PHP_SELF']."?lang=$key&content=".
+                ((isset($content))?$content:"").
+                ((isset($formname))?$formname:"").
+                "' title='".$item."'>";
 				print "<img border='0' src='".$autosite['layout']."lang/$key.gif'></a>";
 			}
 	?>
