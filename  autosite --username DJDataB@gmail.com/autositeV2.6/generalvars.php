@@ -20,10 +20,11 @@ $offlinedebug = true;//TODO delete before upload 1==>>>
 		//$_SERVER['PHP_SELF']="http://localhost:8080/workspacesite";//to make a projectname autosite on your easyphp
 		//print $_SERVER['PHP_SELF'];
 
-	if ($_SERVER["HTTP_HOST"]!="www.jouwdomein.be"&&$_SERVER["HTTP_HOST"]!="localhost"&&$_SERVER["HTTP_HOST"]!="120.114.1.4"){
+	if ($_SERVER["HTTP_HOST"]!="www.jouwdomein.be"&&$_SERVER["HTTP_HOST"]!="localhost"){
 		//print"ERROR NO access to this file";
 		die("ERROR INVALID domein or copy this to generalvars =>".$_SERVER["PHP_SELF"]);//security
 	}
+
 
 //<<<<<<<<<<<<<<<<<<<<<< general vars>>>>>>>>>>>>>>>>
 if(isset($loc)){
@@ -38,7 +39,7 @@ $autosite['servicenr']="BE_478394081";
 $autosite['servicemail']="info@djdb.be";//your service mail
 $autosite['publicmail']="info@djdb.be";//reclame and else
 $autosite['servicename']="Your name";
-$autosite['installoc']= "/automaticsitev2.6/v2.6/";//location from installation
+$autosite['installoc']= "/myhome/automaticsitev2.6/v2.6/";//location from installation
 $autosite['self']= $_SERVER['PHP_SELF'];//site path
 
 $autosite['gallery']= $loc."layout2/";//all gallerys from your site and global site content
@@ -91,6 +92,36 @@ if($autosite['ecommerce']['in']&& $own_control_selection){//make it secure
 	//Paypal, Fenego, Paysafeca, Tales, De Post, Rittz, Netmark,
 	//Abo, IAB, PFS, Multisafe pay, Saferpay, Mondial Relay, Destiny, Newsmaster 
 }
+// error handler function
+
+function myHandler($errno, $errstr, $errfile, $errline){
+    $_errors="</div><div id='ERROR' class='ERROR'>";//$autosite['servicemail']."";
+    switch ($errno) {
+    case E_USER_ERROR:
+        $_errors.= "<b>ERROR</b> [$errno] $errstr ERROR at $errline =>&gt; $errfile".",[PHP]".PHP_VERSION."(".PHP_OS.")<br />\n";
+        //echo "Aborting...<br />\n";
+        //exit(1);
+        break;
+    case E_USER_WARNING:
+        $_errors.= "<b>WARNING</b> [$errno] $errstr at $errline =>&gt; $errfile".",[PHP]".PHP_VERSION."(".PHP_OS.")<br />\n";
+        break;
+
+    case E_USER_NOTICE:
+    case E_NOTICE:
+        $_errors.= "<b>NOTICE</b> [$errno] $errstr at $errline =>&gt; $errfile".",[PHP]".PHP_VERSION."(".PHP_OS.")<br />\n";
+        break;
+    
+    default:
+        $_errors .= "Unknown error type: [$errno] $errstr<br />\n";
+        break;
+    }
+    $_errors .= "</div>\n";
+    echo $_errors;
+    /* Don't execute PHP internal error handler */
+    return true;
+}
+set_error_handler("myHandler");
+
 
 
 $autositelangname['NL']="Nederlands";
@@ -106,6 +137,8 @@ $autositelangname['EN']="Englise";
 $autositelang['EN']= $autosite['path']."map_EN/";
 $autositelangimg['EN']="EN.gif";
 
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>general translations>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//$autosite['translations']= array("home","login");
 $autosite['home'] = $autositelang[$autosite['lang']]."home";//home referentie
 ////////////////////////////////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TODO !!!!!>>>>>>>>>>>>>>>>>>>>>>
 $autositepath=$autositelang[$autosite['lang']];

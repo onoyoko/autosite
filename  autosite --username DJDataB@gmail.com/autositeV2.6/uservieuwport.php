@@ -89,4 +89,4 @@ if(isset($user)&& $user->islogin()){
 ?>
 <!-- @OVERRIDE STYLE -->
 <link rel='stylesheet' href='<?php print $autosite['layout'] ?>css/style.css' type='text/css' />
-<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.5 automaticsite -->
+<!-- @AUTHOR Lieven Roegiers @CMS autosite V2.7 automaticsite -->

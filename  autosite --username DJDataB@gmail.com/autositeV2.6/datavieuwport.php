@@ -20,12 +20,18 @@
 	$datatosave["date"] = date("l j F Y");
 	if(is_file($autosite['forms'].$formname.".vars")){
 		include($autosite['forms'].$formname.".vars");//print_r($formsdata[$formname]);
+        if (isset($formsdata[$formname]['loginniveau'])){
+            $formlevel=$formsdata[$formname]['loginniveau'];
+        }else{
+            $formlevel=777;
+            $_errors.="INCORRECT IMPLEMENTATION=>$formname";
+        }
 	}
     $isdata= is_file($autosite['private'].$formsdata[$formname]['name'].".csv");
 	$content = "".$formname;
 	include($autosite['functions']."users/User_data.inc");
 	include($autosite['functions']."users/User.inc");
-	session_start();
+	//session_start();
 	$user= getsessionuser();
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    VIEUW DATA      >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
@@ -78,12 +84,13 @@ print'<div id="container" class="clearfix">';
             </div>
             <form method="post" action="<?php print $_SERVER['PHP_SELF'].$attributen;?>" enctype="text/plain">
                 <input type="hidden" name="selecteditem"  id="selecteditem"/>
-            </form></div>
+            </form>
+            </div>
         <?php
         include_once ($autosite['layout']."search.inc");
         print"<div class='views'>";
     	    foreach($views as $key=>$value){
-    			print" <a href='".$_SERVER['SELF'].$attributen."&viewas=$key' class='viewsitem'>$key</a>|";
+    			print" <a href='".$_SERVER["PHP_SELF"].$attributen."&viewas=$key' class='viewsitem'>$key</a>|";
     		}
         print"</div>";
 		include_once ($autosite['layout']."foot.inc");
