@@ -50,7 +50,7 @@ class users{//
 		"";
 	}
 	public function vieuwusers($selectie,$link,$MyUserSelf,&$htmltemplate){
-	   print("<-- $this->userspath$pathname-->");
+	   print("<-- $this->userspath-->");
 		if(is_dir($this->userspath.$selectie)){
 			$opendir = opendir($this->userspath.$selectie);
 			$i = 0;
