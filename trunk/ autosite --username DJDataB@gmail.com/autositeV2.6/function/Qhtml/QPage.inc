@@ -9,8 +9,7 @@
  if (!function_exists('Qtagmaker')){//include_once its when it is include in the php lib
 class QPage{//
 	private $pagepath;
-    private $file;
-    private $location;
+    private $filelocation;
 	public function __construct($location,$pagename){
 		$this->filelocation = $location.$pagename.".dat";
 	}
@@ -20,7 +19,7 @@ class QPage{//
 				fwrite($this->file, stripslashes($pagecontent));
 				return true;
 		}else{
-			print("<!--path not ready-->");
+			print("<!-- path not ready-->");
 		}
 		return false;
 	}
