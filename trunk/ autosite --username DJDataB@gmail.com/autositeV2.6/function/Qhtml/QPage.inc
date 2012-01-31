@@ -37,7 +37,7 @@ class QPage{//
 	 * @param string $mode
 	 * @return
 	 */
-	private function open($mode='a+'){
+	private function open($mode='w'){
 		return($this->file = fopen($this->filelocation,$mode)); 
 	}
     public function is_ReadyToUse(){
