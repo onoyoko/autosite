@@ -6,9 +6,12 @@
  * opensource http://code.google.com/p/autosite/
  * @underconstruction	
  */	
+ error_reporting(all)
  	class Amail{
  		private $headers=array();
- 		private $issend;
+ 		private $issend = false;
+        private $body="see class body is null ";
+        private $subject="This is a mail send by php" ;
  		function __construct($from){
  			if($this->is_spammer($from)){
  				$this->headers["From:"] = "web<$from>";
@@ -31,9 +34,12 @@
  		* !important! do not remake watch to array_walk
  		*/
 		function send($naam,$email){
-			$this->issend = mail($email,$this->subject,$this->html,$this->headers);
+			$this->issend = mail($email,$this->subject,$this->body,$this->headers)->debugMode=true;
 			return $this->issend;
 		}
+        function setbody($body){
+            $this->body=$body;
+        }
 		/**
  		* @maillist 
  		* asiosiatieve array (name => mail)
