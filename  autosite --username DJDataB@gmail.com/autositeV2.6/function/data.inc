@@ -13,8 +13,8 @@
 	* @param $forminf array(items=>array(""=>""),valid=>array(""=>""))
 	* @param $type "database","filesystem"
 	*/
-	function addfilesatlink(&$asoarrdata,$to,$formsdata){
-		$uploader = new upload($_FILES,$formsdata,$autosite['trueext'],$to);
+	function addfilesatlink(&$asoarrdata,$to,$formsdata,$extentions){
+		$uploader = new upload($_FILES,$formsdata,$extentions,$to);
 		$uploadlinks = $uploader->getlinks();
 		//print_r($asoarrdata);
 		foreach ($uploadlinks as $key =>&$value){
@@ -123,14 +123,14 @@
 		 * @param $faze  vb DB_source::DEVELOPMENT,
 		*/
 		public function initdatabase($DS_filename,$faze){
-			$this->opslagplaats = new DB_source($faze,$DS_filename);
+			$this->opslagplaats = new DB_source($this->faze,$DS_filename);
 			$this->isopslagplaats = $this->opslagplaats->CON_Startup($this->forminf['name']);
 		}
 		/**
 		* @param $FILE_ref referention to the file
 		*/
 		public function initfile($FILE_ref){
-			$this->opslagplaats = new csv_plus($FILE_ref,$this->forminf['name'].$faze.".csv");
+			$this->opslagplaats = new csv_plus($FILE_ref,$this->forminf['name'].$this->faze.".csv");
 			$this->isopslagplaats = $this->opslagplaats->is_readytouse();
 			$this->$FILE_ref=$FILE_ref;
 		}

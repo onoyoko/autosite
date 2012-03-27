@@ -2,6 +2,7 @@
 	if(!session_start()){
 		print "session error";
 	}
+    //__autoload();
 	include('./generalvars.php');
 	include('./generaldatavars.php');
 	include($autosite['functions'].'data.inc');
@@ -25,9 +26,8 @@
 	$content = "".$formname;
 	include($autosite['functions']."users/User_data.inc");
 	include($autosite['functions']."users/User.inc");
-	session_start();
 	$user= getsessionuser();
-	$formlevel = isset($formsdata[$formname]['loginniveau'])?$formsdata[$formname]['loginniveau']:1;
+	$formlevel = (isset($formsdata[$formname]['loginniveau']))?$formsdata[$formname]['loginniveau']:1;
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<    SAVE DATA       >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<(public vieuw |or| permited vieuw)>>>>>>>>>>>>>>>>
 	//$_errors.= "to:".$formname."<br />id:".$_POST['id']."<br />formlevel:".$formlevel."<br />userlogin".((isset($user))?$user->islogin():"0")."<br />levels:formlevel(".$formlevel."&lt ".((isset($user))?$user->getlevel():"0").")userlevel<br />";
@@ -36,7 +36,7 @@
 		//$_errors.= "LOGIN OR FORMLEVEL FREE<br />";
 		if(isset($_POST['action']) && $_POST['action'] == 'submitted'){
 				try{//<<<<<<<<<<<<<<<<<<<<<<<<<<<<fileupload>>>>>>>>>>>>>>>>
-				    addfilesatlink($datatosave,$autosite['uploads'].$formname."/",$formsdata[$formname]);
+				    addfilesatlink($datatosave,$autosite['uploads'].$formname."/",$formsdata[$formname],$autosite['trueext']);
 					$opslagruimte = new data($formsdata[$formname]);
 					$opslagruimte->setvalidationmsg($Errmsg['NL']);
 					//$opslagruimte->initdatabase($DS_filename,DB_source::DEVELOPMENT);

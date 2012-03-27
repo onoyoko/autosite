@@ -16,6 +16,7 @@ $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 include_once($autosite['layout']."head.inc");
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
 		include_once("./preparts/Amenu.inc");
+        
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOOLBAR sidebar>>>>>>>>>>>>>>>>
 		include_once($autosite['layout']."toolbar.inc");
 		include_once($autosite['layout']."aditudes.inc");
