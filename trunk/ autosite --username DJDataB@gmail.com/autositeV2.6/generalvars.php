@@ -32,6 +32,7 @@ if(isset($loc)){
 } else {
 	$loc = "./";
 }
+
 //the folow code wil initial use js and you must make a button to ask a page with no js.(no js is more server activity)
 $autosite['hasclientjs']=(!isset($_GET['js'])||$_GET['js']!="false")?true : false;
 //set_include_path('/inc');
@@ -48,6 +49,9 @@ $autosite['webeditor']['pages'] = $loc."layout2/editor/";//all layout from your 
 $autosite['preparts'] = $loc."preparts/";//all layout from your site and global site content 
 $autosite['error'] = $loc."error/";//all error messages/pages
 $autosite['functions'] = $loc."function/";//central place for all new functionalitie
+function __autoload($class){
+    require_once($autosite['functions'].$class.'.php');//ERROR1 lib/ bestand stond in root
+}
 $autosite['javascript'] = $loc."js/";//central place for all new functionalitie
 $autosite['KEYWORDS']= array("autosite","dynamic site","cms");
 /**
@@ -77,6 +81,7 @@ $autosite['userlang']=$_SERVER["HTTP_ACCEPT_LANGUAGE"];
 $autosite['mysql']=false;
 $autosite['datasource']="";
 $autosite['ecommerce']['in']=false;
+$autosite['translations'] =$autosite['layout']."translations/";//translations
 if($autosite['ecommerce']['in']&& $own_control_selection){//make it secure
 	$autosite['ecommerce']['ogone']['login']="";
 	$autosite['ecommerce']['ogone']['pwx']="";
@@ -118,7 +123,7 @@ function myHandler($errno, $errstr, $errfile, $errline){
     /* Don't execute PHP internal error handler */
     return true;
 }
-set_error_handler("myHandler");
+//set_error_handler("myHandler");
 
 
 

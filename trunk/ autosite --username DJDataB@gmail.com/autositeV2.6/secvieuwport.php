@@ -48,14 +48,12 @@ if(isset($user)&& $user->islogin()){
 			}
 			print($html);
 		}else{
-		    
-		    //             $option_location['edit']= array(0,1,2);
+		   //             $option_location['edit']= array(0,1,2);
            //$option_location['edit']= array("secvieuwport.php",333,'edit.inc');//site editor
-           
 		   if (!array_key_exists($handeling,$option_location)||!($selection=$autosite['functions'].$option_location[$handeling][2])){
 				//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  NOT FOUND >>>>>>>>>>>>>>>>>>>>>>>>>
 				include_once($autosite['error']."pagenotfound.inc");
-			}elseif(is_file($selection)&&($option_location[$handeling][1]<$user->getlevel())){
+			}elseif(is_file($selection)&& $option_location[$handeling][1]<$user->getlevel()){
 				//<<<<<<<<<<<<<<<<<<<<<<<FUNCTION  PAGE like edit>>>>>>>>>>>>>>>>>>>>>>>>>
 				include_once($selection);
 			//private atribuut}elseif($user->isenabled()){

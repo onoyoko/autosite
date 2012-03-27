@@ -3,12 +3,11 @@
 	* @author Lieven Roegiers
 	* @copyright 2009
  	* @CMS autosite
- 	* opensource http://code.google.com/p/autosite/ 
+ 	* opensource http://code.google.com/p/autosite/
 	*/
 
 	/**
 	 * getpropertiefile()
-	 * 
 	 * @param mixed $path the path where the translation file is
 	 * @param mixed $lang lang = locale like(NL, FR) and is like form_FR.properties 
 	 * @param mixed $name name of the file
@@ -21,6 +20,7 @@
 				return new properties($path,"_".$lang,$name);
 		}else{
 				print"<!-- @LANGlocale:".$lang." IS NOT EXIST !!!properties!!! -->";
+                print $path.$name."_".$lang.".properties";
 				return new properties("./layout2/translations/","",$name);
 		}
 	}
@@ -92,15 +92,20 @@
 				print("[error]varkeys translations not found (properties.inc)");
 			}else{
 				if ($this->open()){
-					while (!feof($this->file)){    			
+				    while (!feof($this->file)){    			
 			    			$fline = fgets($this->file, 4096);
 			    			$pos = strpos($fline,$this->delemiter);
 			    			$key = substr($fline,0,$pos);
-                            $propertie = $prefix.$key;
+                            $propertie = $key;
+                            
 			    			if($pos>1 && array_key_exists($propertie,$tofind_keys) ){
 								$value = substr($fline,$pos+1);
 								$asoarr[$key]=str_replace(array("\r\n", "\n", "\r"), "",$value);
+                                //print "xxxx". $propertie ."wil in wording". $value ."xxxx";
+							}else{
+		                        //print "xxxx". $propertie ."xxpos:".$pos."xx";
 							}
+                                 
 					}
 				}
 			//$this->test2($tofind_keys,$asoarr);
@@ -146,7 +151,7 @@
 		 * @return 
 		 */
 		private function test(){
-			print("debug<br />");
+			print("<!-- debug:properties --><br />");
 			print($this->filelocation ."is".$this->is_filelocation().'<br />');
 		}
 		/**
@@ -157,7 +162,7 @@
 		 * @return
 		 */
 		private function test2($keyarr,$foundarr){
-			print("debug<br />");
+			print(" debug[properties.inc]<br />");
 			print_r($keyarr);
 			print("<br />");
 			print_r($foundarr);

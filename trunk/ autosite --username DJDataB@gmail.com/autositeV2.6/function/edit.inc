@@ -11,22 +11,30 @@
   * @copyright 2008->
   * @CMS autosite
   * @deprecated UNDER CONSTRUCTION
-  * @todo sending to server
-  * when people like to help it can.
+  * @todo when people like to help it can.
   */
+    if(is_file($autositelang[$autosite['lang']].$content.".dat")){
+        $pageinuse = $autositelang[$autosite['lang']].$content.".dat";
+        $ispage = true;
+    }elseif(is_file($autosite['forms'].$formname.".vars")){
+        $isform=true;
+        $_errors .= "formview;";
+    }else{
+        include_once($autosite['error']."pagenotfound.inc");
+    }
 	?>
 <meta name="robots" content="noindex, nofollow" />
 <link href="<?php print $autosite['layout']?>css/editor.css" rel="stylesheet" type="text/css" />
-<div id="editERROR" class="ERROR">
-You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil not works
-</div>
-
-
+<div id="editERROR" class="ERROR">  you must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil not works </div>
 	<form id="editor" action="<?php print$_SERVER["PHP_SELF"].(isset($attributen)?$attributen."&handeling=save":"handeling=save");?>" method="POST" enctype="multipart/form-data" >
 	   	<!-- ********************** EDITORMENU *********************-->
 		<div class="editormenu">
+	     	
 	     	<?php include($autosite['functions']."editor/actionstoolbar.inc")?>
-            <?php //include($autosite['functions']."editor/linktoolbar.inc")?>
+	     	<?php include($autosite['functions']."popup/popup.inc");
+             $pops = new Popup("editorpopup");
+             $pops->getPopupWithreturnval("returnval","link");
+             ?>
 		</div>
        	<div class="editormenu">
 	     	<div class="editorbtn" align="left">
@@ -42,18 +50,16 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
             <div class="editorbtn" align="right">
             	Name:<input type="text" name="title"  value="newpage" />
         	</div>
-                                  <!-- hidden" align="right"-->
-
         <!-- ********************** SOURCEPANEL *********************-->
 		<div id="Sourcepanel" class="Apanel hidden">
 			<textarea id="Source" name="html" wrap="VIRTUAL" class="Source">
-				<?php include($autositelang[$autosite['lang']].$content.".dat");?>
+				<?php include($pageinuse);?>
 			</textarea>
 		</div>
 
         <!-- ********************** EDITORPANEL *********************-->
 		<!-- removed onmouseout="selection=window.getSelection();" for boring IE-->		
-	    <div id="Editorpanel" contenteditable="true" class="Apanel"  ><?php include($autositelang[$autosite['lang']].$content.".dat");?></div>
+	    <div id="Editorpanel" contenteditable="true" class="Apanel"  ><?php include($pageinuse);?></div>
 	    <!-- ********************** EDITORFOOTER *********************-->
 		<div id="Editorfoot" class="Apanel" >
 			<!--Editor Size: 
@@ -173,9 +179,7 @@ You must use Internet Explorer 5.5 or later.or mozila \n\nThe used function wil 
 	function setclass(id,value){
 			  document.getElementById(id).className=value;
 	}
-    function setclass(id,value){
-			  document.getElementById(id).className=value;
-	}
+
 	var oldpanel;
 	var selection ="";
 	if (isbrowserok()){

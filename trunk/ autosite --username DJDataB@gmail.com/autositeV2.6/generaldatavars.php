@@ -25,7 +25,7 @@ $catalogs['2e catalog']= $autosite['xmlpath']."catalog2.xml";
 //<<<<<<<<<<<< [your formname][name]name of database of file>>>>
 
 $autosite['templates'] =$autosite['layout']."templates/";//
-$autosite['translations'] =$autosite['layout']."translations/";//
+
 $autosite['uploads'] =$autosite['layout']."uploads/";//
 $standartform="djs";
 $autosite['trueext']=array(".doc",".jpg",".txt",".gif",".png");
