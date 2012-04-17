@@ -129,7 +129,7 @@ class Menu{
     }
     private function save_Item($content,$to,$attributen=null,$label){
     	$toloc=(isset($to))?",'".$to."'":"";
-		$this->save_line($this->filename,"['".$content."-'".$toloc.",'".$attributen."','".((isset($this->translations[$this->translatprefix.$label]))?$this->translations[$this->translatprefix.$label]:"%"$this->translatprefix.$label."%")."','-'],");
+		$this->save_line($this->filename,"['".$content."-'".$toloc.",'".$attributen."','".((isset($this->translations[$this->translatprefix.$label]))? $this->translations[$this->translatprefix.$label]:"%".$this->translatprefix.$label."%")."','-'],");
  	}
  	private function save_robotitem($to,$attributen){
         if (!$file2 = fopen("robots.txt", 'a+')) {
