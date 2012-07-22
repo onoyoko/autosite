@@ -1,0 +1,100 @@
+	<script>
+				  	function view_img(img_name){
+				  		document.getElementById('preview').src = document.getElementById('img').value;
+				    	document.getElementById('preview').width = 150;
+				  	}
+	</script>
+	<fieldset style="padding:20px;">
+	<legend>%product.title%</legend>
+	<table>
+<tr>
+	<td><label for="name">%name%</label></td>
+    <td><input type="text" name="name" class="ibb" /></td>
+</tr>
+<tr>
+	<td><label for="price">%price%</label></td>
+	<td><input type="text" name="price" maxlength="35" class="ibb" /></td>
+</tr>
+<tr>
+	<td><label for="productid">%productid%</label></td>
+    <td><input type="text" name="productid" maxlength="35" class="ibb" /></td>
+</tr>
+<tr>
+	<td><label for="img">%upload.img%</label><img src='' name='previeuw' width='0'>
+	</td><td>
+		<input type="file" class="ibb" onchange="javascript:view_img('img');" name="img" />
+	</td>
+</tr>
+<tr>
+	<td>
+	 	<label for="short info">%shortinfo%</label>
+<br /> 	<textarea name="shortinfo" ></textarea>
+	</td>
+	<td>
+		<label for="moreinfo">%moreinfo%</label>
+		<br />	<textarea  name="moreinfo"></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label for="generation">%generation%</label>
+	</td>
+	<td>
+ 		<select name="generation" size="1">
+			<option value="		"></option>
+	    	<option value="men">%men%</option>
+			<option value="lady">%lady%</option>
+			<option value="kits">%kids%</option>
+            <option value="baby">%baby%</option>
+			<option value="neuter">%neuter%</option>
+            <option value="animal">%animal%</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label for="placetouse">%placetouse%</label>
+	</td>
+	<td>
+		<select name="placetouse" size="1">
+			<option value="    "></option>
+			<option value="body">%body%</option>
+			<option value="hair">%hair%</option>
+			<option value="face">%face%</option>
+			<option value="nails">%nails%</option>
+            <option value="lips">%lips%</option>
+            <option value="tooth">%tooth%</option>
+            <option value="bubblebad">%bubblebad%</option>
+            <option value="drinkinggel">%drinkinggel%</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>
+		<label for="category">%category%</label>
+	</td>
+	<td>
+		<select name="category" size="1">
+			<option value="    "></option>
+			<option value="parfum">%parfum%</option>
+			<option value="deo">%deo%</option>
+			<option value="champoo">%champoo%</option>
+			<option value="aftershave">%aftershave%</option>
+            <option value="lipstick">%lipstick%</option>
+            <option value="creme">%creme%</option>
+            <option value="sel">%sel%</option>
+            <option value="sun.uva.uvb">%sun.uva.uvb%</option>
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>
+	</td>
+	<td>
+	<br />
+	<input type="submit" class="btn" value="%add%" />
+	</td>
+</tr>
+</table>
+</fieldset>
+			

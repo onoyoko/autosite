@@ -1,0 +1,2 @@
+when the generalvars it do not have it wil not translate and you watch to %keyname%
+when the key is not found it wil not translate and you watch to %keyname%

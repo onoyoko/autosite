@@ -1,0 +1,12 @@
+	   <div><span>
+	<label for="username">%username%:</label>
+	<input class="input_login"  type="text" size="30" maxlength="30" id="User" name="username" />
+		</span>
+		<span>
+<label for="password">%password%: </label>
+<input class="input_login" type="password" id="Password" size="30" maxlength="35" name="password" />
+	    </span>
+	  </div>
+	  <div>
+        <input type="button" class="btn_login" onclick="this.form.Password.value = login(this.form.Password.value);" value="%login!2%" />
+      </div>

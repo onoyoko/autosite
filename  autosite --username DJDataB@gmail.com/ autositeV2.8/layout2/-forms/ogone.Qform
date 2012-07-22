@@ -1,0 +1,70 @@
+
+<div>
+TEST VISA : 4111111111111111
+</div>
+
+<form method="post" action="https://secure.ogone.com/ncol/test/orderstandard.asp" id="form1" name="form1" >
+	<fieldset>
+	<legend>paymentform</legend>
+	<table >
+		<tr>
+			<td>
+			<label for="n"><u>N</u>aam:</label>
+				<input accesskey ="n" name="n" id="n" type="text"/>
+			<br>
+			<label for="orderid"><u>O</u>rderId:</label></td>
+				<input accesskey="o" name="orderid" id="orderid" type="text"/>
+			<br>
+			<label for="currency"><u>C</u>urrency:</label>
+				<select accesskey="c" name="currency" id="currency" >
+				<?php
+					foreach ($currency as $currencycode => $currencyname) {
+							echo "<option ";
+						    if ($currencycode == $currencyname) {
+						        echo "selected ";
+						    }
+					    	echo "value=\"".$currencycode."\">".$currencyname."</option>\n";
+					}  
+				?>
+				</select>					 
+			</td>
+		</tr><tr>
+			<td>
+				<label for="amount"><u>A</u>mount:</label>
+				<input accesskey="amount" name="amount" id="amount" type="text" value=""/>
+			</td>
+		</tr><tr>
+			<td>
+				<label for="SHASign">
+				<u>S</u>haSign:</label>
+				<input  accesskey="SHASign"	 name="SHASign"  id="SHASign" type="text" value=""/>
+			</td>
+		</tr><tr>
+			<td>
+				<label for="pt">
+				<u>P</u>aymenttype:</label>
+				<select accesskey="pt" name="pt" id="pt" type="text" />
+<?php
+foreach ($payment as $paymentcode => $paymentname) {
+		echo "<option ";
+    if ($paymentcode == $paymentname) {
+        echo "selected = selected ";
+    }
+    echo "value=\"".$paymentcode."\">".$paymentname." </option>\n";
+}
+?>			    
+			    </select>
+			</td>
+			<tr>
+			</tr>
+			<td>
+				&nbsp;
+			</td>
+			<td>
+				<input type="hidden" name="PSPID" value='<?php print $pspid; ?>' />
+				<input type="submit" value="versturen" id="submit2" name="submit2" />
+			</td>
+		</tr>	
+	</table>
+	</fieldset>
+</form>

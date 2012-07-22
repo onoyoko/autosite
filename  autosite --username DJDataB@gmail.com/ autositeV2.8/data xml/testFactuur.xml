@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<AUTOSITE>
+	<CONTENTTYPE>Factuur</CONTENTTYPE>
+	<URL>/datavieuwport.php</URL>
+	<DATA><!-- Qvieuw locale translator by autosite -->
+		<CUSTOMER>
+			<NAME>naamkoper</NAME>
+			<ADRESS>
+				<STREET>adress verkoper </STREET>
+				<CITY>BE-0000 mijndorp</CITY>
+			</ADRESS>
+			<ON>11111111111</ON>
+			<BTWNR>11111111111</BTWNR>
+			<TEL>0032</TEL>
+		</CUSTOMER>
+		<VENDOR>
+		    <NAME>naamverkoper</NAME>
+			<ADRESS>
+				<STREET>adress verkoper </STREET>
+				<CITY>BE-0000 mijndorp </CITY>
+			</ADRESS>
+			<ON>11111111111</ON>
+			<BTWNR>11111111111</BTWNR>
+			<TEL>0032</TEL>
+		</VENDOR>
+		<generaldata>
+			<DATE>
+			testdatum10/10/2010
+			</DATE>
+			<LINK>
+				<BARCODE>1111000111</BARCODE>
+				<FACNR>120</FACNR>
+				<HYPERLINK>http:www.mijnsite.be</HYPERLINK>
+			</LINK>
+		</generaldata>
+		<ITEMS>
+		    <ITEM>
+			   <NUMBER>10		   </NUMBER>
+			   <PRODUCTID>ABC 544468465</PRODUCTID>
+		       <DESCRIPTION>producten met veelzijdige kenmerken		   </DESCRIPTION>
+		   	   <UNITPRICE>10€		   </UNITPRICE>
+		   	   <BTW>21% </BTW>
+			   <LINETOTAL>100		   </LINETOTAL>
+			</ITEM>
+		    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+					    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5</UNITPRICE>
+			   <LINETOTAL>25 </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€</UNITPRICE>
+			   <LINETOTAL>25</LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+								    <ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+			<ITEM>
+			   <NUMBER>5	</NUMBER>
+		       <PRODUCTID>ABC 546851684</PRODUCTID>
+		       <DESCRIPTION>producten met minder kenmerken		   </DESCRIPTION>
+		       <BTW>21% </BTW> 	   	   
+			   <UNITPRICE>5€	   </UNITPRICE>
+			   <LINETOTAL>25		   </LINETOTAL>		
+			</ITEM>
+		</ITEMS>
+		<CALC>
+	 		<SUBTOTAL>125		</SUBTOTAL>
+		    <BTW>0		</BTW>
+		   	<TOTAL>125		</TOTAL>
+		</CALC>
+	</DATA>
+</AUTOSITE>
