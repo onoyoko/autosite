@@ -1,0 +1,41 @@
+<span  class="productitem" >
+	<fieldset id="item-%i->value%" class="Aproductitem" onmouseover="mytooltip_show('tooltip-%i->value%','item-%i->value%');"  onmouseout="mytooltip_hide('tooltip-%i->value%');">
+	
+	<legend>%name->value%</legend>
+			<div class="productiteminf">
+				%img->value%
+				<br />
+				%shortinfo->value%
+				</div>
+
+   			<div id="tooltip-%i->value%" class="mytooltip"><!--visual hidden-->
+		 		<fieldset>
+					<legend>%placetouse%</legend>
+						%placetouse->value%
+				</fieldset>
+				<fieldset>
+					<legend>%generation%</legend>
+						%generation->value%
+				</fieldset>
+				<fieldset class="price">
+					<legend>%price%</legend>
+					<div>%onrequest%</div>
+				</fieldset>		
+				%moreinfo->value%"
+			</div>
+    			<div id="mytooltip-%i->value%" class="mytooltip"><!--visual hidden-->
+			       
+                    !!!not availeble!!!
+   
+                </div> 
+	       </fieldset>
+            <fieldset class='tools'><legend>%tools%</legend></a>
+            <span  onclick='document.getElementById("selecteditem").value="%i->value%";zend("edit");' class='edit' ></span>
+            <span  onclick='document.getElementById("selecteditem").value="%i->value%";zend("delete");' class='delete' ></span>
+            <!--div id="myitem-%i->value%"  onclick='this.form.selecteditem.value="%i->value%";' class='addtocard' 
+            onmouseover="mytooltip_show('mytooltip-%i->value%','myitem-%i->value%');"  onmouseout="mytooltip_hide('mytooltip-%i->value%');"></div-->
+           
+            
+            </fieldset>
+          
+</span>

@@ -1,0 +1,8 @@
+Je kent het wel als je een factuur krijgt dan krijg je een mededeling met de structuur ***111/1111/111dd***.
+Weet iemand hoe je die twee laatste controle getallen berekent in excell.
+Het is de rest van de deling door 97.
+De formule hiervoor is '=MOD(range;97)'
+Maar .....in het getal mogen geen tekens staan.
+Dus 111/1111/1111** kan niet. wel 11111111111
+Firmin
+Het controlegetal is de modulo 97 (rest van deling door 97) van de 10 voorgaande cijfers maar indien de rest 0 bedraagt, dan wordt als controlegetal 97 gebruikt. 

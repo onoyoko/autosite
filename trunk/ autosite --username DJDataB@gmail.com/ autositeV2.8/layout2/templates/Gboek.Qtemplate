@@ -1,0 +1,10 @@
+<table >
+		<tr><td style="width:300px" >
+			<h3>%name%:%name->value%</h3>
+			<hr class='div1'/>
+			%mail%: %mail->value% <br />
+			</td >
+			<td >%msg%:%msg->value%
+			</td>
+		</tr>
+</table>
