@@ -12,6 +12,7 @@ class valid{
    private	$errors=array();//aso_array
    private	$tovalidate;
    private	$isvalid= true;
+   private  $testinjection = false;
    function __construct(){
    		//$this->seterrormsg("notexist","ERROR NOTEXIST Formfield:","is not exist watch to your form");	
    }
@@ -34,9 +35,12 @@ class valid{
 		$formfields = $formdata['items'];
 		$tovalidate = $formdata['tovalid'];
 		$validfine=is_array($tovalidate);
+        print_r($GETorPOST);
+        print_r($formfields);
 		//print  "<br /> validatefine:".$validfine."<br />";
 		if(is_array($formfields)){
 			foreach($formfields as $key=>$value){
+			 
 				$value = $this->makeitvalidate($key);
 				if(is_array($GETorPOST[$key])){
 					$GETorPOST[$key] = "".implode(",",$GETorPOST[$key])."";
@@ -60,7 +64,7 @@ class valid{
 					}elseif($validfine && !array_key_exists($key,$tovalidate)){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<validation fine but field must not tovalidate >>>>>>>
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
-						if($testinjection &&  is_sqlinject($value)){
+						if($this->testinjection &&  is_sqlinject($value)){
 							$this->seterror("injection",$key);
 							return;
 						}
@@ -69,7 +73,7 @@ class valid{
 					}elseif($validfine && $this->validatefine($key,$tmp)){
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<validation fine and field is also validfine >>>>>>>
 						//!!!!!!!!!!!!!!OK!!!!!!!!!!
-						if($testinjection && is_sqlinject($value)){
+						if($this->testinjection && is_sqlinject($value)){
 							$this->seterror("injection",$key);
 							return;
 						}
