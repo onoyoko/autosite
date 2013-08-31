@@ -14,12 +14,13 @@
 	* @param $type "database","filesystem"
 	*/
 	function addfilesatlink(&$asoarrdata,$to,$formsdata,$extentions){
+	   $uploaders = array();
 		$uploader = new upload($_FILES,$formsdata,$extentions,$to);
 		$uploadlinks = $uploader->getlinks();
 		//print_r($asoarrdata);
 		foreach ($uploadlinks as $key =>&$value){
 			$s = implode(',',$value);
-    		$asoarrdata[$key] = $s;
+    		$uploaders[$key] = $s;
 		}
 		//print_r($asoarrdata);
 		return $uploaders;
@@ -83,7 +84,7 @@
 				return "[error:DATA.inc]%not ready%";//place to save is not ready
 			}
 		}
-        		/**
+        /**
 		 * @param $aso_arr array key=>value
 		 * @param $key always 0 this is for a use with array_walk
 		*/
