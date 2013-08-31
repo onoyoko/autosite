@@ -7,7 +7,8 @@
 	include($autosite['functions'].'data.inc');
 	$formname=(isset($_GET['content']))?addslashes($_GET['content']):'';
 	$formname=(isset($_POST['content']))?addslashes($_POST['content']):$formname;
-	$autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
+	
+    $autosite['lang'] = (isset( $_GET['lang'] ) ) ? $_GET['lang'] : 'NL';
 	$step = (isset($_GET['step']))?addslashes($_GET['step']):0;//staplengte split in         
 	$steplen = (isset($_GET['steplen']))?addslashes($_GET['steplen']):25;//staplengte split in
 	//$step = (isset ($_POST['step']))//stap
@@ -25,7 +26,6 @@
         }else{
             $formlevel=777;
         }
-
         $isdata= is_file($autosite['private'].$formsdata[$formname]['name'].".csv");
         $formlevel = (isset($formsdata[$formname]['loginniveau']))?$formsdata[$formname]['loginniveau']:1;
     	$content = "".$formname;
@@ -52,7 +52,7 @@
     		}else{
     				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<Head>>>>>>>>>>>>>>>>				
     		include_once($autosite['layout']."head.inc");
-            if($formsdata[$formname]['salable']==true){
+            if(isset($formsdata[$formname]['salable'])&& $formsdata[$formname]['salable']==true){
             
             }
     	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>
@@ -62,9 +62,7 @@
     			include_once ($autosite['layout']."aditudes.inc");
     	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<Container>>>>>>>>>>>>>>>>
     print'<div id="container" class="clearfix">';
-        	if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
-                print"<a href='./formvieuwport.php".$attributen."&viewas=$key' class='viewsitem'>%toevoegen%</a>|";
-            }
+
     		include_once($autosite['functions']."Qhtml/Qvieuw.inc");
     		include_once($autosite['functions']."data/properties.inc");
     		if (!isset($properties)){
@@ -73,6 +71,9 @@
     				//<<<<<<<<<<<<<<<<<<<<<<<<<<<<the keys to translate>>>>>>>>>>>>>>>>
     			$translatedata = $properties->getproperties($formsdata[$formname]['totranslate']);
     		}
+            if ($formlevel<101 ||(isset($user)&& $user->islogin()&& $user->ispermitlevel($formlevel))){
+                print"<a href='./formvieuwport.php".$attributen."&viewas=$key' class='viewsitem'>".((isset($translatedata['add']))?$translatedata['add']:" %add%")."</a>|";
+            }
     		include_once($autosite['layout']."tooltip.inc");
             print '<link rel="stylesheet" href="'.$autosite['layout'].'css/data.css"  type="text/css" />';
     		if(array_key_exists($viewas,$views)){
