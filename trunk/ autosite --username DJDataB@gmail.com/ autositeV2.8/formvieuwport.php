@@ -18,7 +18,13 @@
 	$datatosave = $_POST;
 	//print_r($_POST);
 	//print_r($_FILES);
+
+    
 	$datatosave["date"] = date("l j F Y");
+    $datatosave["remoteIp"] = $_SERVER["REMOTE_ADDR"];
+    $log = new csv_plus($autosite['private'],"getEpost.log");
+
+    
 	if(is_file($autosite['forms'].$formname.".vars")){
 		include($autosite['forms'].$formname.".vars");//print_r($formsdata[$formname]);
 	}
@@ -45,6 +51,9 @@
 					$opslagruimte->initfile($autosite['private']);
                     
 					$_errors.= $opslagruimte->save_line($datatosave,0,true);
+                    $data = array($_SERVER["REMOTE_ADDR"],implode($datatosave));
+                    $data = $datatosave + $data;
+                    $log->save_line($data,0,true);
 				}catch(Exception $e){
 					//print_r($e);
 					//print $e->getMessage();
@@ -60,6 +69,7 @@
 					$opslagruimte->initfile($autosite['private']);
 					//$_errors.= "".print_r(
 					$opslagruimte->update_line($datatosave,0,true);//."";
+
 		}elseif(isset($_POST['action']) && $_POST['action'] == 'delete'){
 			
 		}else{
