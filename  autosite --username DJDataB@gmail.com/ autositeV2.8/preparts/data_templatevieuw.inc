@@ -17,13 +17,13 @@ if($formsdata[$formname]['vieuw']==true&& is_file($autosite['templates'].$formna
 	   print"<-- -->test";
 	   $count = $vieuw->getfrom_DB($formsdata[$formname]['name'],$formsdata[$formname]['items']);
     }else{
-		print"<--NO DATA-->";
+		print"<--NO DATA -->";
 	}
     print '<div class="paginator"><h2>';
             for($i=0;$i<ceil($count/$steplen);$i++){
                 print" <a href='".$_SERVER['PHP_SELF'].$attributen."&step=$i&steplen=$steplen' class='viewsitem'>[$i]</a>";
             }
-            print '<h2></div>';	
+            print '<h2></div>';
 }else{
 	print "<!--NO VIEUWS-->";
 }
